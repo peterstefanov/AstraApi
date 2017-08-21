@@ -11,6 +11,10 @@ public class Test {
 		String syncEventPosition = api.syncEvent("position", new Object[] {"HorizontalRight"});
 		System.out.println("syncEventPosition: " + syncEventPosition);
 		
+		api.createAgent("agentTwo", "Player");
+		String syncEventPosition1 = api.syncEvent("position", new Object[] {"VerticalDown"});
+		System.out.println("syncEventPosition1: " + syncEventPosition1);
+		
 		api.asyncEvent("position", new Object[] {"VerticalUp"});
 		String asyncEventPosition = null;
 		while ((asyncEventPosition = api.receive()) == null) {
