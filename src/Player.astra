@@ -1,0 +1,20 @@
+agent Player extends Unity {
+	module Console console;
+	module System system;
+	
+	
+	rule +!unity(api.AstraApi api) {
+		Unity::!unity(api);
+	}
+
+	rule $unityModule.event("position", [string position]) {	
+		//Astra sent response
+		string direction = positionModule.getDirections(position);
+		console.println("direction: " + direction + " for position: " + position);
+        !sendDirection(direction);
+	}
+	
+	rule +!sendDirection(string Directions) {
+		unityModule.sendCommand("position", [Directions]);
+	}
+}

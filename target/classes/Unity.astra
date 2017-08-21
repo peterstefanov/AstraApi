@@ -1,0 +1,8 @@
+agent Unity {
+	module api.astrasupport.Unity unityModule;
+	module api.astrasupport.Position positionModule;
+    
+	rule +!unity(api.AstraApi api) {
+	    unityModule.linkToUnity(api);
+	}
+}
