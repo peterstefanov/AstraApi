@@ -23,8 +23,7 @@ public class Test {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-		}
-		
+		}		
 		System.out.println("asyncEventPosition: " + asyncEventPosition);
 	}
 }
