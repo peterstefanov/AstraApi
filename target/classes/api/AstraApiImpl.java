@@ -2,6 +2,7 @@ package api;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Set;
 
 import api.event.UnityEvent;
 import astra.core.ASTRAClass;
@@ -50,20 +51,37 @@ public class AstraApiImpl implements AstraApi {
 
 		return agent.name();
 	}
-
+    
 	/**
+	 * 	/**
 	 * Add event from Unity based on the type. The type used in Unity should match
-	 * the one supported by the API.
+	 * the one supported by the API. 
+	 * @throws AstraApiException 
 	 */
-	public void asyncEvent(String identifer, Object[] args) {
+
+	public void asyncEvent(String agentIdentifier, String eventIdentifier, Object[] args) {
+		
 		ListTerm list = new ListTerm();
 		for (Object object : args) {
 			list.add(Primitive.newPrimitive(object));
 		}
+		final Set<String> agentsName = Agent.agentNames();
 		
-	    if (identifer.equals("position")) {
-			agent.addEvent(new UnityEvent(Primitive.newPrimitive("position"), list));
-		}	
+		boolean exist = agentsName.stream().anyMatch(s -> s.equals(agentIdentifier));
+		
+		Agent currentAgent = null;
+		if (exist) {
+			currentAgent = Agent.getAgent(agentIdentifier);
+		} else {
+			currentAgent = agent;
+		}
+
+	    if (eventIdentifier.equals(EVENT_TYPE_POSITION)) {
+	    	currentAgent.addEvent(new UnityEvent(Primitive.newPrimitive(EVENT_TYPE_POSITION), list));
+		} else {
+			//Event type is not supported yet
+			submitCommand("Event type: " + eventIdentifier + " is not supported yet!");
+		}
 	}
 
 
@@ -75,8 +93,8 @@ public class AstraApiImpl implements AstraApi {
 		events.add(event);
 	}
 
-	public String syncEvent(String identifier, Object[] args) {
-		asyncEvent(identifier, args);
+	public String syncEvent(String agentIdentifier, String eventIdentifier, Object[] args) {
+		asyncEvent(agentIdentifier, eventIdentifier, args);
 		String json = null;
 		while ((json = receive()) == null) {
 			try {
