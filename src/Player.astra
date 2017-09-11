@@ -8,13 +8,16 @@ agent Player extends Unity {
 	}
 
 	rule $unityModule.event("position", [string position]) {	
-		//Astra sent response
 		string direction = positionModule.getDirections(position);
-		console.println("direction: " + direction + " for position: " + position);
-        !sendDirection(direction);
+        !sendCommand("position", direction);
+	}
+		
+	rule $unityModule.event("collision", [string cardinalDirection]) {	
+		string collision = collisionModule.getDirections(cardinalDirection);
+        !sendCommand("collision", collision);
 	}
 	
-	rule +!sendDirection(string Directions) {
-		unityModule.sendCommand("position", [Directions]);
-	}
+	rule +!sendCommand(string EventType, string Command) {
+		unityModule.sendCommand(system.name(), EventType, [Command]);
+	}	
 }

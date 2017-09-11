@@ -19,7 +19,7 @@ public class Unity extends ASTRAClass {
 	public Unity() {
 		setParents(new Class[] {astra.lang.Agent.class});
 		addRule(new Rule(
-			"Unity", new int[] {5,9,5,36},
+			"Unity", new int[] {6,9,6,36},
 			new GoalEvent('+',
 				new Goal(
 					new Predicate("unity", new Term[] {
@@ -29,10 +29,10 @@ public class Unity extends ASTRAClass {
 			),
 			Predicate.TRUE,
 			new Block(
-				"Unity", new int[] {5,35,7,5},
+				"Unity", new int[] {6,35,8,5},
 				new Statement[] {
 					new ModuleCall("unityModule",
-						"Unity", new int[] {6,8,6,36},
+						"Unity", new int[] {7,8,7,36},
 						new Predicate("linkToUnity", new Term[] {
 							new Variable(new ObjectType(api.AstraApi.class), "api")
 						}),
@@ -42,7 +42,7 @@ public class Unity extends ASTRAClass {
 							}
 
 							public boolean invoke(Intention intention, Predicate predicate) {
-								return ((api.astrasupport.Unity) intention.getModule("Unity","unityModule")).linkToUnity(
+								return ((api.modules.Unity) intention.getModule("Unity","unityModule")).linkToUnity(
 									(api.AstraApi) intention.evaluate(predicate.getTerm(0))
 								);
 							}
@@ -58,8 +58,9 @@ public class Unity extends ASTRAClass {
 
 	public Fragment createFragment(astra.core.Agent agent) throws ASTRAClassNotFoundException {
 		Fragment fragment = new Fragment(this);
-		fragment.addModule("unityModule",api.astrasupport.Unity.class,agent);
-		fragment.addModule("positionModule",api.astrasupport.Position.class,agent);
+		fragment.addModule("unityModule",api.modules.Unity.class,agent);
+		fragment.addModule("positionModule",api.modules.Position.class,agent);
+		fragment.addModule("collisionModule",api.modules.Collision.class,agent);
 		return fragment;
 	}
 

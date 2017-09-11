@@ -1,10 +1,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>AstraApi</groupId>
-	<artifactId>AstraApi</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<groupId>api</groupId>
+	<artifactId>astra_unity_api</artifactId>
+	<packaging>jar</packaging>
+	<version>1.0-SNAPSHOT</version>
 	<name>astra_unity_api</name>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.8</java.version>
+	</properties>
 
 	<dependencies>
 		<dependency>
@@ -21,6 +27,11 @@
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
 			<version>2.4</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
 		</dependency>
 	</dependencies>
 
@@ -47,6 +58,7 @@
 					<executable>C:\Program Files\Java\jdk1.8.0_141\bin\javac.exe</executable>
 					<source>1.8</source>
 					<target>1.8</target>
+					<compilerVersion>${java.version}</compilerVersion>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -67,6 +79,19 @@
 					</descriptorRefs>
 					<appendAssemblyId>false</appendAssemblyId>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.19.1</version>
+				<configuration>
+					<jvm>C:\Program Files\Java\jdk1.8.0_141\bin\java</jvm>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>test</phase>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

@@ -55,7 +55,7 @@ public class Player extends ASTRAClass {
 				}),
 				new ModuleEventAdaptor() {
 					public Event generate(astra.core.Agent agent, Predicate predicate) {
-						return ((api.astrasupport.Unity) agent.getModule("Player","unityModule")).event(
+						return ((api.modules.Unity) agent.getModule("Player","unityModule")).event(
 							predicate.getTerm(0),
 							predicate.getTerm(1)
 						);
@@ -64,59 +64,34 @@ public class Player extends ASTRAClass {
 			),
 			Predicate.TRUE,
 			new Block(
-				"Player", new int[] {10,59,15,5},
+				"Player", new int[] {10,59,13,5},
 				new Statement[] {
 					new Declaration(
 						new Variable(Type.STRING, "direction"),
-						"Player", new int[] {12,8,15,5},
+						"Player", new int[] {11,8,13,5},
 						new ModuleTerm("positionModule", Type.STRING,
 							new Predicate("getDirections", new Term[] {
 								new Variable(Type.STRING, "position")
 							}),
 							new ModuleTermAdaptor() {
 								public Object invoke(Intention intention, Predicate predicate) {
-									return ((api.astrasupport.Position) intention.getModule("Player","positionModule")).getDirections(
+									return ((api.modules.Position) intention.getModule("Player","positionModule")).getDirections(
 										(java.lang.String) intention.evaluate(predicate.getTerm(0))
 									);
 								}
 								public Object invoke(BindingsEvaluateVisitor visitor, Predicate predicate) {
-									return ((api.astrasupport.Position) visitor.agent().getModule("Player","positionModule")).getDirections(
+									return ((api.modules.Position) visitor.agent().getModule("Player","positionModule")).getDirections(
 										(java.lang.String) visitor.evaluate(predicate.getTerm(0))
 									);
 								}
 							}
 						)
 					),
-					new ModuleCall("console",
-						"Player", new int[] {13,8,13,81},
-						new Predicate("println", new Term[] {
-							Operator.newOperator('+',
-								Primitive.newPrimitive("direction: "),
-								Operator.newOperator('+',
-									new Variable(Type.STRING, "direction"),
-									Operator.newOperator('+',
-										Primitive.newPrimitive(" for position: "),
-										new Variable(Type.STRING, "position")
-									)
-								)
-							)
-						}),
-						new DefaultModuleCallAdaptor() {
-							public boolean inline() {
-								return false;
-							}
-
-							public boolean invoke(Intention intention, Predicate predicate) {
-								return ((astra.lang.Console) intention.getModule("Player","console")).println(
-									(java.lang.String) intention.evaluate(predicate.getTerm(0))
-								);
-							}
-						}
-					),
 					new Subgoal(
-						"Player", new int[] {14,8,15,5},
+						"Player", new int[] {12,8,13,5},
 						new Goal(
-							new Predicate("sendDirection", new Term[] {
+							new Predicate("sendCommand", new Term[] {
+								Primitive.newPrimitive("position"),
 								new Variable(Type.STRING, "direction")
 							})
 						)
@@ -125,24 +100,94 @@ public class Player extends ASTRAClass {
 			)
 		));
 		addRule(new Rule(
-			"Player", new int[] {17,9,17,45},
+			"Player", new int[] {15,9,15,70},
+			new ModuleEvent("unityModule",
+				"$ue",
+				new Predicate("event", new Term[] {
+					Primitive.newPrimitive("collision"),
+					new ListTerm(new Term[] {
+						new Variable(Type.STRING, "cardinalDirection",false)
+					})
+				}),
+				new ModuleEventAdaptor() {
+					public Event generate(astra.core.Agent agent, Predicate predicate) {
+						return ((api.modules.Unity) agent.getModule("Player","unityModule")).event(
+							predicate.getTerm(0),
+							predicate.getTerm(1)
+						);
+					}
+				}
+			),
+			Predicate.TRUE,
+			new Block(
+				"Player", new int[] {15,69,18,5},
+				new Statement[] {
+					new Declaration(
+						new Variable(Type.STRING, "collision"),
+						"Player", new int[] {16,8,18,5},
+						new ModuleTerm("collisionModule", Type.STRING,
+							new Predicate("getDirections", new Term[] {
+								new Variable(Type.STRING, "cardinalDirection")
+							}),
+							new ModuleTermAdaptor() {
+								public Object invoke(Intention intention, Predicate predicate) {
+									return ((api.modules.Collision) intention.getModule("Player","collisionModule")).getDirections(
+										(java.lang.String) intention.evaluate(predicate.getTerm(0))
+									);
+								}
+								public Object invoke(BindingsEvaluateVisitor visitor, Predicate predicate) {
+									return ((api.modules.Collision) visitor.agent().getModule("Player","collisionModule")).getDirections(
+										(java.lang.String) visitor.evaluate(predicate.getTerm(0))
+									);
+								}
+							}
+						)
+					),
+					new Subgoal(
+						"Player", new int[] {17,8,18,5},
+						new Goal(
+							new Predicate("sendCommand", new Term[] {
+								Primitive.newPrimitive("collision"),
+								new Variable(Type.STRING, "collision")
+							})
+						)
+					)
+				}
+			)
+		));
+		addRule(new Rule(
+			"Player", new int[] {20,9,20,58},
 			new GoalEvent('+',
 				new Goal(
-					new Predicate("sendDirection", new Term[] {
-						new Variable(Type.STRING, "Directions",false)
+					new Predicate("sendCommand", new Term[] {
+						new Variable(Type.STRING, "EventType",false),
+						new Variable(Type.STRING, "Command",false)
 					})
 				)
 			),
 			Predicate.TRUE,
 			new Block(
-				"Player", new int[] {17,44,19,5},
+				"Player", new int[] {20,57,22,5},
 				new Statement[] {
 					new ModuleCall("unityModule",
-						"Player", new int[] {18,8,18,57},
+						"Player", new int[] {21,8,21,68},
 						new Predicate("sendCommand", new Term[] {
-							Primitive.newPrimitive("position"),
+							new ModuleTerm("system", Type.STRING,
+								new Predicate("name", new Term[] {}),
+								new ModuleTermAdaptor() {
+									public Object invoke(Intention intention, Predicate predicate) {
+										return ((astra.lang.System) intention.getModule("Player","system")).name(
+										);
+									}
+									public Object invoke(BindingsEvaluateVisitor visitor, Predicate predicate) {
+										return ((astra.lang.System) visitor.agent().getModule("Player","system")).name(
+										);
+									}
+								}
+							),
+							new Variable(Type.STRING, "EventType"),
 							new ListTerm(new Term[] {
-								new Variable(Type.STRING, "Directions")
+								new Variable(Type.STRING, "Command")
 							})
 						}),
 						new DefaultModuleCallAdaptor() {
@@ -151,9 +196,10 @@ public class Player extends ASTRAClass {
 							}
 
 							public boolean invoke(Intention intention, Predicate predicate) {
-								return ((api.astrasupport.Unity) intention.getModule("Player","unityModule")).sendCommand(
+								return ((api.modules.Unity) intention.getModule("Player","unityModule")).sendCommand(
 									(java.lang.String) intention.evaluate(predicate.getTerm(0)),
-									(astra.term.ListTerm) intention.evaluate(predicate.getTerm(1))
+									(java.lang.String) intention.evaluate(predicate.getTerm(1)),
+									(astra.term.ListTerm) intention.evaluate(predicate.getTerm(2))
 								);
 							}
 						}
