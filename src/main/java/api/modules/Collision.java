@@ -6,117 +6,113 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 import com.google.gson.Gson;
 
+import api.AstraApi;
 import api.modules.utils.CollisionUnityJson;
+import api.modules.utils.FormattingService;
 import astra.core.Module;
 
 public class Collision extends Module {
 
+	//AstraApi.DECIMAL_FORMAT.setRoundingMode(RoundingMode.CEILING);
 	private Gson gson = new Gson();
+	// map with object id and cardinal direction as a key and ordered list of all last decisions
 	private HashMap<String, LinkedList<CollisionUnityJson>> cardinalDirections = new HashMap<String, LinkedList<CollisionUnityJson>>();
-	
 
-	public static final String NORTH = "North";
-	public static final String EAST = "East";
-	public static final String SOUTH = "South";
-	public static final String WEST = "West";
-	public static final String[] CARDINAL_DIRECTION = {NORTH, EAST, SOUTH, WEST};
-	
 	@TERM
 	public String getDirections(String unityCollision) {
-		//////////////////////////////////TEST////////////////////////////////
-		LinkedList<CollisionUnityJson> testList = new LinkedList<CollisionUnityJson>();
-		CollisionUnityJson ss = new CollisionUnityJson();
-		ss.setCardinalDirection(NORTH);
-		ss.setInstanceId(9670);
-		ss.setX(1d);
-		ss.setY(1d);
-		ss.setZ(1d);
-		
-		CollisionUnityJson ss1 = new CollisionUnityJson();
-		ss1.setCardinalDirection(SOUTH);
-		ss1.setInstanceId(9670);
-		ss1.setX(1d);
-		ss1.setY(1d);
-		ss1.setZ(1d);
-		
-		CollisionUnityJson ss2 = new CollisionUnityJson();
-		ss2.setCardinalDirection(EAST);
-		ss2.setInstanceId(9670);
-		ss2.setX(1d);
-		ss2.setY(1d);
-		ss2.setZ(1d);
-		
-		
-		testList.add(ss);
-		testList.add(ss1);
-		testList.add(ss2);
-		//test
-		cardinalDirections.put("9670South", testList);
-       //////////////////////////////////TEST////////////////////////////////
-		
-		List<String> listCardinals = new ArrayList<String>(Arrays.asList(CARDINAL_DIRECTION));
+
+		List<String> listCardinals = new ArrayList<String>(Arrays.asList(AstraApi.CARDINAL_DIRECTION));
 		// get current collision passed from Unity
 		CollisionUnityJson collision = gson.fromJson(unityCollision, CollisionUnityJson.class);
-		
+
 		String cardinalDirection = collision.getCardinalDirection();
 		int instanceId = collision.getInstanceId();
-        //construct key for the map		
+		// construct key for the map
 		String key = instanceId + cardinalDirection;
-
 
 		CollisionUnityJson collisionToUnityJson = new CollisionUnityJson();
 		LinkedList<CollisionUnityJson> collisionPerInstance = null;
 
+		// remove the current cardinal direction passed from Unity
+		listCardinals.remove(collision.getCardinalDirection());
+
+		collisionToUnityJson.setInstanceId(collision.getInstanceId());
+		collisionToUnityJson.setCardinalDirection(collision.getCardinalDirection());
+
 		// get the last agent collision data if exist
-		if (!cardinalDirections.isEmpty()) {
+		if (cardinalDirections.isEmpty() || (!cardinalDirections.isEmpty() && cardinalDirections.get(key) == null)) {
+
+			// get random index for the remaining cardinal direction
+			int randomIndex = ThreadLocalRandom.current().nextInt(0, listCardinals.size());
+			// set random cardinal direction to be passed to Unity
+			collisionToUnityJson.setAstraCardinalDirection(listCardinals.get(randomIndex));
+            updateCoordinates(collisionToUnityJson, collision);
+			// record the decision
+			collisionPerInstance = new LinkedList<CollisionUnityJson>();
+			collisionPerInstance.add(collisionToUnityJson);
+			cardinalDirections.put(key, collisionPerInstance);
+
+			return gson.toJson(collisionToUnityJson);
+
+		} else {
+
 			LinkedList<CollisionUnityJson> list = cardinalDirections.get(key);
-			
-			//iterate and remove the last cardinal directions that were send to Unity
-			//until one left  
+
+			// Iterate through the list in reverse order
 			Iterator<CollisionUnityJson> it = list.descendingIterator();
-			while(it.hasNext()) {
+			while (it.hasNext()) {
 				CollisionUnityJson item = (CollisionUnityJson) it.next();
-				if (listCardinals.size() == 1) {
+				// if two left from the base cardinal directions break the loop
+				if (listCardinals.size() == 2) {
 					break;
-				}				
-				if (listCardinals.contains(item.getCardinalDirection())) {
-					listCardinals.remove(item.getCardinalDirection());
+				}
+				// remove from the list of base cardinal direction if not yet removed
+				if (listCardinals.contains(item.getAstraCardinalDirection())) {
+					listCardinals.remove(item.getAstraCardinalDirection());
 				}
 			}
-  
-			if (listCardinals.size() == 1) {
-				collisionToUnityJson.setCardinalDirection(listCardinals.get(0));
-			} else {
-				Random random = new Random();
-				int index = random.nextInt(listCardinals.size());
-				collisionToUnityJson.setCardinalDirection(listCardinals.get(index));
+
+			// get random index for the remaining cardinal direction
+			int randomIndex = ThreadLocalRandom.current().nextInt(0, listCardinals.size());
+			// set random cardinal direction to be passed to Unity
+			collisionToUnityJson.setAstraCardinalDirection(listCardinals.get(randomIndex));
+			updateCoordinates(collisionToUnityJson, collision);
+			// record the decision
+			list.add(collisionToUnityJson);
+
+			// check if the list exceed three entry and remove from the tail
+			if (list.size() > 2) {
+				list.removeFirst();
 			}
-			
-			Random random = new Random();
-			int index = random.nextInt(listCardinals.size());
-			collisionToUnityJson.setCardinalDirection(listCardinals.get(index));
-			
-			collisionToUnityJson.setInstanceId(collision.getInstanceId());
-			//based on cardinal direction modify coordinates
-			collisionToUnityJson.setX(collision.getX());
-			collisionToUnityJson.setY(collision.getY());
-			collisionToUnityJson.setZ(collision.getZ());
-			
-			return gson.toJson(collisionToUnityJson);
-			
-		} else {
-			
-			collisionToUnityJson.setInstanceId(collision.getInstanceId());
-			//based on cardinal direction modify coordinates
-			collisionToUnityJson.setX(collision.getX());
-			collisionToUnityJson.setY(collision.getY());
-			collisionToUnityJson.setZ(collision.getZ());
-			
+			cardinalDirections.put(key, list);
 			return gson.toJson(collisionToUnityJson);
 		}
+	}
+
+	private void updateCoordinates(CollisionUnityJson collisionToUnityJson, CollisionUnityJson collision) {
+		String cardinalDirection = collisionToUnityJson.getAstraCardinalDirection();
+		
+		// based on astra cardinal direction modify coordinates
+		if (cardinalDirection == AstraApi.NORTH) {
+			collisionToUnityJson.setX(FormattingService.formatDecimal(collision.getX()));
+			collisionToUnityJson.setY(FormattingService.formatDecimal(collision.getY()));
+			collisionToUnityJson.setZ(FormattingService.formatDecimal(collision.getZ() + AstraApi.API_CHANGE_RATAE));
+		} else if (cardinalDirection == AstraApi.SOUTH) {
+			collisionToUnityJson.setX(FormattingService.formatDecimal(collision.getX()));
+			collisionToUnityJson.setY(FormattingService.formatDecimal(collision.getY()));
+			collisionToUnityJson.setZ(FormattingService.formatDecimal(collision.getZ() - AstraApi.API_CHANGE_RATAE));
+		} else if (cardinalDirection == AstraApi.WEST) {
+			collisionToUnityJson.setX(FormattingService.formatDecimal(collision.getX() - AstraApi.API_CHANGE_RATAE));
+			collisionToUnityJson.setY(FormattingService.formatDecimal(collision.getY()));
+			collisionToUnityJson.setZ(FormattingService.formatDecimal(collision.getZ()));
+		} else {
+			collisionToUnityJson.setX(FormattingService.formatDecimal(collision.getX() + AstraApi.API_CHANGE_RATAE));
+			collisionToUnityJson.setY(FormattingService.formatDecimal(collision.getY()));
+			collisionToUnityJson.setZ(FormattingService.formatDecimal(collision.getZ()));
+		}		
 	}
 }

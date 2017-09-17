@@ -35,9 +35,38 @@ public class PositionEventTest extends EventTypeTest{
 		
 		String syncEventPosition = api.syncEvent(agent, EventType.POSITION, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z + "}"});		
 		Coordinates values = (Coordinates) gson.fromJson(syncEventPosition, Coordinates.class);
-		assertEquals(Position.ZERO_CHANGE, values.getX());
-		assertEquals(Position.ZERO_CHANGE, values.getY());		
-		assertEquals(Position.API_MARGIN, values.getZ());
+		assertEquals(AstraApi.ZERO_CHANGE, values.getX());
+		assertEquals(AstraApi.ZERO_CHANGE, values.getY());		
+		assertEquals(AstraApi.API_CHANGE_RATAE, values.getZ());
+	}
+	
+	@Test
+	public void singlePositionAsyncEventTest() {
+		//Agent created
+		String agent = createAgent();			
+		
+		api.asyncEvent(agent, EventType.POSITION, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z + "}"});	
+		
+		String asyncEventPosition = null;
+		int count = 0;
+		while(count < 20) {
+			asyncEventPosition = api.receive(agent, EventType.POSITION);
+			if (asyncEventPosition != null) {
+				break;
+			} else {			
+				try {
+					Thread.sleep(150);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}	
+			}
+			count ++;
+		}
+		
+		Coordinates values = (Coordinates) gson.fromJson(asyncEventPosition, Coordinates.class);
+		assertEquals(AstraApi.ZERO_CHANGE, values.getX());
+		assertEquals(AstraApi.ZERO_CHANGE, values.getY());		
+		assertEquals(AstraApi.API_CHANGE_RATAE, values.getZ());
 	}
 	
 	@Test
@@ -49,16 +78,16 @@ public class PositionEventTest extends EventTypeTest{
 		
 		syncEventPosition = api.syncEvent(agent, EventType.POSITION, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z + "}"});
 		values = (Coordinates) gson.fromJson(syncEventPosition, Coordinates.class);
-		assertEquals(Position.ZERO_CHANGE, values.getX());
-		assertEquals(Position.ZERO_CHANGE, values.getY());		
-		assertEquals(Position.API_MARGIN, values.getZ());
+		assertEquals(AstraApi.ZERO_CHANGE, values.getX());
+		assertEquals(AstraApi.ZERO_CHANGE, values.getY());		
+		assertEquals(AstraApi.API_CHANGE_RATAE, values.getZ());
 
 		
 		syncEventPosition = api.syncEvent(agent, EventType.POSITION, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_1 + "}"});
 		values = (Coordinates) gson.fromJson(syncEventPosition, Coordinates.class);
-		assertEquals(Position.ZERO_CHANGE, values.getX());
-		assertEquals(Position.ZERO_CHANGE, values.getY());		
-		assertEquals(Position.API_MARGIN, values.getZ());	
+		assertEquals(AstraApi.ZERO_CHANGE, values.getX());
+		assertEquals(AstraApi.ZERO_CHANGE, values.getY());		
+		assertEquals(AstraApi.API_CHANGE_RATAE, values.getZ());	
 	}
 	
 	@Test
@@ -77,7 +106,7 @@ public class PositionEventTest extends EventTypeTest{
 		
 		String asyncEventPosition = null;
 		int count = 0;
-		while(count < 50) {
+		while(count < 80) {
 			asyncEventPosition = api.receive(agent, EventType.POSITION);
 			if (asyncEventPosition == null) {			
 				try {
@@ -99,9 +128,9 @@ public class PositionEventTest extends EventTypeTest{
 		
 		for (int i = 0; i < listEvents.size(); i ++) {
 			Coordinates values = (Coordinates) gson.fromJson(listEvents.get(i), Coordinates.class);
-			assertEquals(Position.ZERO_CHANGE, values.getX());
-			assertEquals(Position.ZERO_CHANGE, values.getY());		
-			assertEquals(Position.API_MARGIN, values.getZ());							
+			assertEquals(AstraApi.ZERO_CHANGE, values.getX());
+			assertEquals(AstraApi.ZERO_CHANGE, values.getY());		
+			assertEquals(AstraApi.API_CHANGE_RATAE, values.getZ());							
 		}
 	}
 	

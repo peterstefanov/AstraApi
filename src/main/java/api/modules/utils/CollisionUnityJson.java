@@ -7,6 +7,7 @@ public class CollisionUnityJson {
 	public Double z;
 	public int instanceId;
 	public String cardinalDirection;
+	public String astraCardinalDirection;
 
 	public Double getX() {
 		return x;
@@ -46,5 +47,13 @@ public class CollisionUnityJson {
 
 	public void setCardinalDirection(String cardinalDirection) {
 		this.cardinalDirection = cardinalDirection;
+	}
+
+	public String getAstraCardinalDirection() {
+		return astraCardinalDirection;
+	}
+
+	public void setAstraCardinalDirection(String astraCardinalDirection) {
+		this.astraCardinalDirection = astraCardinalDirection;
 	}
 }

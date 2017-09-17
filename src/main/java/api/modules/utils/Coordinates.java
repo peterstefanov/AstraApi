@@ -1,7 +1,10 @@
 package api.modules.utils;
 
-public class Coordinates {
+import java.io.Serializable;
 
+public class Coordinates implements Serializable{
+
+	private static final long serialVersionUID = -774515350136611320L;
 	public Double x;
 	public Double y;
 	public Double z;

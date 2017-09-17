@@ -7,9 +7,8 @@ import com.google.gson.Gson;
 
 import api.AstraApi;
 import api.EventType;
+import api.command.AstraCommandFactory;
 import api.command.CommandFactory;
-import api.command.collision.CollisionCommandFactory;
-import api.command.possition.PositionCommandFactory;
 import api.event.UnityEvent;
 import api.event.UnityEventUnifier;
 import astra.core.Module;
@@ -28,8 +27,8 @@ public class Unity extends Module {
 	
 	static {
 		Unifier.eventFactory.put(UnityEvent.class, new UnityEventUnifier());
-		commandFactory.put(EventType.POSITION,  new PositionCommandFactory());
-		commandFactory.put(EventType.COLLISION,  new CollisionCommandFactory());
+		commandFactory.put(EventType.POSITION,  new AstraCommandFactory(EventType.POSITION));
+		commandFactory.put(EventType.COLLISION, new AstraCommandFactory(EventType.COLLISION));
 	}
 	
 	@ACTION
