@@ -1,12 +1,18 @@
 package api.modules.utils;
 
-public class CollisionUnityJson {
+import java.io.Serializable;
 
+public class PositionUnityJson implements Serializable {
+
+	private static final long serialVersionUID = -5120509323047032926L;
+	
 	public Double x;
 	public Double y;
 	public Double z;
-	public int instanceId;
 	public String cardinalDirection;
+	
+	/** Used for collision event */
+	public int instanceId;
 	public String astraCardinalDirection;
 
 	public Double getX() {

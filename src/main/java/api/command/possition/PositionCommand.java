@@ -2,21 +2,21 @@ package api.command.possition;
 
 import api.EventType;
 import api.command.AstraCommand;
-import api.modules.utils.Coordinates;
+import api.modules.utils.PositionUnityJson;
 
-public class Position extends AstraCommand {
+public class PositionCommand extends AstraCommand {
 
 	public Double x;
 	public Double y;
 	public Double z;
 	
-	public Position(final Object[] value) {
+	public PositionCommand(final Object[] value) {
 		super(EventType.POSITION);
 		processValues(value);
 	}
 
 	private void processValues(Object[] value) {
-		Coordinates values = (Coordinates) gson.fromJson(value[0].toString(), Coordinates.class);
+		PositionUnityJson values = (PositionUnityJson) gson.fromJson(value[0].toString(), PositionUnityJson.class);
 					
 		this.x = values.getX();
 		this.y = values.getY();

@@ -4,72 +4,100 @@ import java.util.LinkedList;
 
 import com.google.gson.Gson;
 
-import api.modules.utils.Coordinates;
+import api.AstraApi;
+import api.modules.utils.FormattingService;
+import api.modules.utils.PositionUnityJson;
 import astra.core.Module;
 
 /**
  * Handles events of type 'position' sent from Unity. Based on the previous
  * coordinates the axis (x,y or z) are checked to determine the direction of
  * movement. The direction for the Agent is preserved and the coordinates that
- * had changed are returned with velocity 0.25 where for the rest zero is passed
+ * had changed are returned with rate 0.5 added to it either negative or positive 
  * back to Unity.
  */
 public class Position extends Module {
 
 	private Gson gson = new Gson();
 
-	private static LinkedList<String> directions = new LinkedList<String>();
-
-	public static final Double API_MARGIN = new Double("0.25");
-	public static final Double ZERO_CHANGE = new Double("0");
-	public static final Double INITIAL_CHANGE = new Double("0.1");
+	private static LinkedList<PositionUnityJson> directions = new LinkedList<PositionUnityJson>();
 
 	@TERM
 	public String getDirections(String position) {
+		
 		Double lastX = null;
 		Double lastY = null;
 		Double lastZ = null;
+		
 
-		Coordinates recordedCoordinates = null;
-				
-		// get the last agent position if exist
 		if (!directions.isEmpty()) {
-			recordedCoordinates = gson.fromJson(directions.pollLast(), Coordinates.class);
+			//get the last coordinates if exist
+			PositionUnityJson recordedCoordinates = directions.pollLast();
 			lastX = recordedCoordinates.getX();
 			lastY = recordedCoordinates.getY();
 			lastZ = recordedCoordinates.getZ();
 		} else {
+
+			PositionUnityJson initialPosition = gson.fromJson(position, PositionUnityJson.class);
+			//this tell us which direction to go for the very first time, when agent just created 
+			String cardinalDirection = initialPosition.getCardinalDirection();
+			
+			switch (cardinalDirection) {
+			    case AstraApi.NORTH:
+				    initialPosition.setZ(initialPosition.getZ() - AstraApi.INITIAL_CHANGE);
+				    break;
+			    case AstraApi.SOUTH:
+				    initialPosition.setZ(initialPosition.getZ() + AstraApi.INITIAL_CHANGE);
+				    break;
+			    case AstraApi.WEST:
+				    initialPosition.setX(initialPosition.getX() - AstraApi.INITIAL_CHANGE);
+				    break;
+			    case AstraApi.EAST:
+				    initialPosition.setX(initialPosition.getX() + AstraApi.INITIAL_CHANGE);
+				    break;
+			    default:
+				
+			}
+		
 			// add the current/initial agent position
-			directions.add(position);
-			recordedCoordinates = gson.fromJson(directions.pollLast(), Coordinates.class);
-			lastX = recordedCoordinates.getX();
-			lastY = recordedCoordinates.getY();
-			// modify the initial position by altering the 'z' coordinates
-			lastZ = new Double(recordedCoordinates.getZ().doubleValue() - INITIAL_CHANGE.doubleValue());
+			directions.add(initialPosition);
+			
+			return gson.toJson(initialPosition);
 		}
 
-		// get current position
-		Coordinates coordinates = gson.fromJson(position, Coordinates.class);
+		//get current coordinates
+		PositionUnityJson coordinates = gson.fromJson(position, PositionUnityJson.class);		
 
-		//decide in which direction was moving the agent and set the relevant coordinate axis  
-		if (lastX != null && lastX.doubleValue() != coordinates.getX().doubleValue()) {
-			coordinates.setX(API_MARGIN);
+		if (lastX != null) {
+			if (lastX.doubleValue() == coordinates.getX().doubleValue()) {
+				coordinates.setX(coordinates.getX());
+			} else {
+				coordinates.setX(coordinates.getX() >= 0 ? coordinates.getX() + (AstraApi.API_CHANGE_RATE) : coordinates.getX() + (-AstraApi.API_CHANGE_RATE));
+			}			
 		} else {
-			coordinates.setX(ZERO_CHANGE);
-		}
-
-		if (lastY != null && lastY.doubleValue() != coordinates.getY().doubleValue()) {
-			coordinates.setY( API_MARGIN);
-		} else {
-			coordinates.setY(ZERO_CHANGE);
+			coordinates.setX(coordinates.getX());
 		}
 		
-		if (lastZ != null && lastZ.doubleValue() != coordinates.getZ().doubleValue()) {
-			coordinates.setZ(API_MARGIN);
+		if (lastZ != null) {
+			if (lastZ.doubleValue() == coordinates.getZ().doubleValue()) {
+				coordinates.setZ(coordinates.getZ());
+			} else {
+				coordinates.setZ(coordinates.getZ() >= 0 ? coordinates.getZ() + (AstraApi.API_CHANGE_RATE) : coordinates.getZ() + (-AstraApi.API_CHANGE_RATE));
+			}			
 		} else {
-			coordinates.setZ(ZERO_CHANGE);
+			coordinates.setZ(coordinates.getZ());
 		}
-
+		
+		if (lastY != null) {
+			if (lastY.doubleValue() == coordinates.getY().doubleValue()) {
+				coordinates.setY(coordinates.getY());
+			} else {
+				coordinates.setY(coordinates.getY() >= 0 ? coordinates.getY() + (AstraApi.API_CHANGE_RATE) : coordinates.getY() + (-AstraApi.API_CHANGE_RATE));
+			}			
+		} else {
+			coordinates.setY(coordinates.getY());
+		}
+				
 		return gson.toJson(coordinates);
 	}
 }
