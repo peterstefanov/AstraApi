@@ -85,7 +85,7 @@ public class AstraApiImpl implements AstraApi {
 			submitCommand(agentIdentifier, "Event type: " + eventIdentifier + " is not supported yet!", "");
 		}
 	}
-
+	
 	public synchronized String receive(String agentIdentifier, String eventIdentifier) {
 		String key = agentIdentifier.concat(eventIdentifier);
 		if (concurrentMap.containsKey(key)) {
@@ -121,5 +121,14 @@ public class AstraApiImpl implements AstraApi {
 			}
 		}
 		return json;
+	}
+
+	@Override
+	public synchronized void clear(String agentIdentifier, String eventIdentifier) {
+		String key = agentIdentifier.concat(eventIdentifier);
+		if (concurrentMap.containsKey(key)) {
+			Queue<String> agentEvents = concurrentMap.get(key);
+			agentEvents.clear();
+		}		
 	}
 }

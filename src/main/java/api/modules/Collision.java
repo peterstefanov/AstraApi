@@ -17,7 +17,6 @@ import astra.core.Module;
 
 public class Collision extends Module {
 
-	//AstraApi.DECIMAL_FORMAT.setRoundingMode(RoundingMode.CEILING);
 	private Gson gson = new Gson();
 	// map with object id and cardinal direction as a key and ordered list of all last decisions
 	private HashMap<String, LinkedList<CollisionUnityJson>> cardinalDirections = new HashMap<String, LinkedList<CollisionUnityJson>>();
@@ -100,17 +99,17 @@ public class Collision extends Module {
 		if (cardinalDirection == AstraApi.NORTH) {
 			collisionToUnityJson.setX(FormattingService.formatDecimal(collision.getX()));
 			collisionToUnityJson.setY(FormattingService.formatDecimal(collision.getY()));
-			collisionToUnityJson.setZ(FormattingService.formatDecimal(collision.getZ() + AstraApi.API_CHANGE_RATAE));
+			collisionToUnityJson.setZ(FormattingService.formatDecimal(collision.getZ() - AstraApi.API_CHANGE_RATE));
 		} else if (cardinalDirection == AstraApi.SOUTH) {
 			collisionToUnityJson.setX(FormattingService.formatDecimal(collision.getX()));
 			collisionToUnityJson.setY(FormattingService.formatDecimal(collision.getY()));
-			collisionToUnityJson.setZ(FormattingService.formatDecimal(collision.getZ() - AstraApi.API_CHANGE_RATAE));
+			collisionToUnityJson.setZ(FormattingService.formatDecimal(collision.getZ() + AstraApi.API_CHANGE_RATE));
 		} else if (cardinalDirection == AstraApi.WEST) {
-			collisionToUnityJson.setX(FormattingService.formatDecimal(collision.getX() - AstraApi.API_CHANGE_RATAE));
+			collisionToUnityJson.setX(FormattingService.formatDecimal(collision.getX() - AstraApi.API_CHANGE_RATE));
 			collisionToUnityJson.setY(FormattingService.formatDecimal(collision.getY()));
 			collisionToUnityJson.setZ(FormattingService.formatDecimal(collision.getZ()));
 		} else {
-			collisionToUnityJson.setX(FormattingService.formatDecimal(collision.getX() + AstraApi.API_CHANGE_RATAE));
+			collisionToUnityJson.setX(FormattingService.formatDecimal(collision.getX() + AstraApi.API_CHANGE_RATE));
 			collisionToUnityJson.setY(FormattingService.formatDecimal(collision.getY()));
 			collisionToUnityJson.setZ(FormattingService.formatDecimal(collision.getZ()));
 		}		
