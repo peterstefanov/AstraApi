@@ -19,7 +19,7 @@ agent Player extends Unity {
 	
 	rule $unityModule.event("direction_vector", [string directionsVector]) {	
 		string direction = directionVector.getDirections(directionsVector);
-        !sendCommand("directionVector", direction);
+        !sendCommand("direction_vector", direction);
 	}
 	
 	rule +!sendCommand(string EventType, string Command) {

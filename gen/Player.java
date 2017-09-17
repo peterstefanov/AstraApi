@@ -203,7 +203,7 @@ public class Player extends ASTRAClass {
 						"Player", new int[] {22,8,23,5},
 						new Goal(
 							new Predicate("sendCommand", new Term[] {
-								Primitive.newPrimitive("directionVector"),
+								Primitive.newPrimitive("direction_vector"),
 								new Variable(Type.STRING, "direction")
 							})
 						)
