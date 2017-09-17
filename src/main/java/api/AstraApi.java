@@ -2,6 +2,7 @@ package api;
 
 public interface AstraApi {
 	
+	public static final Double DIRECTION = new Double("1");
 	public static final Double API_CHANGE_RATE = new Double("0.5");
 	public static final Double ZERO_CHANGE = new Double("0");
 	public static final Double INITIAL_CHANGE = new Double("0.1");

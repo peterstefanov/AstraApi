@@ -156,7 +156,63 @@ public class Player extends ASTRAClass {
 			)
 		));
 		addRule(new Rule(
-			"Player", new int[] {20,9,20,58},
+			"Player", new int[] {20,9,20,76},
+			new ModuleEvent("unityModule",
+				"$ue",
+				new Predicate("event", new Term[] {
+					Primitive.newPrimitive("direction_vector"),
+					new ListTerm(new Term[] {
+						new Variable(Type.STRING, "directionsVector",false)
+					})
+				}),
+				new ModuleEventAdaptor() {
+					public Event generate(astra.core.Agent agent, Predicate predicate) {
+						return ((api.modules.Unity) agent.getModule("Player","unityModule")).event(
+							predicate.getTerm(0),
+							predicate.getTerm(1)
+						);
+					}
+				}
+			),
+			Predicate.TRUE,
+			new Block(
+				"Player", new int[] {20,75,23,5},
+				new Statement[] {
+					new Declaration(
+						new Variable(Type.STRING, "direction"),
+						"Player", new int[] {21,8,23,5},
+						new ModuleTerm("directionVector", Type.STRING,
+							new Predicate("getDirections", new Term[] {
+								new Variable(Type.STRING, "directionsVector")
+							}),
+							new ModuleTermAdaptor() {
+								public Object invoke(Intention intention, Predicate predicate) {
+									return ((api.modules.DirectionVector) intention.getModule("Player","directionVector")).getDirections(
+										(java.lang.String) intention.evaluate(predicate.getTerm(0))
+									);
+								}
+								public Object invoke(BindingsEvaluateVisitor visitor, Predicate predicate) {
+									return ((api.modules.DirectionVector) visitor.agent().getModule("Player","directionVector")).getDirections(
+										(java.lang.String) visitor.evaluate(predicate.getTerm(0))
+									);
+								}
+							}
+						)
+					),
+					new Subgoal(
+						"Player", new int[] {22,8,23,5},
+						new Goal(
+							new Predicate("sendCommand", new Term[] {
+								Primitive.newPrimitive("directionVector"),
+								new Variable(Type.STRING, "direction")
+							})
+						)
+					)
+				}
+			)
+		));
+		addRule(new Rule(
+			"Player", new int[] {25,9,25,58},
 			new GoalEvent('+',
 				new Goal(
 					new Predicate("sendCommand", new Term[] {
@@ -167,10 +223,10 @@ public class Player extends ASTRAClass {
 			),
 			Predicate.TRUE,
 			new Block(
-				"Player", new int[] {20,57,22,5},
+				"Player", new int[] {25,57,27,5},
 				new Statement[] {
 					new ModuleCall("unityModule",
-						"Player", new int[] {21,8,21,68},
+						"Player", new int[] {26,8,26,68},
 						new Predicate("sendCommand", new Term[] {
 							new ModuleTerm("system", Type.STRING,
 								new Predicate("name", new Term[] {}),

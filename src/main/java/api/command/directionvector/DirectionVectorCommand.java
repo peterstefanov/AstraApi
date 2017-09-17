@@ -1,20 +1,17 @@
-package api.command.collision;
+package api.command.directionvector;
 
 import api.EventType;
 import api.command.AstraCommand;
 import api.modules.utils.PositionUnityJson;
 
-public class CollisionCommand extends AstraCommand {
+public class DirectionVectorCommand extends AstraCommand {
 
 	public Double x;
 	public Double y;
 	public Double z;
-	public int instanceId;
-	public String cardinalDirection;
-	public String astraCardinalDirection;
 	
-	public CollisionCommand(Object[] value) {
-		super(EventType.COLLISION);
+	public DirectionVectorCommand(final Object[] value) {
+		super(EventType.DIRECTION_VECTOR);
 		processValues(value);
 	}
 
@@ -24,8 +21,5 @@ public class CollisionCommand extends AstraCommand {
 		this.x = values.getX();
 		this.y = values.getY();
 		this.z = values.getZ();
-		this.cardinalDirection = values.getCardinalDirection();
-		this.astraCardinalDirection = values.getAstraCardinalDirection();
-		this.instanceId = values.getInstanceId();
-	}	
+	}
 }
