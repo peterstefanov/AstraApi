@@ -40,6 +40,9 @@ public class Position extends Module {
 			lastX = recordedCoordinates.getX();
 			lastY = recordedCoordinates.getY();
 			lastZ = recordedCoordinates.getZ();
+			
+			// add the current agent position
+			directions.add(gson.fromJson(position, PositionUnityJson.class));
 		} else {
 
 			PositionUnityJson initialPosition = gson.fromJson(position, PositionUnityJson.class);
@@ -49,20 +52,16 @@ public class Position extends Module {
 
 			switch (cardinalDirection) {
 			case AstraApi.NORTH:
-				initialPosition.setZ(initialPosition.getZ() - AstraApi.API_CHANGE_RATE);
-				System.out.println(AstraApi.NORTH);
+				initialPosition.setZ(initialPosition.getZ() + AstraApi.API_CHANGE_RATE);
 				break;
 			case AstraApi.SOUTH:
-				initialPosition.setZ(initialPosition.getZ() + AstraApi.API_CHANGE_RATE);
-				System.out.println(AstraApi.SOUTH);
+				initialPosition.setZ(initialPosition.getZ() - AstraApi.API_CHANGE_RATE);
 				break;
 			case AstraApi.WEST:
 				initialPosition.setX(initialPosition.getX() - AstraApi.API_CHANGE_RATE);
-				System.out.println(AstraApi.WEST);
 				break;
 			case AstraApi.EAST:
 				initialPosition.setX(initialPosition.getX() + AstraApi.API_CHANGE_RATE);
-				System.out.println(AstraApi.EAST);
 				break;
 			default:
 			}
@@ -75,40 +74,36 @@ public class Position extends Module {
 
 		// get current coordinates
 		PositionUnityJson coordinates = gson.fromJson(position, PositionUnityJson.class);
-
-		if (lastX != null) {
-			if (lastX.doubleValue() == coordinates.getX().doubleValue()) {
-				coordinates.setX(coordinates.getX());
-			} else {
-				coordinates.setX(coordinates.getX() >= 0 ? coordinates.getX() + (AstraApi.API_CHANGE_RATE)
-						: coordinates.getX() + (-AstraApi.API_CHANGE_RATE));
-			}
-		} else {
-			coordinates.setX(coordinates.getX());
+		
+		//get the sign of the coordinates
+		int signX = signBit(coordinates.getX().floatValue());
+		int signY = signBit(coordinates.getY().floatValue());
+		int signZ = signBit(coordinates.getZ().floatValue());
+		
+		//compare the absolute values, manipulate the coordinates and add the sign 
+		if (lastX != null && (lastX.doubleValue() != coordinates.getX().doubleValue())) {
+			double absValueX = Math.abs(coordinates.getX()) > Math.abs(lastX.doubleValue()) ? Math.abs(coordinates.getX()) + AstraApi.API_CHANGE_RATE : Math.abs(coordinates.getX()) - AstraApi.API_CHANGE_RATE;
+			coordinates.setX(signX == 0 ? new Double(absValueX) : new Double(-absValueX));
 		}
 
-		if (lastZ != null) {
-			if (lastZ.doubleValue() == coordinates.getZ().doubleValue()) {
-				coordinates.setZ(coordinates.getZ());
-			} else {
-				coordinates.setZ(coordinates.getZ() >= 0 ? coordinates.getZ() + (AstraApi.API_CHANGE_RATE)
-						: coordinates.getZ() + (-AstraApi.API_CHANGE_RATE));
-			}
-		} else {
-			coordinates.setZ(coordinates.getZ());
+		if (lastY != null && (lastY.doubleValue() != coordinates.getY().doubleValue())) {
+			double absValueY = Math.abs(coordinates.getY()) > Math.abs(lastX.doubleValue()) ? Math.abs(coordinates.getY()) + AstraApi.API_CHANGE_RATE : Math.abs(coordinates.getY()) - AstraApi.API_CHANGE_RATE;
+			coordinates.setY(signY == 0 ? new Double(absValueY) : new Double(-absValueY));
 		}
-
-		if (lastY != null) {
-			if (lastY.doubleValue() == coordinates.getY().doubleValue()) {
-				coordinates.setY(coordinates.getY());
-			} else {
-				coordinates.setY(coordinates.getY() >= 0 ? coordinates.getY() + (AstraApi.API_CHANGE_RATE)
-						: coordinates.getY() + (-AstraApi.API_CHANGE_RATE));
-			}
-		} else {
-			coordinates.setY(coordinates.getY());
+		
+		if (lastZ != null && (lastZ.doubleValue() != coordinates.getZ().doubleValue())) {
+			double absValueZ = Math.abs(coordinates.getZ()) > Math.abs(lastX.doubleValue()) ? Math.abs(coordinates.getZ()) + AstraApi.API_CHANGE_RATE : Math.abs(coordinates.getZ()) - AstraApi.API_CHANGE_RATE;
+			coordinates.setZ(signZ == 0 ? new Double(absValueZ) : new Double(-absValueZ));
 		}
 
 		return gson.toJson(coordinates);
+	}
+	
+	/**
+	 * Gets the sign bit of a floating point value
+	 * returns 0 for positive and 1 for negative
+	 */
+	private int signBit(float f) {
+	    return (Float.floatToIntBits(f)>>>31);
 	}
 }
