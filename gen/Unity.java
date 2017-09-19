@@ -19,7 +19,7 @@ public class Unity extends ASTRAClass {
 	public Unity() {
 		setParents(new Class[] {astra.lang.Agent.class});
 		addRule(new Rule(
-			"Unity", new int[] {7,9,7,36},
+			"Unity", new int[] {9,9,9,36},
 			new GoalEvent('+',
 				new Goal(
 					new Predicate("unity", new Term[] {
@@ -29,10 +29,10 @@ public class Unity extends ASTRAClass {
 			),
 			Predicate.TRUE,
 			new Block(
-				"Unity", new int[] {7,35,9,5},
+				"Unity", new int[] {9,35,11,5},
 				new Statement[] {
 					new ModuleCall("unityModule",
-						"Unity", new int[] {8,8,8,36},
+						"Unity", new int[] {10,8,10,36},
 						new Predicate("linkToUnity", new Term[] {
 							new Variable(new ObjectType(api.AstraApi.class), "api")
 						}),
@@ -62,6 +62,7 @@ public class Unity extends ASTRAClass {
 		fragment.addModule("positionModule",api.modules.Position.class,agent);
 		fragment.addModule("collisionModule",api.modules.Collision.class,agent);
 		fragment.addModule("directionVector",api.modules.DirectionVector.class,agent);
+		fragment.addModule("positionVectorModule",api.modules.PositionVector.class,agent);
 		return fragment;
 	}
 

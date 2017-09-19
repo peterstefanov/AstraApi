@@ -22,6 +22,11 @@ public class PositionEventTest extends EventTypeTest{
 	private static final Double Z_3 = new Double("5.100000047683716");
 	private static final Double Z_4 = new Double("6.200000047683716");
 	
+	private static final Double Z_N = new Double("-2.700000047683716");
+	private static final Double Z_1_N = new Double("-3.900000047683716");
+	private static final Double Z_2_N = new Double("-4.000000047683716");
+	private static final Double Z_3_N = new Double("-5.100000047683716");
+	private static final Double Z_4_N = new Double("-6.200000047683716");
 	
 	@Before
 	public void setUp() {		
@@ -36,8 +41,8 @@ public class PositionEventTest extends EventTypeTest{
 		String syncEventPosition = api.syncEvent(agent, EventType.POSITION, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z + ",\"cardinalDirection\":" + AstraApi.SOUTH + "}"});		
 		PositionUnityJson values = (PositionUnityJson) gson.fromJson(syncEventPosition, PositionUnityJson.class);
 		assertEquals(X, values.getX());
-		assertEquals(Y, values.getY());		
-		assertEquals(new Double(Z + AstraApi.API_CHANGE_RATE), values.getZ());
+		assertEquals(Y, values.getY());	
+		assertEquals(new Double(Z - AstraApi.API_CHANGE_RATE), values.getZ());
 	}
 	
 	@Test
@@ -49,7 +54,7 @@ public class PositionEventTest extends EventTypeTest{
 		PositionUnityJson values = (PositionUnityJson) gson.fromJson(syncEventPosition, PositionUnityJson.class);
 		assertEquals(X, values.getX());
 		assertEquals(Y, values.getY());		
-		assertEquals(new Double(Z - AstraApi.API_CHANGE_RATE), values.getZ());
+		assertEquals(new Double(Z + AstraApi.API_CHANGE_RATE), values.getZ());
 	}
 	
 	@Test
@@ -102,7 +107,7 @@ public class PositionEventTest extends EventTypeTest{
 		PositionUnityJson values = (PositionUnityJson) gson.fromJson(asyncEventPosition, PositionUnityJson.class);
 		assertEquals(X, values.getX());
 		assertEquals(Y, values.getY());		
-		assertEquals(new Double(Z - AstraApi.API_CHANGE_RATE), values.getZ());
+		assertEquals(new Double(Z + AstraApi.API_CHANGE_RATE), values.getZ());
 	}
 	
 	@Test
@@ -127,12 +132,12 @@ public class PositionEventTest extends EventTypeTest{
 	}
 	
 	@Test
-	public void multipleAsyncPositionUpdateTest() {
+	public void multipleAsyncPositionUpdateNorthTest() {
 			
 		//Agent created	
 		String agent = createAgent();			
 		
-		api.asyncEvent(agent, EventType.POSITION, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z + ",\"cardinalDirection\":" + AstraApi.SOUTH + "}"});
+		api.asyncEvent(agent, EventType.POSITION, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z + ",\"cardinalDirection\":" + AstraApi.NORTH + "}"});
 		api.asyncEvent(agent, EventType.POSITION, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_1 + "}"});
 		api.asyncEvent(agent, EventType.POSITION, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_2 + "}"});
 		//api.asyncEvent(agent, EventType.POSITION, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_3 + "}"});
@@ -186,11 +191,68 @@ public class PositionEventTest extends EventTypeTest{
 	}
 	
 	@Test
+	public void multipleAsyncPositionUpdateSouthTest() {
+			
+		//Agent created	
+		String agent = createAgent();			
+		
+		api.asyncEvent(agent, EventType.POSITION, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_N + ",\"cardinalDirection\":" + AstraApi.SOUTH + "}"});
+		api.asyncEvent(agent, EventType.POSITION, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_1_N + "}"});
+		api.asyncEvent(agent, EventType.POSITION, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_2_N + "}"});
+		//api.asyncEvent(agent, EventType.POSITION, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_3_N + "}"});
+		//api.asyncEvent(agent, EventType.POSITION, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_4_N + "}"});
+		
+		LinkedList<String> listEvents = new LinkedList<String>();
+		
+		String asyncEventPosition = null;
+		int count = 0;
+		while(count < 50) {
+			asyncEventPosition = api.receive(agent, EventType.POSITION);
+			if (asyncEventPosition == null) {			
+				try {
+					Thread.sleep(150);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}	
+			}
+			if (asyncEventPosition != null) {
+				listEvents.add(asyncEventPosition);
+				if (listEvents.size() == 3) {
+					break;
+				}
+			}
+			count ++;
+			//System.out.println(count);
+		}
+		
+		assertTrue(listEvents.size() == 3);
+		
+		int countItems = 0;
+		
+		for (int i = 0; i < listEvents.size(); i ++) {
+			PositionUnityJson values = (PositionUnityJson) gson.fromJson(listEvents.get(i), PositionUnityJson.class);
+			assertEquals(X, values.getX());
+			assertEquals(Y, values.getY());		
+			if (countItems == 0) {
+				assertEquals(new Double(Z_N - AstraApi.API_CHANGE_RATE), values.getZ());
+			} else if (countItems == 1) {
+				assertEquals(new Double(Z_1_N - AstraApi.API_CHANGE_RATE), values.getZ());
+			} else if (countItems == 2) {
+				assertEquals(new Double(Z_2_N - AstraApi.API_CHANGE_RATE), values.getZ());
+			} else if (countItems == 3) {
+				assertEquals(new Double(Z_3_N - AstraApi.API_CHANGE_RATE), values.getZ());
+			} else if (countItems == 4) {
+				assertEquals(new Double(Z_4_N - AstraApi.API_CHANGE_RATE), values.getZ());
+			}
+						
+			countItems ++;
+		}
+	}
+	
+	@Test
 	public void multipleAsyncPositionUpdateRepeatTest() {
-		multipleAsyncPositionUpdateTest();
-		multipleAsyncPositionUpdateTest();
-		multipleAsyncPositionUpdateTest();
-		multipleAsyncPositionUpdateTest();
-		multipleAsyncPositionUpdateTest();
+		multipleAsyncPositionUpdateNorthTest();
+		multipleAsyncPositionUpdateNorthTest();
+		multipleAsyncPositionUpdateNorthTest();
 	}
 }

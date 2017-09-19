@@ -11,7 +11,7 @@ import astra.core.Module;
 
 /**
  * Handles events of type 'direction_vector' sent from Unity. Based on the cardinal direction 
- * returns the Vector 3 coordinates. If no coordinate passed from Unity, assumption is that
+ * returns the Vector 3 coordinates. If no cardinal direction passed from Unity, assumption is that
  * direction isn't change, return the last one.
  */
 public class DirectionVector extends Module {

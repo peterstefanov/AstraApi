@@ -3,6 +3,8 @@ agent Unity {
 	module api.modules.Position positionModule;
     module api.modules.Collision collisionModule;
     module api.modules.DirectionVector directionVector;
+    module api.modules.PositionVector positionVectorModule;
+    
     
 	rule +!unity(api.AstraApi api) {
 	    unityModule.linkToUnity(api);

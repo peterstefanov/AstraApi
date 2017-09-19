@@ -11,6 +11,11 @@ agent Player extends Unity {
 		string direction = positionModule.getDirections(position);
         !sendCommand("position", direction);
 	}
+	
+	rule $unityModule.event("position_vector", [string position]) {	
+		string direction = positionVectorModule.getDirectionsVector(position);
+        !sendCommand("position_vector", direction);
+	}
 		
 	rule $unityModule.event("collision", [string cardinalDirection]) {	
 		string collision = collisionModule.getDirections(cardinalDirection);
