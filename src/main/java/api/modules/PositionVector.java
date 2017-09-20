@@ -5,11 +5,12 @@ import java.util.LinkedList;
 import com.google.gson.Gson;
 
 import api.AstraApi;
+import api.modules.utils.FormattingService;
 import api.modules.utils.PositionUnityJson;
 import astra.core.Module;
 
 /**
- * Handles events of type 'position' sent from Unity. Based on the previous
+ * Handles events of type 'position_vector' sent from Unity. Based on the previous
  * coordinates the axis (x,y or z) are checked to determine the direction of
  * movement. Based on the change from the last available position coordinates
  * returns the direction vector. 
@@ -28,7 +29,7 @@ public class PositionVector extends Module {
 		Double lastZ = null;
 
 		if (!directions.isEmpty()) {
-			// get the last coordinates if exist
+			// get the last coordinates if exist and remove it if size of list  > 10
 			PositionUnityJson recordedCoordinates = null;
 			if (directions.size() > 10) {
 				recordedCoordinates = directions.pollLast();
@@ -81,17 +82,26 @@ public class PositionVector extends Module {
 
 		// get current coordinates
 		PositionUnityJson coordinates = gson.fromJson(position, PositionUnityJson.class);
+		
+		//get the sign of the coordinates
+		int signX = FormattingService.signBit(coordinates.getX().floatValue());
+		int signY = FormattingService.signBit(coordinates.getY().floatValue());
+		int signZ = FormattingService.signBit(coordinates.getZ().floatValue());
+		
 		//compare absolute values to distinguish the direction
 		if (lastX != null && (lastX.doubleValue() != coordinates.getX().doubleValue())) {
-			coordinates.setX(Math.abs(coordinates.getX()) >= Math.abs(lastX.doubleValue()) ? AstraApi.DIRECTION : -AstraApi.DIRECTION);
+			double valueX = Math.abs(coordinates.getX()) >= Math.abs(lastX.doubleValue()) ? AstraApi.DIRECTION : -AstraApi.DIRECTION;
+			coordinates.setX(signX == 0 ? new Double(valueX) : new Double(-valueX));
 			coordinates.setY(AstraApi.ZERO_CHANGE);
 			coordinates.setZ(AstraApi.ZERO_CHANGE);
 		} else if (lastY != null && (lastY.doubleValue() != coordinates.getY().doubleValue())) {
-			coordinates.setY(Math.abs(coordinates.getY()) >= Math.abs(lastY.doubleValue()) ? AstraApi.DIRECTION : -AstraApi.DIRECTION);
+			double valueY = Math.abs(coordinates.getY()) >= Math.abs(lastY.doubleValue()) ? AstraApi.DIRECTION : -AstraApi.DIRECTION;
+			coordinates.setY(signY == 0 ? new Double(valueY) : new Double(-valueY));
 			coordinates.setX(AstraApi.ZERO_CHANGE);
 			coordinates.setZ(AstraApi.ZERO_CHANGE);
 		} else if (lastZ != null && (lastZ.doubleValue() != coordinates.getZ().doubleValue())) {
-			coordinates.setZ(Math.abs(coordinates.getZ()) >= Math.abs(lastZ.doubleValue()) ? AstraApi.DIRECTION : -AstraApi.DIRECTION);
+			double valueZ = Math.abs(coordinates.getZ()) >= Math.abs(lastZ.doubleValue()) ? AstraApi.DIRECTION : -AstraApi.DIRECTION;
+			coordinates.setZ(signZ == 0 ? new Double(valueZ) : new Double(-valueZ));
 			coordinates.setX(AstraApi.ZERO_CHANGE);
 			coordinates.setY(AstraApi.ZERO_CHANGE);
 		}

@@ -11,7 +11,7 @@ public class PositionVectorCommand extends AstraCommand {
 	public Double z;
 	
 	public PositionVectorCommand(final Object[] value) {
-		super(EventType.POSITION);
+		super(EventType.POSITION_VECTOR);
 		processValues(value);
 	}
 

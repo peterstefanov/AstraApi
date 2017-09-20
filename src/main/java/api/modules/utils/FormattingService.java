@@ -16,4 +16,12 @@ public final class FormattingService {
 		decimalFormat.setRoundingMode(RoundingMode.CEILING);
 		return Double.parseDouble(decimalFormat.format(number));		
 	}
+	
+	/**
+	 * Gets the sign bit of a floating point value
+	 * returns 0 for positive and 1 for negative
+	 */
+	public static int signBit(float f) {
+	    return (Float.floatToIntBits(f)>>>31);
+	}
 }

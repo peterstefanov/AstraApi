@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import com.google.gson.Gson;
 
 import api.AstraApi;
+import api.modules.utils.FormattingService;
 import api.modules.utils.PositionUnityJson;
 import astra.core.Module;
 
@@ -76,9 +77,9 @@ public class Position extends Module {
 		PositionUnityJson coordinates = gson.fromJson(position, PositionUnityJson.class);
 		
 		//get the sign of the coordinates
-		int signX = signBit(coordinates.getX().floatValue());
-		int signY = signBit(coordinates.getY().floatValue());
-		int signZ = signBit(coordinates.getZ().floatValue());
+		int signX = FormattingService.signBit(coordinates.getX().floatValue());
+		int signY = FormattingService.signBit(coordinates.getY().floatValue());
+		int signZ = FormattingService.signBit(coordinates.getZ().floatValue());
 		
 		//compare the absolute values, manipulate the coordinates and add the sign 
 		if (lastX != null && (lastX.doubleValue() != coordinates.getX().doubleValue())) {
@@ -97,13 +98,5 @@ public class Position extends Module {
 		}
 
 		return gson.toJson(coordinates);
-	}
-	
-	/**
-	 * Gets the sign bit of a floating point value
-	 * returns 0 for positive and 1 for negative
-	 */
-	private int signBit(float f) {
-	    return (Float.floatToIntBits(f)>>>31);
 	}
 }
