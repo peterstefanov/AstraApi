@@ -23,7 +23,7 @@ public class Unity extends Module {
 	private AstraApi api;
 	
 	static Map<String, CommandFactory> commandFactory = new TreeMap<String, CommandFactory>();
-	static Gson gson = new Gson();
+	private Gson gson = new Gson();
 	
 	static {
 		Unifier.eventFactory.put(UnityEvent.class, new UnityEventUnifier());

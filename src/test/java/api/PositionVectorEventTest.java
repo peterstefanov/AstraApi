@@ -90,13 +90,13 @@ public class PositionVectorEventTest extends EventTypeTest{
 		
 		String asyncEventPosition = null;
 		int count = 0;
-		while(count < 20) {
+		while(count < 5) {
 			asyncEventPosition = api.receive(agent, EventType.POSITION_VECTOR);
 			if (asyncEventPosition != null) {
 				break;
 			} else {			
 				try {
-					Thread.sleep(150);
+					Thread.sleep(50);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}	
@@ -144,35 +144,20 @@ public class PositionVectorEventTest extends EventTypeTest{
 		//Agent created	
 		String agent = createAgent();			
 		
-		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z + ",\"cardinalDirection\":" + AstraApi.NORTH + "}"});
-		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_1 + "}"});
-		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_2 + "}"});
-		//api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_3 + "}"});
-		//api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_4 + "}"});
-		
 		LinkedList<String> listEvents = new LinkedList<String>();
+	    
+		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z + ",\"cardinalDirection\":" + AstraApi.NORTH + "}"});
+		getEventResponse(agent, listEvents);
+		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_1 + "}"});
+		getEventResponse(agent, listEvents);
+		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_2 + "}"});
+		getEventResponse(agent, listEvents);
+		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_3 + "}"});
+		getEventResponse(agent, listEvents);
+		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_4 + "}"});
+		getEventResponse(agent, listEvents);
 		
-		String asyncEventPosition = null;
-		int count = 0;
-		while(count < 50) {
-			asyncEventPosition = api.receive(agent, EventType.POSITION_VECTOR);
-			if (asyncEventPosition == null) {			
-				try {
-					Thread.sleep(150);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}	
-			}
-			if (asyncEventPosition != null) {
-				listEvents.add(asyncEventPosition);
-				if (listEvents.size() == 3) {
-					break;
-				}
-			}
-			count ++;
-		}
-		
-		assertTrue(listEvents.size() == 3);
+		assertTrue(listEvents.size() == 5);
 		
 		int countItems = 0;
 		
@@ -202,35 +187,20 @@ public class PositionVectorEventTest extends EventTypeTest{
 		//Agent created	
 		String agent = createAgent();			
 		
-		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_N + ",\"cardinalDirection\":" + AstraApi.SOUTH + "}"});
-		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_1_N + "}"});
-		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_2_N + "}"});
-		//api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_3_N + "}"});
-		//api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_4_N + "}"});
-		
 		LinkedList<String> listEvents = new LinkedList<String>();
 		
-		String asyncEventPosition = null;
-		int count = 0;
-		while(count < 50) {
-			asyncEventPosition = api.receive(agent, EventType.POSITION_VECTOR);
-			if (asyncEventPosition == null) {			
-				try {
-					Thread.sleep(150);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}	
-			}
-			if (asyncEventPosition != null) {
-				listEvents.add(asyncEventPosition);
-				if (listEvents.size() == 3) {
-					break;
-				}
-			}
-			count ++;
-		}
+		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_N + ",\"cardinalDirection\":" + AstraApi.SOUTH + "}"});
+		getEventResponse(agent, listEvents);
+		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_1_N + "}"});
+		getEventResponse(agent, listEvents);
+		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_2_N + "}"});
+		getEventResponse(agent, listEvents);
+		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_3_N + "}"});
+		getEventResponse(agent, listEvents);
+		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_4_N + "}"});		
+		getEventResponse(agent, listEvents);
 		
-		assertTrue(listEvents.size() == 3);
+		assertTrue(listEvents.size() == 5);
 		
 		int countItems = 0;
 		
@@ -259,5 +229,27 @@ public class PositionVectorEventTest extends EventTypeTest{
 		multipleAsyncPositionVectorUpdateNorthTest();
 		multipleAsyncPositionVectorUpdateNorthTest();
 		multipleAsyncPositionVectorUpdateNorthTest();
+	}
+	
+	private void getEventResponse(String agent, LinkedList<String> listEvents) {
+		String asyncEventPosition = null;
+		int count = 0;
+		while(count < 5) {
+			asyncEventPosition = api.receive(agent, EventType.POSITION_VECTOR);
+			if (asyncEventPosition == null) {			
+				try {
+					Thread.sleep(50);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}	
+			}
+			if (asyncEventPosition != null) {
+				listEvents.add(asyncEventPosition);
+				if (listEvents.size() == 3) {
+					break;
+				}
+			}
+			count ++;
+		}
 	}
 }

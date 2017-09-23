@@ -18,7 +18,7 @@ public class DirectionVector extends Module {
 
 	private Gson gson = new Gson();
 
-	private static LinkedList<PositionUnityJson> directionsVector = new LinkedList<PositionUnityJson>();
+	private LinkedList<PositionUnityJson> directionsVector = new LinkedList<PositionUnityJson>();
 
 	@TERM
 	public String getDirections(String position) {
