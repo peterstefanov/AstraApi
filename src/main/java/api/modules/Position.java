@@ -14,13 +14,25 @@ import astra.core.Module;
  * coordinates the axis (x,y or z) are checked to determine the direction of
  * movement. The direction for the Agent is preserved and the coordinates that
  * had changed are returned with rate 0.5 added to it either negative or
- * positive back to Unity.
+ * positive back to Unity.</br>
+ * </br>
+ * 
+ * <b>Expect input as a Json in the format of:</b></br>
+ * <ul>
+ * <li><b>very first time</b></li>
+ * {"type":"position","x":1.649999976158142,"y":1.0,"z":2.700000047683716,"cardinalDirection":"South"}
+ * <li><b>every next time</b></li>
+ * {"type":"position","x":1.649999976158142,"y":1.0,"z":2.700000047683716} </br>
+ * and compare it with the previous recorded coordinates
+ * </ul>
+ * <b>Returns:</b></br>
+ * {"x":1.649999976158142,"y":1.0,"z":2.200000047683716,"type":"position"}
  */
 public class Position extends Module {
 
 	private Gson gson = new Gson();
 
-	private static LinkedList<PositionUnityJson> directions = new LinkedList<PositionUnityJson>();
+	private LinkedList<PositionUnityJson> directions = new LinkedList<PositionUnityJson>();
 
 	@TERM
 	public String getDirections(String position) {
@@ -32,7 +44,7 @@ public class Position extends Module {
 		if (!directions.isEmpty()) {
 			// get the last coordinates if exist
 			PositionUnityJson recordedCoordinates = null;
-			if (directions.size() > 10) {
+			if (directions.size() > 7) {
 				recordedCoordinates = directions.pollLast();
 			} else {
 				recordedCoordinates = directions.getLast();
@@ -69,7 +81,7 @@ public class Position extends Module {
 
 			// add the current/initial agent position
 			directions.add(initialPosition);
-
+            //return the position coordinates for the very first time  
 			return gson.toJson(initialPosition);
 		}
 
