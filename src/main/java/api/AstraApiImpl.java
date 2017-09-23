@@ -13,7 +13,7 @@ import astra.core.Agent;
 import astra.core.AgentCreationException;
 import astra.core.ModuleException;
 import astra.core.Scheduler;
-import astra.execution.BasicSchedulerStrategy;
+import astra.execution.AdaptiveSchedulerStrategy;
 import astra.formula.Goal;
 import astra.formula.Predicate;
 import astra.term.ListTerm;
@@ -25,8 +25,7 @@ public class AstraApiImpl implements AstraApi {
 	private Agent agent;
 	
 	static {
-		Scheduler.setStrategy(new BasicSchedulerStrategy());
-		Scheduler.setSleepTime(75);
+		Scheduler.setStrategy(new AdaptiveSchedulerStrategy());
 	}
 	
 	private ConcurrentMap<String, Queue<String>> concurrentMap = new ConcurrentHashMap<>();
