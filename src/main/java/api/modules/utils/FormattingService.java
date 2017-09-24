@@ -6,7 +6,7 @@ import java.text.DecimalFormat;
 public final class FormattingService {
 
 	private static DecimalFormat decimalFormat = new DecimalFormat("#.#######");
-	public static final float EPSILON = 0.001f;
+	public static final float EPSILON = 0.1f;
 	
 	/**
 	 * Round up to four decimal places.
