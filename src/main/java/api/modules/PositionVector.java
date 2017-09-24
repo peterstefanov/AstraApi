@@ -85,13 +85,13 @@ public class PositionVector extends Module {
 				responseVector.setX(signX == 0 ? new Double(valueX) : new Double(-valueX));
 			} 
 			if (lastY != null && !(Math.abs(coordinates.getY().doubleValue() - lastY.doubleValue()) < FormattingService.EPSILON)) {
-				double valueY = (Math.abs(coordinates.getY().doubleValue()) > Math.abs(lastX.doubleValue()) && !(Math.abs(lastY.doubleValue() - coordinates.getY().doubleValue()) < FormattingService.EPSILON)) ? 
+				double valueY = (Math.abs(coordinates.getY().doubleValue()) > Math.abs(lastY.doubleValue()) && !(Math.abs(lastY.doubleValue() - coordinates.getY().doubleValue()) < FormattingService.EPSILON)) ? 
 						           AstraApi.ONE : -AstraApi.ONE;
 				
 				responseVector.setY(signY == 0 ? new Double(valueY) : new Double(-valueY));
 			} 
 			if (lastZ != null && !(Math.abs(coordinates.getZ().doubleValue() - lastZ.doubleValue()) < FormattingService.EPSILON)) {
-				double valueZ = (Math.abs(coordinates.getZ().doubleValue()) > Math.abs(lastX.doubleValue()) && !(Math.abs(lastZ.doubleValue() - coordinates.getZ().doubleValue()) < FormattingService.EPSILON)) ? 
+				double valueZ = (Math.abs(coordinates.getZ().doubleValue()) > Math.abs(lastZ.doubleValue()) && !(Math.abs(lastZ.doubleValue() - coordinates.getZ().doubleValue()) < FormattingService.EPSILON)) ? 
 						           AstraApi.ONE : -AstraApi.ONE;
 				
 				responseVector.setZ(signZ == 0 ? new Double(valueZ) : new Double(-valueZ));

@@ -93,7 +93,7 @@ public class Position extends Module {
 		int signY = FormattingService.signBit(coordinates.getY().floatValue());
 		int signZ = FormattingService.signBit(coordinates.getZ().floatValue());
 		
-		//compare the absolute values with accuracy of 0.1, manipulate the coordinates and add the sign 
+		//compare the absolute values with accuracy of 0.001, manipulate the coordinates and add the sign 
 		if (lastX != null && !(Math.abs(lastX.floatValue() - coordinates.getX().floatValue()) < FormattingService.EPSILON)) {
 			double absValueX = (Math.abs(coordinates.getX().floatValue()) > Math.abs(lastX.floatValue()) &&  !(Math.abs(lastX.floatValue() - coordinates.getX().floatValue()) < FormattingService.EPSILON)) ? 
 					           Math.abs(coordinates.getX()) + AstraApi.API_CHANGE_RATE : Math.abs(coordinates.getX()) - AstraApi.API_CHANGE_RATE;
@@ -101,13 +101,13 @@ public class Position extends Module {
 		}
 
 		if (lastY != null && !(Math.abs(lastY.floatValue() - coordinates.getY().floatValue()) < FormattingService.EPSILON)) {
-			double absValueY = (Math.abs(coordinates.getY().floatValue()) > Math.abs(lastX.floatValue()) && !(Math.abs(lastY.floatValue() - coordinates.getY().floatValue()) < FormattingService.EPSILON)) ? 
+			double absValueY = (Math.abs(coordinates.getY().floatValue()) > Math.abs(lastY.floatValue()) && !(Math.abs(lastY.floatValue() - coordinates.getY().floatValue()) < FormattingService.EPSILON)) ? 
 					           Math.abs(coordinates.getY()) + AstraApi.API_CHANGE_RATE : Math.abs(coordinates.getY()) - AstraApi.API_CHANGE_RATE;
 			coordinates.setY(signY == 0 ? new Double(absValueY) : new Double(-absValueY));
 		}
 		
 		if (lastZ != null && !(Math.abs(lastZ.floatValue() - coordinates.getZ().floatValue()) < FormattingService.EPSILON)) {
-			double absValueZ = (Math.abs(coordinates.getZ().floatValue()) > Math.abs(lastX.floatValue()) && !(Math.abs(lastZ.floatValue() - coordinates.getZ().floatValue()) < FormattingService.EPSILON)) ? 
+			double absValueZ = (Math.abs(coordinates.getZ().floatValue()) > Math.abs(lastZ.floatValue()) && !(Math.abs(lastZ.floatValue() - coordinates.getZ().floatValue()) < FormattingService.EPSILON)) ? 
 					           Math.abs(coordinates.getZ()) + AstraApi.API_CHANGE_RATE : Math.abs(coordinates.getZ()) - AstraApi.API_CHANGE_RATE;
 			coordinates.setZ(signZ == 0 ? new Double(absValueZ) : new Double(-absValueZ));
 		}
