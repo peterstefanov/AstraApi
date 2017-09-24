@@ -239,10 +239,10 @@ public class PositionEventTest extends EventTypeTest{
 				assertEquals(new Double(Z_2_N - AstraApi.API_CHANGE_RATE), values.getZ());
 			} else if (countItems == 3) {
 				//verify direction changed to North - increased
-				assertEquals(new Double(Z_1_N - AstraApi.API_CHANGE_RATE), values.getZ());
+				assertEquals(new Double(Z_1_N + AstraApi.API_CHANGE_RATE), values.getZ());
 			} else if (countItems == 4) {
 				//verify direction changed to North - increased
-				assertEquals(new Double(Z_N - AstraApi.API_CHANGE_RATE), values.getZ());
+				assertEquals(new Double(Z_N + AstraApi.API_CHANGE_RATE), values.getZ());
 			}					
 			countItems ++;
 		}
