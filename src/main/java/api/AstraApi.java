@@ -2,9 +2,9 @@ package api;
 
 public interface AstraApi {
 	
-	public static final Double DIRECTION = new Double("1");
-	public static final Double API_CHANGE_RATE = new Double("0.5");
-	public static final Double ZERO_CHANGE = new Double("0");
+	public static final Double ONE = new Double("1");
+	public static final Double API_CHANGE_RATE = new Double("0.7");
+	public static final Double ZERO = new Double("0");
 	public static final Double INITIAL_CHANGE = new Double("0.1");
 	
 	public static final String NORTH = "North";
