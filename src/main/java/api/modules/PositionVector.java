@@ -13,13 +13,7 @@ import astra.core.Module;
  * Handles events of type 'position_vector' sent from Unity. Based on the previous
  * coordinates the axis (x,y or z) are checked to determine the direction of
  * movement. Based on the change from the last available position coordinates
- * returns the direction vector. 
- */
-/**
- * Handles events of type 'position' sent from Unity. Based on the previous
- * coordinates the axis (x,y or z) are checked to determine the direction of
- * movement. Based on the change from the last available position coordinates
- * returns the direction vector.</br>
+ * returns the direction vector</br>
  * </br>
  * 
  * <b>Expect input as a Json in the format of:</b></br>
