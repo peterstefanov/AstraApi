@@ -28,23 +28,23 @@ public class DirectionVector extends Module {
 		// created
 		String cardinalDirection = directionVector.getCardinalDirection();
 
-		directionVector.setX(AstraApi.ZERO_CHANGE);
-		directionVector.setY(AstraApi.ZERO_CHANGE);
-		directionVector.setZ(AstraApi.ZERO_CHANGE);
+		directionVector.setX(AstraApi.ZERO);
+		directionVector.setY(AstraApi.ZERO);
+		directionVector.setZ(AstraApi.ZERO);
 		
 		if (cardinalDirection != null && cardinalDirection.length() > 0) {
 			switch (cardinalDirection) {
 			case AstraApi.NORTH:
-				directionVector.setZ(AstraApi.DIRECTION);
+				directionVector.setZ(AstraApi.ONE);
 				break;
 			case AstraApi.SOUTH:
-				directionVector.setZ(- AstraApi.DIRECTION);
+				directionVector.setZ(- AstraApi.ONE);
 				break;
 			case AstraApi.WEST:
-				directionVector.setX(- AstraApi.DIRECTION);
+				directionVector.setX(- AstraApi.ONE);
 				break;
 			case AstraApi.EAST:
-				directionVector.setX(AstraApi.DIRECTION);
+				directionVector.setX(AstraApi.ONE);
 				break;
 			default:
 			}

@@ -15,11 +15,30 @@ import astra.core.Module;
  * movement. Based on the change from the last available position coordinates
  * returns the direction vector. 
  */
+/**
+ * Handles events of type 'position' sent from Unity. Based on the previous
+ * coordinates the axis (x,y or z) are checked to determine the direction of
+ * movement. Based on the change from the last available position coordinates
+ * returns the direction vector.</br>
+ * </br>
+ * 
+ * <b>Expect input as a Json in the format of:</b></br>
+ * <ul>
+ * <li><b>very first time</b></li>
+ * {"type":"position_vector","x":1.649999976158142,"y":1.0,"z":2.700000047683716,"cardinalDirection":"South"}
+ * <li><b>every next time</b></li>
+ * {"type":"position_vector","x":1.649999976158142,"y":1.0,"z":2.500000047683716} </br>
+ * and compare it with the previous recorded coordinates
+ * </ul>
+ * <b>Returns:</b></br>
+ * {"x":0.0,"y":0.0,"z":-1.0,"type":"position_vector"}
+ */
 public class PositionVector extends Module {
 
 	private Gson gson = new Gson();
 
 	private LinkedList<PositionUnityJson> directions = new LinkedList<PositionUnityJson>();
+	private String currentCardinalDirection = "";
 
 	@TERM
 	public String getDirectionsVector(String position) {
@@ -28,7 +47,14 @@ public class PositionVector extends Module {
 		Double lastY = null;
 		Double lastZ = null;
 
+		//initialize the response Object 
+		PositionUnityJson responseVector = new PositionUnityJson();			
+		responseVector.setX(AstraApi.ZERO);
+		responseVector.setY(AstraApi.ZERO);
+		responseVector.setZ(AstraApi.ZERO);
+		
 		if (!directions.isEmpty()) {
+			
 			// get the last coordinates if exist and remove it if size of list  > 10
 			PositionUnityJson recordedCoordinates = null;
 			if (directions.size() > 10) {
@@ -37,75 +63,87 @@ public class PositionVector extends Module {
 				recordedCoordinates = directions.getLast();
 			}
 
-			lastX = recordedCoordinates.getX();
-			lastY = recordedCoordinates.getY();
-			lastZ = recordedCoordinates.getZ();
 			// add the current agent position
 			directions.add(gson.fromJson(position, PositionUnityJson.class));
-		} else {
 			
-			PositionUnityJson initialPosition = gson.fromJson(position, PositionUnityJson.class);
-			
-			// add the current/initial agent position
-			directions.add(initialPosition);
-			
-			//initlize the response Object 
-			PositionUnityJson directionVector = new PositionUnityJson();			
-			directionVector.setX(AstraApi.ZERO_CHANGE);
-			directionVector.setY(AstraApi.ZERO_CHANGE);
-			directionVector.setZ(AstraApi.ZERO_CHANGE);
-						
-			// this tell us which direction to go for the very first time, when agent just
-			// created
-			String cardinalDirection = initialPosition.getCardinalDirection();
+			lastX = recordedCoordinates.getX();
+			lastY = recordedCoordinates.getY();
+			lastZ = recordedCoordinates.getZ();			
 
-			if (cardinalDirection != null && cardinalDirection.length() > 0) {
-				switch (cardinalDirection) {
-				case AstraApi.NORTH:
-					directionVector.setZ(AstraApi.DIRECTION);
-					break;
-				case AstraApi.SOUTH:
-					directionVector.setZ(-AstraApi.DIRECTION);
-					break;
-				case AstraApi.WEST:
-					directionVector.setX(-AstraApi.DIRECTION);
-					break;
-				case AstraApi.EAST:
-					directionVector.setX(AstraApi.DIRECTION);
-					break;
-				default:
-				}
+			// get current coordinates
+			PositionUnityJson coordinates = gson.fromJson(position, PositionUnityJson.class);
+
+			//get the sign of the coordinates
+			int signX = FormattingService.signBit(coordinates.getX().floatValue());
+			int signY = FormattingService.signBit(coordinates.getY().floatValue());
+			int signZ = FormattingService.signBit(coordinates.getZ().floatValue());
+			
+			//compare the absolute values with accuracy of 0.001, manipulate the coordinates and add the sign 
+			if (lastX != null && !(Math.abs(coordinates.getX().doubleValue() - lastX.doubleValue()) < FormattingService.EPSILON)) {
+				double valueX = (Math.abs(coordinates.getX().doubleValue()) > Math.abs(lastX.doubleValue()) &&  !(Math.abs(lastX.doubleValue() - coordinates.getX().doubleValue()) < FormattingService.EPSILON)) ? 
+						           AstraApi.ONE : -AstraApi.ONE;
+				
+				responseVector.setX(signX == 0 ? new Double(valueX) : new Double(-valueX));
+			} 
+			if (lastY != null && !(Math.abs(coordinates.getY().doubleValue() - lastY.doubleValue()) < FormattingService.EPSILON)) {
+				double valueY = (Math.abs(coordinates.getY().doubleValue()) > Math.abs(lastX.doubleValue()) && !(Math.abs(lastY.doubleValue() - coordinates.getY().doubleValue()) < FormattingService.EPSILON)) ? 
+						           AstraApi.ONE : -AstraApi.ONE;
+				
+				responseVector.setY(signY == 0 ? new Double(valueY) : new Double(-valueY));
+			} 
+			if (lastZ != null && !(Math.abs(coordinates.getZ().doubleValue() - lastZ.doubleValue()) < FormattingService.EPSILON)) {
+				double valueZ = (Math.abs(coordinates.getZ().doubleValue()) > Math.abs(lastX.doubleValue()) && !(Math.abs(lastZ.doubleValue() - coordinates.getZ().doubleValue()) < FormattingService.EPSILON)) ? 
+						           AstraApi.ONE : -AstraApi.ONE;
+				
+				responseVector.setZ(signZ == 0 ? new Double(valueZ) : new Double(-valueZ));
 			}
 
-			return gson.toJson(directionVector);
-		}
+			//check if all three coordinates are zero, if so use the recorded cardinal direction to amend the appropriate axis
+			checkForZeroVector(responseVector);
+			return gson.toJson(responseVector);
+			
+		} else {
+			
+			// add the current/initial agent position
+			directions.add(gson.fromJson(position, PositionUnityJson.class));
+			
+			PositionUnityJson initialPosition = gson.fromJson(position, PositionUnityJson.class);
+						
+			// this tell us which direction to go for the very first time
+			String cardinalDirection = initialPosition.getCardinalDirection();
+			//set the current cardinal direction
+			currentCardinalDirection = cardinalDirection;
+			
+			setNonZeroAxis(responseVector, cardinalDirection);
 
-		// get current coordinates
-		PositionUnityJson coordinates = gson.fromJson(position, PositionUnityJson.class);
-		
-		//get the sign of the coordinates
-		int signX = FormattingService.signBit(coordinates.getX().floatValue());
-		int signY = FormattingService.signBit(coordinates.getY().floatValue());
-		int signZ = FormattingService.signBit(coordinates.getZ().floatValue());
-		
-		//compare absolute values to distinguish the direction
-		if (lastX != null && (lastX.doubleValue() != coordinates.getX().doubleValue())) {
-			double valueX = Math.abs(coordinates.getX()) >= Math.abs(lastX.doubleValue()) ? AstraApi.DIRECTION : -AstraApi.DIRECTION;
-			coordinates.setX(signX == 0 ? new Double(valueX) : new Double(-valueX));
-			coordinates.setY(AstraApi.ZERO_CHANGE);
-			coordinates.setZ(AstraApi.ZERO_CHANGE);
-		} else if (lastY != null && (lastY.doubleValue() != coordinates.getY().doubleValue())) {
-			double valueY = Math.abs(coordinates.getY()) >= Math.abs(lastY.doubleValue()) ? AstraApi.DIRECTION : -AstraApi.DIRECTION;
-			coordinates.setY(signY == 0 ? new Double(valueY) : new Double(-valueY));
-			coordinates.setX(AstraApi.ZERO_CHANGE);
-			coordinates.setZ(AstraApi.ZERO_CHANGE);
-		} else if (lastZ != null && (lastZ.doubleValue() != coordinates.getZ().doubleValue())) {
-			double valueZ = Math.abs(coordinates.getZ()) >= Math.abs(lastZ.doubleValue()) ? AstraApi.DIRECTION : -AstraApi.DIRECTION;
-			coordinates.setZ(signZ == 0 ? new Double(valueZ) : new Double(-valueZ));
-			coordinates.setX(AstraApi.ZERO_CHANGE);
-			coordinates.setY(AstraApi.ZERO_CHANGE);
+			return gson.toJson(responseVector);
 		}
+	}
 
-		return gson.toJson(coordinates);
+	private void checkForZeroVector(PositionUnityJson responseVector) {
+		if (responseVector.getX() == AstraApi.ZERO && responseVector.getY() == AstraApi.ZERO && responseVector.getZ() == AstraApi.ZERO) {
+			setNonZeroAxis(responseVector, currentCardinalDirection);
+		} 
+	}
+	
+	/**
+	 * @param responseVector
+	 * @param cardinalDirection
+	 */
+	private void setNonZeroAxis(PositionUnityJson responseVector, String cardinalDirection) {
+
+		switch (cardinalDirection) {
+		case AstraApi.SOUTH:
+			responseVector.setZ(-AstraApi.ONE);
+			break;
+		case AstraApi.WEST:
+			responseVector.setX(-AstraApi.ONE);
+			break;
+		case AstraApi.EAST:
+			responseVector.setX(AstraApi.ONE);
+			break;
+		default:// default North
+			responseVector.setZ(AstraApi.ONE);
+		}
 	}
 }

@@ -13,7 +13,7 @@ import astra.core.Module;
  * Handles events of type 'position' sent from Unity. Based on the previous
  * coordinates the axis (x,y or z) are checked to determine the direction of
  * movement. The direction for the Agent is preserved and the coordinates that
- * had changed are returned with rate 0.5 added to it either negative or
+ * had changed are returned with rate 0.7 added to it either negative or
  * positive back to Unity.</br>
  * </br>
  * 
@@ -93,19 +93,22 @@ public class Position extends Module {
 		int signY = FormattingService.signBit(coordinates.getY().floatValue());
 		int signZ = FormattingService.signBit(coordinates.getZ().floatValue());
 		
-		//compare the absolute values, manipulate the coordinates and add the sign 
-		if (lastX != null && (lastX.doubleValue() != coordinates.getX().doubleValue())) {
-			double absValueX = Math.abs(coordinates.getX()) > Math.abs(lastX.doubleValue()) ? Math.abs(coordinates.getX()) + AstraApi.API_CHANGE_RATE : Math.abs(coordinates.getX()) - AstraApi.API_CHANGE_RATE;
+		//compare the absolute values with accuracy of 0.1, manipulate the coordinates and add the sign 
+		if (lastX != null && !(Math.abs(lastX.floatValue() - coordinates.getX().floatValue()) < FormattingService.EPSILON)) {
+			double absValueX = (Math.abs(coordinates.getX().floatValue()) > Math.abs(lastX.floatValue()) &&  !(Math.abs(lastX.floatValue() - coordinates.getX().floatValue()) < FormattingService.EPSILON)) ? 
+					           Math.abs(coordinates.getX()) + AstraApi.API_CHANGE_RATE : Math.abs(coordinates.getX()) - AstraApi.API_CHANGE_RATE;
 			coordinates.setX(signX == 0 ? new Double(absValueX) : new Double(-absValueX));
 		}
 
-		if (lastY != null && (lastY.doubleValue() != coordinates.getY().doubleValue())) {
-			double absValueY = Math.abs(coordinates.getY()) > Math.abs(lastX.doubleValue()) ? Math.abs(coordinates.getY()) + AstraApi.API_CHANGE_RATE : Math.abs(coordinates.getY()) - AstraApi.API_CHANGE_RATE;
+		if (lastY != null && !(Math.abs(lastY.floatValue() - coordinates.getY().floatValue()) < FormattingService.EPSILON)) {
+			double absValueY = (Math.abs(coordinates.getY().floatValue()) > Math.abs(lastX.floatValue()) && !(Math.abs(lastY.floatValue() - coordinates.getY().floatValue()) < FormattingService.EPSILON)) ? 
+					           Math.abs(coordinates.getY()) + AstraApi.API_CHANGE_RATE : Math.abs(coordinates.getY()) - AstraApi.API_CHANGE_RATE;
 			coordinates.setY(signY == 0 ? new Double(absValueY) : new Double(-absValueY));
 		}
 		
-		if (lastZ != null && (lastZ.doubleValue() != coordinates.getZ().doubleValue())) {
-			double absValueZ = Math.abs(coordinates.getZ()) > Math.abs(lastX.doubleValue()) ? Math.abs(coordinates.getZ()) + AstraApi.API_CHANGE_RATE : Math.abs(coordinates.getZ()) - AstraApi.API_CHANGE_RATE;
+		if (lastZ != null && !(Math.abs(lastZ.floatValue() - coordinates.getZ().floatValue()) < FormattingService.EPSILON)) {
+			double absValueZ = (Math.abs(coordinates.getZ().floatValue()) > Math.abs(lastX.floatValue()) && !(Math.abs(lastZ.floatValue() - coordinates.getZ().floatValue()) < FormattingService.EPSILON)) ? 
+					           Math.abs(coordinates.getZ()) + AstraApi.API_CHANGE_RATE : Math.abs(coordinates.getZ()) - AstraApi.API_CHANGE_RATE;
 			coordinates.setZ(signZ == 0 ? new Double(absValueZ) : new Double(-absValueZ));
 		}
 

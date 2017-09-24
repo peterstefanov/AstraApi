@@ -25,9 +25,9 @@ public class DirectionVectorEventTest extends EventTypeTest{
 		
 		String syncEventPosition = api.syncEvent(agent, EventType.DIRECTION_VECTOR, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z + ",\"cardinalDirection\":" + AstraApi.SOUTH + "}"});		
 		PositionUnityJson values = (PositionUnityJson) gson.fromJson(syncEventPosition, PositionUnityJson.class);
-		assertEquals(AstraApi.ZERO_CHANGE, values.getX());
-		assertEquals(AstraApi.ZERO_CHANGE, values.getY());		
-		assertEquals(new Double(-AstraApi.DIRECTION.doubleValue()), values.getZ());
+		assertEquals(AstraApi.ZERO, values.getX());
+		assertEquals(AstraApi.ZERO, values.getY());		
+		assertEquals(new Double(-AstraApi.ONE.doubleValue()), values.getZ());
 	}
 	
 	@Test
@@ -37,9 +37,9 @@ public class DirectionVectorEventTest extends EventTypeTest{
 		
 		String syncEventPosition = api.syncEvent(agent, EventType.DIRECTION_VECTOR, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z + ",\"cardinalDirection\":" + AstraApi.NORTH + "}"});		
 		PositionUnityJson values = (PositionUnityJson) gson.fromJson(syncEventPosition, PositionUnityJson.class);
-		assertEquals(AstraApi.ZERO_CHANGE, values.getX());
-		assertEquals(AstraApi.ZERO_CHANGE, values.getY());		
-		assertEquals(AstraApi.DIRECTION, values.getZ());
+		assertEquals(AstraApi.ZERO, values.getX());
+		assertEquals(AstraApi.ZERO, values.getY());		
+		assertEquals(AstraApi.ONE, values.getZ());
 	}
 	
 	@Test
@@ -49,9 +49,9 @@ public class DirectionVectorEventTest extends EventTypeTest{
 		
 		String syncEventPosition = api.syncEvent(agent, EventType.DIRECTION_VECTOR, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z + ",\"cardinalDirection\":" + AstraApi.WEST + "}"});		
 		PositionUnityJson values = (PositionUnityJson) gson.fromJson(syncEventPosition, PositionUnityJson.class);
-		assertEquals(new Double(-AstraApi.DIRECTION.doubleValue()), values.getX());
-		assertEquals(AstraApi.ZERO_CHANGE, values.getY());		
-		assertEquals(AstraApi.ZERO_CHANGE, values.getZ());
+		assertEquals(new Double(-AstraApi.ONE.doubleValue()), values.getX());
+		assertEquals(AstraApi.ZERO, values.getY());		
+		assertEquals(AstraApi.ZERO, values.getZ());
 	}
 	
 	@Test
@@ -61,8 +61,8 @@ public class DirectionVectorEventTest extends EventTypeTest{
 		
 		String syncEventPosition = api.syncEvent(agent, EventType.DIRECTION_VECTOR, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z + ",\"cardinalDirection\":" + AstraApi.EAST + "}"});		
 		PositionUnityJson values = (PositionUnityJson) gson.fromJson(syncEventPosition, PositionUnityJson.class);
-		assertEquals(AstraApi.DIRECTION, values.getX());
-		assertEquals(AstraApi.ZERO_CHANGE, values.getY());		
-		assertEquals(AstraApi.ZERO_CHANGE, values.getZ());
+		assertEquals(AstraApi.ONE, values.getX());
+		assertEquals(AstraApi.ZERO, values.getY());		
+		assertEquals(AstraApi.ZERO, values.getZ());
 	}
 }

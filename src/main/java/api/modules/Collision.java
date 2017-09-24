@@ -29,7 +29,7 @@ import astra.core.Module;
  * </br>
  * The <code>cardinalDirection</code> is the direction of movement when the
  * Unity player collided, this is ruled out as a possible output from Astra. The
- * relevant axis coordinate is changed and returned with rate 0.5 added to it
+ * relevant axis coordinate is changed and returned with rate 0.7 added to it
  * either negative or positive, which indicates the direction of movement in
  * regards to the coordinates received from Unity. </br>
  * </br>
