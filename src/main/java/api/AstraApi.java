@@ -1,5 +1,9 @@
 package api;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public interface AstraApi {
 	
 	public static final Double ONE = new Double("1");
@@ -12,6 +16,7 @@ public interface AstraApi {
 	public static final String SOUTH = "South";
 	public static final String WEST = "West";
 	public static final String[] CARDINAL_DIRECTION = { NORTH, EAST, SOUTH, WEST };
+	public static final List<String> LIST_CARDINAL_DIRECTIONS = new ArrayList<String>(Arrays.asList(AstraApi.CARDINAL_DIRECTION));
 	
 	public void asyncEvent(String agentIdentifier, String eventIdentifier, Object[] eventArgs);
 	
