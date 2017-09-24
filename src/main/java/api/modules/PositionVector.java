@@ -13,9 +13,10 @@ import astra.core.Module;
  * Handles events of type 'position_vector' sent from Unity. Based on the previous
  * coordinates the axis (x,y or z) are checked to determine the direction of
  * movement. Based on the change from the last available position coordinates
- * returns the direction vector</br>
- * </br>
- * 
+ * returns the direction vector.</br> When <code>cardinalDirection</code>
+ * is part of the Unity input json, reset the <code>directions</code> map and use
+ * the <coe>cardinalDirection</code> to generate the Astra response json.
+ * </br></br>
  * <b>Expect input as a Json in the format of:</b></br>
  * <ul>
  * <li><b>very first time</b></li>
@@ -47,6 +48,13 @@ public class PositionVector extends Module {
 		responseVector.setY(AstraApi.ZERO);
 		responseVector.setZ(AstraApi.ZERO);
 		
+		//get current coordinates
+		PositionUnityJson coordinates = gson.fromJson(position, PositionUnityJson.class);
+		
+		if (coordinates.getCardinalDirection() != null && AstraApi.LIST_CARDINAL_DIRECTIONS.contains(coordinates.getCardinalDirection())) {
+			directions.clear();
+		}
+		
 		if (!directions.isEmpty()) {
 			
 			// get the last coordinates if exist and remove it if size of list  > 10
@@ -63,9 +71,6 @@ public class PositionVector extends Module {
 			lastX = recordedCoordinates.getX();
 			lastY = recordedCoordinates.getY();
 			lastZ = recordedCoordinates.getZ();			
-
-			// get current coordinates
-			PositionUnityJson coordinates = gson.fromJson(position, PositionUnityJson.class);
 
 			//get the sign of the coordinates
 			int signX = FormattingService.signBit(coordinates.getX().floatValue());
@@ -121,6 +126,7 @@ public class PositionVector extends Module {
 	}
 	
 	/**
+	 * i
 	 * @param responseVector
 	 * @param cardinalDirection
 	 */
