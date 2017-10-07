@@ -1,10 +1,12 @@
-package api;
+package api.events;
 
 import java.util.Random;
 
 import org.junit.Before;
 
 import com.google.gson.Gson;
+
+import api.AstraApiImpl;
 
 public class EventTypeTest {
 

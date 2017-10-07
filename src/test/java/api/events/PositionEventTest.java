@@ -1,4 +1,4 @@
-package api;
+package api.events;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -14,6 +14,8 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
+import api.AstraApi;
+import api.EventType;
 import api.modules.utils.PositionUnityJson;
 
 public class PositionEventTest extends EventTypeTest{
@@ -28,7 +30,6 @@ public class PositionEventTest extends EventTypeTest{
 	private static final Double Z_4 = new Double("6.200000047683716");
 	
 	private static final Double X_N = new Double("-1.649999976158142");
-	private static final Double X_1_N = new Double("-2.849999976158142");
 	
 	private static final Double Z_N = new Double("-2.700000047683716");
 	private static final Double Z_1_N = new Double("-3.900000047683716");

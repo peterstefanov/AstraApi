@@ -1,4 +1,4 @@
-package api;
+package api.events;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -8,6 +8,8 @@ import java.util.LinkedList;
 import org.junit.Before;
 import org.junit.Test;
 
+import api.AstraApi;
+import api.EventType;
 import api.modules.utils.PositionUnityJson;
 
 public class PositionVectorEventTest extends EventTypeTest{
