@@ -65,8 +65,6 @@ public interface AstraApi {
 	 * Add synchronous event from Unity to an Agent based on the type. The type
 	 * used in Unity should match the one supported by the API. If the agent doesn't
 	 * exists bind the event to the current agent. The method returns the processed event. 
-	 * 
-	 * @throws AstraApiException
 	 */
 	public String syncEvent(String agentIdentifier, String eventIdentifier, Object[] eventArgs);
 
