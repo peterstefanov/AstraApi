@@ -12,7 +12,8 @@ import java.util.concurrent.ThreadLocalRandom;
 import com.google.gson.Gson;
 
 import api.AstraApi;
-import api.modules.utils.PositionUnityJson;
+import api.modules.utils.Position;
+import api.modules.utils.UnityJson;
 import astra.core.Module;
 
 /**
@@ -54,29 +55,31 @@ public class Collision extends Module {
 	private Gson gson = new Gson();
 	// map with object id and cardinal direction as a key and an ordered list of all
 	// last decisions as a value
-	private HashMap<String, LinkedList<PositionUnityJson>> cardinalDirections = new HashMap<String, LinkedList<PositionUnityJson>>();
+	private HashMap<String, LinkedList<UnityJson>> cardinalDirections = new HashMap<String, LinkedList<UnityJson>>();
 
 	@TERM
-	public String getDirections(String unityCollision) {
+	public String getDirections(String event) {
 
 		List<String> listCardinals = new ArrayList<String>(Arrays.asList(AstraApi.CARDINAL_DIRECTION));
 		// get current collision passed from Unity
-		PositionUnityJson requestFromUnity = gson.fromJson(unityCollision, PositionUnityJson.class);
-
+		UnityJson requestFromUnity = gson.fromJson(event, UnityJson.class);
+        Position reuestFromUnityPosition = requestFromUnity.getPosition();
+        
 		String cardinalDirection = requestFromUnity.getCardinalDirection();
 		int instanceId = requestFromUnity.getInstanceId();
 		// construct key for the map
 		String key = instanceId + cardinalDirection;
 
-		PositionUnityJson responseFromAstra = new PositionUnityJson();
-		LinkedList<PositionUnityJson> responseFromAstraList = null;
+		UnityJson responseFromAstra = new UnityJson();
+		LinkedList<UnityJson> responseFromAstraList = null;
 
 		// remove the current cardinal direction passed from Unity
 		listCardinals.remove(requestFromUnity.getCardinalDirection());
 
 		responseFromAstra.setInstanceId(requestFromUnity.getInstanceId());
 		responseFromAstra.setCardinalDirection(requestFromUnity.getCardinalDirection());
-
+        responseFromAstra.setPosition(reuestFromUnityPosition);
+        
 		// get the last agent collision data if exist
 		if (cardinalDirections.isEmpty() || (!cardinalDirections.isEmpty() && cardinalDirections.get(key) == null)) {
 
@@ -87,8 +90,8 @@ public class Collision extends Module {
 			updateCoordinates(responseFromAstra, requestFromUnity);
 			
 			// record the decision and synchronize it 
-			responseFromAstraList = new LinkedList<PositionUnityJson>();
-			List<PositionUnityJson> requestsLinkedList = Collections.synchronizedList(responseFromAstraList);
+			responseFromAstraList = new LinkedList<UnityJson>();
+			List<UnityJson> requestsLinkedList = Collections.synchronizedList(responseFromAstraList);
 			
 			synchronized (requestsLinkedList) {
 				responseFromAstraList.addLast(responseFromAstra);
@@ -100,12 +103,12 @@ public class Collision extends Module {
 
 		} else {
 
-			LinkedList<PositionUnityJson> currentResponseFromAstraList = cardinalDirections.get(key);
+			LinkedList<UnityJson> currentResponseFromAstraList = cardinalDirections.get(key);
 
 			// Iterate through the list in reverse order
-			Iterator<PositionUnityJson> it = currentResponseFromAstraList.descendingIterator();
+			Iterator<UnityJson> it = currentResponseFromAstraList.descendingIterator();
 			while (it.hasNext()) {
-				PositionUnityJson item = (PositionUnityJson) it.next();
+				UnityJson item = (UnityJson) it.next();
 				// if two left from the base cardinal directions break the loop
 				if (listCardinals.size() == 2) {
 					break;
@@ -123,7 +126,7 @@ public class Collision extends Module {
 			updateCoordinates(responseFromAstra, requestFromUnity);
 			
 			// record the decision and synchronize it 
-			List<PositionUnityJson> requestsLinkedList = Collections.synchronizedList(currentResponseFromAstraList);
+			List<UnityJson> requestsLinkedList = Collections.synchronizedList(currentResponseFromAstraList);
 			
 			synchronized (requestsLinkedList) {
 				currentResponseFromAstraList.addLast(responseFromAstra);
@@ -138,26 +141,28 @@ public class Collision extends Module {
 		}
 	}
 
-	private void updateCoordinates(PositionUnityJson responseFromAstra, PositionUnityJson requestFromUnity) {
+	private void updateCoordinates(UnityJson responseFromAstra, UnityJson requestFromUnity) {
 		String cardinalDirection = responseFromAstra.getAstraCardinalDirection();
 
-		responseFromAstra.setX(requestFromUnity.getX());
-		responseFromAstra.setY(requestFromUnity.getY());
-		responseFromAstra.setZ(requestFromUnity.getZ());
+		api.modules.utils.Position position = responseFromAstra.getPosition();
+		
+		position.setX(position.getX());
+		position.setY(position.getY());
+		position.setZ(position.getZ());
 
 		// based on astra cardinal direction modify coordinates
 		switch (cardinalDirection) {
 		case AstraApi.NORTH:
-			responseFromAstra.setZ(requestFromUnity.getZ() + AstraApi.API_CHANGE_RATE);
+			position.setZ(position.getZ() + AstraApi.API_CHANGE_RATE);
 			break;
 		case AstraApi.SOUTH:
-			responseFromAstra.setZ(requestFromUnity.getZ() - AstraApi.API_CHANGE_RATE);
+			position.setZ(position.getZ() - AstraApi.API_CHANGE_RATE);
 			break;
 		case AstraApi.WEST:
-			responseFromAstra.setX(requestFromUnity.getX() - AstraApi.API_CHANGE_RATE);
+			position.setX(position.getX() - AstraApi.API_CHANGE_RATE);
 			break;
 		default:
-			responseFromAstra.setX(requestFromUnity.getX() + AstraApi.API_CHANGE_RATE);
+			position.setX(position.getX() + AstraApi.API_CHANGE_RATE);
 		}
 	}
 }

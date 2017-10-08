@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import com.google.gson.Gson;
 
 import api.AstraApi;
-import api.modules.utils.PositionUnityJson;
+import api.modules.utils.UnityJson;
 import astra.core.Module;
 
 
@@ -18,33 +18,35 @@ public class DirectionVector extends Module {
 
 	private Gson gson = new Gson();
 
-	private LinkedList<PositionUnityJson> directionsVector = new LinkedList<PositionUnityJson>();
+	private LinkedList<UnityJson> directionsVector = new LinkedList<UnityJson>();
 
 	@TERM
 	public String getDirections(String position) {
 
-		PositionUnityJson directionVector = gson.fromJson(position, PositionUnityJson.class);
+		UnityJson directionVector = gson.fromJson(position, UnityJson.class);
 		// this tell us which direction to go for the very first time, when agent just
 		// created
 		String cardinalDirection = directionVector.getCardinalDirection();
 
-		directionVector.setX(AstraApi.ZERO);
-		directionVector.setY(AstraApi.ZERO);
-		directionVector.setZ(AstraApi.ZERO);
+		api.modules.utils.Position positionJson = directionVector.getPosition();
+		
+		positionJson.setX(AstraApi.ZERO);
+		positionJson.setY(AstraApi.ZERO);
+		positionJson.setZ(AstraApi.ZERO);
 		
 		if (cardinalDirection != null && cardinalDirection.length() > 0) {
 			switch (cardinalDirection) {
 			case AstraApi.NORTH:
-				directionVector.setZ(AstraApi.ONE);
+				positionJson.setZ(AstraApi.ONE);
 				break;
 			case AstraApi.SOUTH:
-				directionVector.setZ(- AstraApi.ONE);
+				positionJson.setZ(- AstraApi.ONE);
 				break;
 			case AstraApi.WEST:
-				directionVector.setX(- AstraApi.ONE);
+				positionJson.setX(- AstraApi.ONE);
 				break;
 			case AstraApi.EAST:
-				directionVector.setX(AstraApi.ONE);
+				positionJson.setX(AstraApi.ONE);
 				break;
 			default:
 			}
@@ -55,7 +57,7 @@ public class DirectionVector extends Module {
 			return gson.toJson(directionVector);
 		} else {
 			
-			PositionUnityJson recordedDirectionVector = null;
+			UnityJson recordedDirectionVector = null;
 			if (directionsVector.size() > 10) {
 				recordedDirectionVector = directionsVector.pollLast();
 			} else {

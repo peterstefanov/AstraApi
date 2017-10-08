@@ -6,7 +6,7 @@ import com.google.gson.Gson;
 
 import api.AstraApi;
 import api.modules.utils.FormattingService;
-import api.modules.utils.PositionUnityJson;
+import api.modules.utils.UnityJson;
 import astra.core.Module;
 
 /**
@@ -20,22 +20,22 @@ import astra.core.Module;
  * <b>Expect input as a Json in the format of:</b></br>
  * <ul>
  * <li><b>very first time</b></li>
- * {"type":"position","x":1.649999976158142,"y":1.0,"z":2.700000047683716,"cardinalDirection":"South"}
+ * {"type":"position","position":{"x":1.649999976158142,"y":1.0,"z":2.700000047683716,"cardinalDirection":"South"}}
  * <li><b>every next time</b></li>
- * {"type":"position","x":1.649999976158142,"y":1.0,"z":2.700000047683716} </br>
+ * {"type":"position","position":{"x":1.649999976158142,"y":1.0,"z":2.700000047683716}} </br>
  * and compare it with the previous recorded coordinates
  * </ul>
  * <b>Returns:</b></br>
- * {"x":1.649999976158142,"y":1.0,"z":2.200000047683716,"type":"position"}
+ * {"position":{"x":1.649999976158142,"y":1.0,"z":2.200000047683716},"type":"position"}
  */
 public class Position extends Module {
 
 	private Gson gson = new Gson();
 
-	private LinkedList<PositionUnityJson> directions = new LinkedList<PositionUnityJson>();
+	private LinkedList<UnityJson> directions = new LinkedList<UnityJson>();
 
 	@TERM
-	public String getDirections(String position) {
+	public String getDirections(String json) {
 
 		Double lastX = null;
 		Double lastY = null;
@@ -43,38 +43,41 @@ public class Position extends Module {
 
 		if (!directions.isEmpty()) {
 			// get the last coordinates if exist
-			PositionUnityJson recordedCoordinates = null;
+			UnityJson recordedCoordinates = null;
 			if (directions.size() > 7) {
 				recordedCoordinates = directions.pollLast();
 			} else {
 				recordedCoordinates = directions.getLast();
 			}
 
-			lastX = recordedCoordinates.getX();
-			lastY = recordedCoordinates.getY();
-			lastZ = recordedCoordinates.getZ();
+			api.modules.utils.Position position = recordedCoordinates.getPosition();
+			
+			lastX = position.getX();
+			lastY = position.getY();
+			lastZ = position.getZ();
 			
 			// add the current agent position
-			directions.add(gson.fromJson(position, PositionUnityJson.class));
+			directions.add(gson.fromJson(json, UnityJson.class));
 		} else {
 
-			PositionUnityJson initialPosition = gson.fromJson(position, PositionUnityJson.class);
+			UnityJson initialPosition = gson.fromJson(json, UnityJson.class);
+			api.modules.utils.Position initailPositionJson = initialPosition.getPosition();
 			// this tell us which direction to go for the very first time, when agent just
 			// created
 			String cardinalDirection = initialPosition.getCardinalDirection();
 
 			switch (cardinalDirection) {
 			case AstraApi.NORTH:
-				initialPosition.setZ(initialPosition.getZ() + AstraApi.API_CHANGE_RATE);
+				initailPositionJson.setZ(initailPositionJson.getZ() + AstraApi.API_CHANGE_RATE);
 				break;
 			case AstraApi.SOUTH:
-				initialPosition.setZ(initialPosition.getZ() - AstraApi.API_CHANGE_RATE);
+				initailPositionJson.setZ(initailPositionJson.getZ() - AstraApi.API_CHANGE_RATE);
 				break;
 			case AstraApi.WEST:
-				initialPosition.setX(initialPosition.getX() - AstraApi.API_CHANGE_RATE);
+				initailPositionJson.setX(initailPositionJson.getX() - AstraApi.API_CHANGE_RATE);
 				break;
 			case AstraApi.EAST:
-				initialPosition.setX(initialPosition.getX() + AstraApi.API_CHANGE_RATE);
+				initailPositionJson.setX(initailPositionJson.getX() + AstraApi.API_CHANGE_RATE);
 				break;
 			default:
 			}
@@ -86,30 +89,30 @@ public class Position extends Module {
 		}
 
 		// get current coordinates
-		PositionUnityJson coordinates = gson.fromJson(position, PositionUnityJson.class);
-		
+		UnityJson coordinates = gson.fromJson(json, UnityJson.class);
+		api.modules.utils.Position currentPositionJson = coordinates.getPosition();
 		//get the sign of the coordinates
-		int signX = FormattingService.signBit(coordinates.getX().floatValue());
-		int signY = FormattingService.signBit(coordinates.getY().floatValue());
-		int signZ = FormattingService.signBit(coordinates.getZ().floatValue());
+		int signX = FormattingService.signBit(currentPositionJson.getX().floatValue());
+		int signY = FormattingService.signBit(currentPositionJson.getY().floatValue());
+		int signZ = FormattingService.signBit(currentPositionJson.getZ().floatValue());
 		
 		//compare the absolute values with accuracy of 0.001, manipulate the coordinates and add the sign 
-		if (lastX != null && !(Math.abs(lastX.floatValue() - coordinates.getX().floatValue()) < FormattingService.EPSILON)) {
-			double absValueX = (Math.abs(coordinates.getX().floatValue()) > Math.abs(lastX.floatValue()) &&  !(Math.abs(lastX.floatValue() - coordinates.getX().floatValue()) < FormattingService.EPSILON)) ? 
-					           Math.abs(coordinates.getX()) + AstraApi.API_CHANGE_RATE : Math.abs(coordinates.getX()) - AstraApi.API_CHANGE_RATE;
-			coordinates.setX(signX == 0 ? new Double(absValueX) : new Double(-absValueX));
+		if (lastX != null && !(Math.abs(lastX.floatValue() - currentPositionJson.getX().floatValue()) < FormattingService.EPSILON)) {
+			double absValueX = (Math.abs(currentPositionJson.getX().floatValue()) > Math.abs(lastX.floatValue()) &&  !(Math.abs(lastX.floatValue() - currentPositionJson.getX().floatValue()) < FormattingService.EPSILON)) ? 
+					           Math.abs(currentPositionJson.getX()) + AstraApi.API_CHANGE_RATE : Math.abs(currentPositionJson.getX()) - AstraApi.API_CHANGE_RATE;
+			currentPositionJson.setX(signX == 0 ? new Double(absValueX) : new Double(-absValueX));
 		}
 
-		if (lastY != null && !(Math.abs(lastY.floatValue() - coordinates.getY().floatValue()) < FormattingService.EPSILON)) {
-			double absValueY = (Math.abs(coordinates.getY().floatValue()) > Math.abs(lastY.floatValue()) && !(Math.abs(lastY.floatValue() - coordinates.getY().floatValue()) < FormattingService.EPSILON)) ? 
-					           Math.abs(coordinates.getY()) + AstraApi.API_CHANGE_RATE : Math.abs(coordinates.getY()) - AstraApi.API_CHANGE_RATE;
-			coordinates.setY(signY == 0 ? new Double(absValueY) : new Double(-absValueY));
+		if (lastY != null && !(Math.abs(lastY.floatValue() - currentPositionJson.getY().floatValue()) < FormattingService.EPSILON)) {
+			double absValueY = (Math.abs(currentPositionJson.getY().floatValue()) > Math.abs(lastY.floatValue()) && !(Math.abs(lastY.floatValue() - currentPositionJson.getY().floatValue()) < FormattingService.EPSILON)) ? 
+					           Math.abs(currentPositionJson.getY()) + AstraApi.API_CHANGE_RATE : Math.abs(currentPositionJson.getY()) - AstraApi.API_CHANGE_RATE;
+			currentPositionJson.setY(signY == 0 ? new Double(absValueY) : new Double(-absValueY));
 		}
 		
-		if (lastZ != null && !(Math.abs(lastZ.floatValue() - coordinates.getZ().floatValue()) < FormattingService.EPSILON)) {
-			double absValueZ = (Math.abs(coordinates.getZ().floatValue()) > Math.abs(lastZ.floatValue()) && !(Math.abs(lastZ.floatValue() - coordinates.getZ().floatValue()) < FormattingService.EPSILON)) ? 
-					           Math.abs(coordinates.getZ()) + AstraApi.API_CHANGE_RATE : Math.abs(coordinates.getZ()) - AstraApi.API_CHANGE_RATE;
-			coordinates.setZ(signZ == 0 ? new Double(absValueZ) : new Double(-absValueZ));
+		if (lastZ != null && !(Math.abs(lastZ.floatValue() - currentPositionJson.getZ().floatValue()) < FormattingService.EPSILON)) {
+			double absValueZ = (Math.abs(currentPositionJson.getZ().floatValue()) > Math.abs(lastZ.floatValue()) && !(Math.abs(lastZ.floatValue() - currentPositionJson.getZ().floatValue()) < FormattingService.EPSILON)) ? 
+					           Math.abs(currentPositionJson.getZ()) + AstraApi.API_CHANGE_RATE : Math.abs(currentPositionJson.getZ()) - AstraApi.API_CHANGE_RATE;
+			currentPositionJson.setZ(signZ == 0 ? new Double(absValueZ) : new Double(-absValueZ));
 		}
 
 		return gson.toJson(coordinates);

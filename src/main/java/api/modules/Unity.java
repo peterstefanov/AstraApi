@@ -76,7 +76,7 @@ public class Unity extends Module {
 		if (cf == null) return false;
 		
 		String command = getCommand(cf.create(args));
-        //System.out.println("command: " + command);
+        System.out.println("command: " + command);
 		api.submitCommand(agentIdentifier, eventIdentifier, command);
 		return true;
 	}
@@ -87,6 +87,7 @@ public class Unity extends Module {
 	}
 	
 	private synchronized String getCommand(Object object) {
+		System.out.println(object.toString());
 		return gson.toJson(object);		
 	}
 }

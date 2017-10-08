@@ -10,7 +10,8 @@ import org.junit.Test;
 
 import api.AstraApi;
 import api.EventType;
-import api.modules.utils.PositionUnityJson;
+import api.modules.utils.Position;
+import api.modules.utils.UnityJson;
 
 public class PositionVectorEventTest extends EventTypeTest{
 
@@ -39,48 +40,60 @@ public class PositionVectorEventTest extends EventTypeTest{
 	public void initialSinglePositionVectorSyncEventSouthTest() {
 		//Agent created
 		String agent = createAgent();			
+		String event = "{\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z + "},\"cardinalDirection\":" + AstraApi.SOUTH + "}";			
 		
-		String syncEventPosition = api.syncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z + ",\"cardinalDirection\":" + AstraApi.SOUTH + "}"});		
-		PositionUnityJson values = (PositionUnityJson) gson.fromJson(syncEventPosition, PositionUnityJson.class);
-		assertEquals(AstraApi.ZERO, values.getX());
-		assertEquals(AstraApi.ZERO, values.getY());		
-		assertEquals(new Double(-AstraApi.ONE.doubleValue()), values.getZ());
+		String syncEventPosition = api.syncEvent(agent, EventType.POSITION_VECTOR, new Object[] {event});							
+		UnityJson json = (UnityJson) gson.fromJson(syncEventPosition, UnityJson.class);
+		Position position = json.getPosition();
+		
+		assertEquals(AstraApi.ZERO, position.getX());
+		assertEquals(AstraApi.ZERO, position.getY());		
+		assertEquals(new Double(-AstraApi.ONE.doubleValue()), position.getZ());
 	}
 	
 	@Test
 	public void initialSinglePositionVectorSyncEventNorthTest() {
 		//Agent created
 		String agent = createAgent();			
+		String event = "{\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z + "},\"cardinalDirection\":" + AstraApi.NORTH + "}";			
 		
-		String syncEventPosition = api.syncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z + ",\"cardinalDirection\":" + AstraApi.NORTH + "}"});		
-		PositionUnityJson values = (PositionUnityJson) gson.fromJson(syncEventPosition, PositionUnityJson.class);
-		assertEquals(AstraApi.ZERO, values.getX());
-		assertEquals(AstraApi.ZERO, values.getY());		
-		assertEquals(AstraApi.ONE, values.getZ());
+		String syncEventPosition = api.syncEvent(agent, EventType.POSITION_VECTOR, new Object[] {event});						
+		UnityJson json = (UnityJson) gson.fromJson(syncEventPosition, UnityJson.class);
+		Position position = json.getPosition();
+		
+		assertEquals(AstraApi.ZERO, position.getX());
+		assertEquals(AstraApi.ZERO, position.getY());		
+		assertEquals(AstraApi.ONE, position.getZ());
 	}
 	
 	@Test
 	public void initialSinglePositionVectorSyncEventWestTest() {
 		//Agent created
 		String agent = createAgent();			
+		String event = "{\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z + "},\"cardinalDirection\":" + AstraApi.WEST + "}";			
 		
-		String syncEventPosition = api.syncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z + ",\"cardinalDirection\":" + AstraApi.WEST + "}"});		
-		PositionUnityJson values = (PositionUnityJson) gson.fromJson(syncEventPosition, PositionUnityJson.class);
-		assertEquals(new Double(-AstraApi.ONE.doubleValue()), values.getX());
-		assertEquals(AstraApi.ZERO, values.getY());		
-		assertEquals(AstraApi.ZERO, values.getZ());
+		String syncEventPosition = api.syncEvent(agent, EventType.POSITION_VECTOR, new Object[] {event});						
+		UnityJson json = (UnityJson) gson.fromJson(syncEventPosition, UnityJson.class);
+		Position position = json.getPosition();
+		
+		assertEquals(new Double(-AstraApi.ONE.doubleValue()), position.getX());
+		assertEquals(AstraApi.ZERO, position.getY());		
+		assertEquals(AstraApi.ZERO, position.getZ());
 	}
 	
 	@Test
 	public void initialSinglePositionVectorSyncEventEastTest() {
 		//Agent created
 		String agent = createAgent();			
+		String event = "{\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z + "},\"cardinalDirection\":" + AstraApi.EAST + "}";			
 		
-		String syncEventPosition = api.syncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z + ",\"cardinalDirection\":" + AstraApi.EAST + "}"});		
-		PositionUnityJson values = (PositionUnityJson) gson.fromJson(syncEventPosition, PositionUnityJson.class);
-		assertEquals(AstraApi.ONE, values.getX());
-		assertEquals(AstraApi.ZERO, values.getY());		
-		assertEquals(AstraApi.ZERO, values.getZ());
+		String syncEventPosition = api.syncEvent(agent, EventType.POSITION_VECTOR, new Object[] {event});						
+		UnityJson json = (UnityJson) gson.fromJson(syncEventPosition, UnityJson.class);
+		Position position = json.getPosition();
+		
+		assertEquals(AstraApi.ONE, position.getX());
+		assertEquals(AstraApi.ZERO, position.getY());		
+		assertEquals(AstraApi.ZERO, position.getZ());
 	}
 	
 	@Test
@@ -88,8 +101,10 @@ public class PositionVectorEventTest extends EventTypeTest{
 		//Agent created
 		String agent = createAgent();			
 		
-		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z + ",\"cardinalDirection\":" + AstraApi.NORTH + "}"});	
+		String event = "{\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z + "},\"cardinalDirection\":" + AstraApi.NORTH + "}";			
 		
+		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {event});	
+				
 		String asyncEventPosition = null;
 		int count = 0;
 		while(count < 5) {
@@ -106,38 +121,52 @@ public class PositionVectorEventTest extends EventTypeTest{
 			count ++;
 		}
 		
-		PositionUnityJson values = (PositionUnityJson) gson.fromJson(asyncEventPosition, PositionUnityJson.class);
-		assertEquals(AstraApi.ZERO, values.getX());
-		assertEquals(AstraApi.ZERO, values.getY());		
-		assertEquals(AstraApi.ONE, values.getZ());
+		UnityJson json = (UnityJson) gson.fromJson(asyncEventPosition, UnityJson.class);
+		Position position = json.getPosition();
+		
+		assertEquals(AstraApi.ZERO, position.getX());
+		assertEquals(AstraApi.ZERO, position.getY());		
+		assertEquals(AstraApi.ONE, position.getZ());
 	}
 	
 	//@Test
 	public void multiplePositionVectorSyncEventChangeDirectionTest() {
 		//Agent created
 		String agent = createAgent();			
-		PositionUnityJson values= null;
+		UnityJson values= null;
 		String syncEventPosition = null;
 		
-		syncEventPosition = api.syncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z + ",\"cardinalDirection\":" + AstraApi.EAST + "}"});		
-		values = (PositionUnityJson) gson.fromJson(syncEventPosition, PositionUnityJson.class);
-		assertEquals(AstraApi.ONE, values.getX());
-		assertEquals(AstraApi.ZERO, values.getY());		
-		assertEquals(AstraApi.ZERO, values.getZ());
+		String event = "{\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z + "},\"cardinalDirection\":" + AstraApi.EAST + "}";			
+		
+		syncEventPosition = api.syncEvent(agent, EventType.POSITION_VECTOR, new Object[] {event});						
+		values = (UnityJson) gson.fromJson(syncEventPosition, UnityJson.class);
+		Position position = values.getPosition();
+		
+		assertEquals(AstraApi.ONE, position.getX());
+		assertEquals(AstraApi.ZERO, position.getY());		
+		assertEquals(AstraApi.ZERO, position.getZ());
 
 		//verify next one won't change as x coordinates increased  
-		syncEventPosition = api.syncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"x\":" + X_1 + ",\"y\":" + Y + ",\"z\":" + Z + "}"});
-		values = (PositionUnityJson) gson.fromJson(syncEventPosition, PositionUnityJson.class);
-		assertEquals(AstraApi.ONE, values.getX());
-		assertEquals(AstraApi.ZERO, values.getY());		
-		assertEquals(AstraApi.ZERO, values.getZ());
+		event = "{\"position\":{\"x\":" + X_1 + ",\"y\":" + Y + ",\"z\":" + Z + "},\"cardinalDirection\":" + AstraApi.EAST + "}";			
+		
+		syncEventPosition = api.syncEvent(agent, EventType.POSITION_VECTOR, new Object[] {event});						
+		values = (UnityJson) gson.fromJson(syncEventPosition, UnityJson.class);
+		position = values.getPosition();
+		
+		assertEquals(AstraApi.ONE, position.getX());
+		assertEquals(AstraApi.ZERO, position.getY());		
+		assertEquals(AstraApi.ZERO, position.getZ());
 		
 		//verify x coordinates is negative as x decreased  
-		syncEventPosition = api.syncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z + "}"});
-		values = (PositionUnityJson) gson.fromJson(syncEventPosition, PositionUnityJson.class);
-		assertEquals(new Double(-AstraApi.ONE.doubleValue()), values.getX());
-		assertEquals(AstraApi.ZERO, values.getY());		
-		assertEquals(AstraApi.ZERO, values.getZ());
+		event = "{\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z + "},\"cardinalDirection\":" + AstraApi.EAST + "}";			
+		
+		syncEventPosition = api.syncEvent(agent, EventType.POSITION_VECTOR, new Object[] {event});						
+		values = (UnityJson) gson.fromJson(syncEventPosition, UnityJson.class);
+		position = values.getPosition();
+		
+		assertEquals(new Double(-AstraApi.ONE.doubleValue()), position.getX());
+		assertEquals(AstraApi.ZERO, position.getY());		
+		assertEquals(AstraApi.ZERO, position.getZ());
 	}
 	
 	@Test
@@ -147,16 +176,16 @@ public class PositionVectorEventTest extends EventTypeTest{
 		String agent = createAgent();			
 		
 		LinkedList<String> listEvents = new LinkedList<String>();
-	    
-		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z + ",\"cardinalDirection\":" + AstraApi.NORTH + "}"});
+		
+		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z + "},\"cardinalDirection\":" + AstraApi.NORTH + "}"});
 		getEventResponse(agent, listEvents);
-		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_1 + "}"});
+		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_1 + "}}"});
 		getEventResponse(agent, listEvents);
-		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_2 + "}"});
+		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_2 + "}}"});
 		getEventResponse(agent, listEvents);
-		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_3 + "}"});
+		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_3 + "}}"});
 		getEventResponse(agent, listEvents);
-		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_4 + "}"});
+		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_4 + "}}"});
 		getEventResponse(agent, listEvents);
 		
 		assertTrue(listEvents.size() == 5);
@@ -164,19 +193,21 @@ public class PositionVectorEventTest extends EventTypeTest{
 		int countItems = 0;
 		
 		for (int i = 0; i < listEvents.size(); i ++) {
-			PositionUnityJson values = (PositionUnityJson) gson.fromJson(listEvents.get(i), PositionUnityJson.class);
-			assertEquals(AstraApi.ZERO, values.getX());
-			assertEquals(AstraApi.ZERO, values.getY());		
+			UnityJson values = (UnityJson) gson.fromJson(listEvents.get(i), UnityJson.class);
+			Position position = values.getPosition();
+			
+			assertEquals(AstraApi.ZERO, position.getX());
+			assertEquals(AstraApi.ZERO, position.getY());		
 			if (countItems == 0) {
-				assertEquals(AstraApi.ONE, values.getZ());
+				assertEquals(AstraApi.ONE, position.getZ());
 			} else if (countItems == 1) {
-				assertEquals(AstraApi.ONE, values.getZ());
+				assertEquals(AstraApi.ONE, position.getZ());
 			} else if (countItems == 2) {
-				assertEquals(AstraApi.ONE, values.getZ());
+				assertEquals(AstraApi.ONE, position.getZ());
 			} else if (countItems == 3) {
-				assertEquals(AstraApi.ONE, values.getZ());
+				assertEquals(AstraApi.ONE, position.getZ());
 			} else if (countItems == 4) {
-				assertEquals(AstraApi.ONE, values.getZ());
+				assertEquals(AstraApi.ONE, position.getZ());
 			}
 						
 			countItems ++;
@@ -191,15 +222,15 @@ public class PositionVectorEventTest extends EventTypeTest{
 		
 		LinkedList<String> listEvents = new LinkedList<String>();
 		
-		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_N + ",\"cardinalDirection\":" + AstraApi.SOUTH + "}"});
+		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_N + "},\"cardinalDirection\":" + AstraApi.SOUTH + "}"});
 		getEventResponse(agent, listEvents);
-		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_1_N + "}"});
+		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_1_N + "}}"});
 		getEventResponse(agent, listEvents);
-		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_2_N + "}"});
+		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_2_N + "}}"});
 		getEventResponse(agent, listEvents);
-		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_3_N + "}"});
+		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_3_N + "}}"});
 		getEventResponse(agent, listEvents);
-		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_4_N + "}"});		
+		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_4_N + "}}"});
 		getEventResponse(agent, listEvents);
 		
 		assertTrue(listEvents.size() == 5);
@@ -207,19 +238,66 @@ public class PositionVectorEventTest extends EventTypeTest{
 		int countItems = 0;
 		
 		for (int i = 0; i < listEvents.size(); i ++) {
-			PositionUnityJson values = (PositionUnityJson) gson.fromJson(listEvents.get(i), PositionUnityJson.class);
-			assertEquals(AstraApi.ZERO, values.getX());
-			assertEquals(AstraApi.ZERO, values.getY());		
+			UnityJson values = (UnityJson) gson.fromJson(listEvents.get(i), UnityJson.class);
+			Position position = values.getPosition();
+			
+			assertEquals(AstraApi.ZERO, position.getX());
+			assertEquals(AstraApi.ZERO, position.getY());		
 			if (countItems == 0) {
-				assertEquals(new Double(-AstraApi.ONE.doubleValue()), values.getZ());
+				assertEquals(new Double(-AstraApi.ONE.doubleValue()), position.getZ());
 			} else if (countItems == 1) {
-				assertEquals(new Double(-AstraApi.ONE.doubleValue()), values.getZ());
+				assertEquals(new Double(-AstraApi.ONE.doubleValue()), position.getZ());
 			} else if (countItems == 2) {
-				assertEquals(new Double(-AstraApi.ONE.doubleValue()), values.getZ());
+				assertEquals(new Double(-AstraApi.ONE.doubleValue()), position.getZ());
 			} else if (countItems == 3) {
-				assertEquals(new Double(-AstraApi.ONE.doubleValue()), values.getZ());
+				assertEquals(new Double(-AstraApi.ONE.doubleValue()), position.getZ());
 			} else if (countItems == 4) {
-				assertEquals(new Double(-AstraApi.ONE.doubleValue()), values.getZ());
+				assertEquals(new Double(-AstraApi.ONE.doubleValue()), position.getZ());
+			}
+						
+			countItems ++;
+		}
+	}
+	
+	@Test
+	public void multipleAsyncPositionVectorDecreaseUpdateSouthTest() {
+			
+		//Agent created	
+		String agent = createAgent();			
+		
+		LinkedList<String> listEvents = new LinkedList<String>();
+		
+		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_N + "},\"cardinalDirection\":" + AstraApi.SOUTH + "}"});
+		getEventResponse(agent, listEvents);
+		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_1_N + "}}"});
+		getEventResponse(agent, listEvents);
+		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_2_N + "}}"});
+		getEventResponse(agent, listEvents);
+		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_1_N + "}}"});
+		getEventResponse(agent, listEvents);
+		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_N + "}}"});
+		getEventResponse(agent, listEvents);
+		
+		assertTrue(listEvents.size() == 5);
+		
+		int countItems = 0;
+		
+		for (int i = 0; i < listEvents.size(); i ++) {
+			UnityJson values = (UnityJson) gson.fromJson(listEvents.get(i), UnityJson.class);
+			Position position = values.getPosition();
+			
+			assertEquals(AstraApi.ZERO, position.getX());
+			assertEquals(AstraApi.ZERO, position.getY());		
+			if (countItems == 0) {
+				assertEquals(new Double(-AstraApi.ONE.doubleValue()), position.getZ());
+			} else if (countItems == 1) {
+				assertEquals(new Double(-AstraApi.ONE.doubleValue()), position.getZ());
+			} else if (countItems == 2) {
+				assertEquals(new Double(-AstraApi.ONE.doubleValue()), position.getZ());
+			} else if (countItems == 3) {
+				assertEquals(new Double(AstraApi.ONE.doubleValue()), position.getZ());
+			} else if (countItems == 4) {
+				assertEquals(new Double(AstraApi.ONE.doubleValue()), position.getZ());
 			}
 						
 			countItems ++;
@@ -234,15 +312,15 @@ public class PositionVectorEventTest extends EventTypeTest{
 		
 		LinkedList<String> listEvents = new LinkedList<String>();
 		
-		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_N + ",\"cardinalDirection\":" + AstraApi.SOUTH + "}"});
+		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_N + "},\"cardinalDirection\":" + AstraApi.SOUTH + "}"});
 		getEventResponse(agent, listEvents);
-		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_N + "}"});
+		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_N + "}}"});
 		getEventResponse(agent, listEvents);
-		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_N + "}"});
+		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_N + "}}"});
 		getEventResponse(agent, listEvents);
-		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_N + "}"});
+		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_N + "}}"});
 		getEventResponse(agent, listEvents);
-		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_N + "}"});		
+		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_N + "}}"});
 		getEventResponse(agent, listEvents);
 		
 		assertTrue(listEvents.size() == 5);
@@ -250,19 +328,21 @@ public class PositionVectorEventTest extends EventTypeTest{
 		int countItems = 0;
 		
 		for (int i = 0; i < listEvents.size(); i ++) {
-			PositionUnityJson values = (PositionUnityJson) gson.fromJson(listEvents.get(i), PositionUnityJson.class);
-			assertEquals(AstraApi.ZERO, values.getX());
-			assertEquals(AstraApi.ZERO, values.getY());		
+			UnityJson values = (UnityJson) gson.fromJson(listEvents.get(i), UnityJson.class);
+			Position position = values.getPosition();
+			
+			assertEquals(AstraApi.ZERO, position.getX());
+			assertEquals(AstraApi.ZERO, position.getY());			
 			if (countItems == 0) {
-				assertEquals(new Double(-AstraApi.ONE.doubleValue()), values.getZ());
+				assertEquals(new Double(-AstraApi.ONE.doubleValue()), position.getZ());
 			} else if (countItems == 1) {
-				assertEquals(new Double(-AstraApi.ONE.doubleValue()), values.getZ());
+				assertEquals(new Double(-AstraApi.ONE.doubleValue()), position.getZ());
 			} else if (countItems == 2) {
-				assertEquals(new Double(-AstraApi.ONE.doubleValue()), values.getZ());
+				assertEquals(new Double(-AstraApi.ONE.doubleValue()), position.getZ());
 			} else if (countItems == 3) {
-				assertEquals(new Double(-AstraApi.ONE.doubleValue()), values.getZ());
+				assertEquals(new Double(-AstraApi.ONE.doubleValue()), position.getZ());
 			} else if (countItems == 4) {
-				assertEquals(new Double(-AstraApi.ONE.doubleValue()), values.getZ());
+				assertEquals(new Double(-AstraApi.ONE.doubleValue()), position.getZ());
 			}
 						
 			countItems ++;

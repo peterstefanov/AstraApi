@@ -2,13 +2,12 @@ package api.command.possition;
 
 import api.EventType;
 import api.command.AstraCommand;
-import api.modules.utils.PositionUnityJson;
+import api.modules.utils.Position;
+import api.modules.utils.UnityJson;
 
 public class PositionVectorCommand extends AstraCommand {
 
-	public Double x;
-	public Double y;
-	public Double z;
+	public Position position;
 	
 	public PositionVectorCommand(final Object[] value) {
 		super(EventType.POSITION_VECTOR);
@@ -16,10 +15,7 @@ public class PositionVectorCommand extends AstraCommand {
 	}
 
 	private void processValues(Object[] value) {
-		PositionUnityJson values = (PositionUnityJson) gson.fromJson(value[0].toString(), PositionUnityJson.class);
-					
-		this.x = values.getX();
-		this.y = values.getY();
-		this.z = values.getZ();
+		UnityJson json = (UnityJson) gson.fromJson(value[0].toString(), UnityJson.class);
+		this.position = new Position(json.getPosition());
 	}
 }
