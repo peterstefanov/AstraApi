@@ -1,0 +1,589 @@
+Initialize engine version: 5.6.2f1 (a2913c821e27)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 10.1]
+    Renderer: NVIDIA NVS 3100M (ID=0xa6c)
+    Vendor:   NVIDIA
+    VRAM:     2001 MB
+    Driver:   9.18.13.1269
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\astra-api.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\astra-api.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\ICSharpCode.SharpZipLib.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\ICSharpCode.SharpZipLib.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.AWT.WinForms.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.AWT.WinForms.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.Beans.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.Beans.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.Charsets.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.Charsets.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.Cldrdata.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.Cldrdata.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.Corba.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.Corba.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.Core.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.Core.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.Jdbc.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.Jdbc.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.Localedata.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.Localedata.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.Management.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.Management.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.Media.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.Media.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.Misc.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.Misc.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.Naming.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.Naming.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.Nashorn.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.Nashorn.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.Remoting.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.Remoting.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.Security.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.Security.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.SwingAWT.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.SwingAWT.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.Text.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.Text.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.Tools.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.Tools.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.Util.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.Util.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.XML.API.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.XML.API.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.XML.Bind.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.XML.Bind.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.XML.Crypto.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.XML.Crypto.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.XML.Parse.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.XML.Parse.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.XML.Transform.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.XML.Transform.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.XML.WebServices.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.XML.WebServices.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.XML.XPath.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.OpenJDK.XML.XPath.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.Reflection.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.Reflection.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.Runtime.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.Runtime.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.Runtime.JNI.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\IKVM.Runtime.JNI.dll into Unity Child Domain
+- Completed reload, in  0.326 seconds
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 3360x1080 at -1440,0
+<RI> Initializing input.
+XInput1_3.dll not found. Trying XInput9_1_0.dll instead...
+<RI> Input initialized.
+<RI> Initialized touch support.
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\System.Configuration.dll (this message is harmless)
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\System.Xml.dll (this message is harmless)
+UnloadTime: 1.991353 ms
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3D_07_10\maze-demo-07-10_Data\Managed\Mono.Security.dll (this message is harmless)
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 64c -> priority: 1 
+  Thread -> id: 2954 -> priority: 1 
+COLLISION DATA SEND TO ASTRA???????SupportPlayerFront?????????: {"x":1.5973191261291505,"y":0.5002137422561646,"z":-1.076391339302063,"type":"collision","instanceId":902,"cardinalDirection":"North","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Fallback handler could not load library C:/Users/stefp/UnityProjects/Maze3D_07_10/maze-demo-07-10_Data/Mono/libc
+Fallback handler could not load library C:/Users/stefp/UnityProjects/Maze3D_07_10/maze-demo-07-10_Data/Mono/.\libc
+Fallback handler could not load library C:/Users/stefp/UnityProjects/Maze3D_07_10/maze-demo-07-10_Data/Mono/libc
+COLLISION RECEIVED SupportPlayerFront from Astra: {"x":2.2973191261291506,"y":0.5002137422561646,"z":-1.076391339302063,"instanceId":902,"cardinalDirection":"North","astraCardinalDirection":"East","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerRight?????????: {"x":3.3033740520477297,"y":0.5021266937255859,"z":-1.1764726638793946,"type":"collision","instanceId":898,"cardinalDirection":"East","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerLeft from Astra: {"x":3.3033740520477295,"y":0.5021266937255859,"z":-1.8764726638793945,"instanceId":898,"cardinalDirection":"East","astraCardinalDirection":"South","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerBack?????????: {"x":3.494352340698242,"y":0.5022979378700256,"z":-9.541975975036621,"type":"collision","instanceId":890,"cardinalDirection":"South","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerBack from Astra: {"x":2.794352340698242,"y":0.5022979378700256,"z":-9.541975975036621,"instanceId":890,"cardinalDirection":"South","astraCardinalDirection":"West","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerLeft?????????: {"x":2.5049662590026857,"y":0.5097282528877258,"z":-9.496255874633789,"type":"collision","instanceId":882,"cardinalDirection":"West","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerLeft from Astra: {"x":3.2049662590026857,"y":0.5097282528877258,"z":-9.496255874633789,"instanceId":882,"cardinalDirection":"West","astraCardinalDirection":"East","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerBack?????????: {"x":2.6046013832092287,"y":0.5023900866508484,"z":-9.500614166259766,"type":"collision","instanceId":882,"cardinalDirection":"South","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerBack from Astra: {"x":2.6046013832092285,"y":0.5023900866508484,"z":-8.800614166259766,"instanceId":882,"cardinalDirection":"South","astraCardinalDirection":"North","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerFront?????????: {"x":2.6091434955596926,"y":0.5047457218170166,"z":-9.400745391845704,"type":"collision","instanceId":882,"cardinalDirection":"North","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerFront from Astra: {"x":3.3091434955596926,"y":0.5047457218170166,"z":-9.400745391845703,"instanceId":882,"cardinalDirection":"North","astraCardinalDirection":"East","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerRight?????????: {"x":9.065971374511719,"y":0.502562403678894,"z":-9.256210327148438,"type":"collision","instanceId":922,"cardinalDirection":"East","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerLeft from Astra: {"x":9.065971374511719,"y":0.502562403678894,"z":-9.956210327148437,"instanceId":922,"cardinalDirection":"East","astraCardinalDirection":"South","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerBack?????????: {"x":9.021075248718262,"y":0.5168316960334778,"z":-9.89045238494873,"type":"collision","instanceId":890,"cardinalDirection":"South","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerBack from Astra: {"x":9.021075248718262,"y":0.5168316960334778,"z":-9.190452384948731,"instanceId":890,"cardinalDirection":"South","astraCardinalDirection":"North","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerLeft?????????: {"x":9.018355369567871,"y":0.5133818984031677,"z":-9.790549278259278,"type":"collision","instanceId":890,"cardinalDirection":"West","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerLeft from Astra: {"x":9.018355369567871,"y":0.5133818984031677,"z":-9.090549278259278,"instanceId":890,"cardinalDirection":"West","astraCardinalDirection":"North","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerRight?????????: {"x":9.01563549041748,"y":0.5099321007728577,"z":-9.690646171569825,"type":"collision","instanceId":890,"cardinalDirection":"East","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerLeft from Astra: {"x":8.315635490417481,"y":0.5099321007728577,"z":-9.690646171569824,"instanceId":890,"cardinalDirection":"East","astraCardinalDirection":"West","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerFront?????????: {"x":8.915675163269043,"y":0.5093010067939758,"z":-9.693389892578125,"type":"collision","instanceId":890,"cardinalDirection":"North","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerFront from Astra: {"x":9.615675163269042,"y":0.5093010067939758,"z":-9.693389892578125,"instanceId":890,"cardinalDirection":"North","astraCardinalDirection":"East","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerRight?????????: {"x":9.065398216247559,"y":0.5027954578399658,"z":-9.334362983703614,"type":"collision","instanceId":922,"cardinalDirection":"East","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerLeft from Astra: {"x":8.36539821624756,"y":0.5027954578399658,"z":-9.334362983703613,"instanceId":922,"cardinalDirection":"East","astraCardinalDirection":"West","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerLeft?????????: {"x":2.808898687362671,"y":0.5026184320449829,"z":-9.027199745178223,"type":"collision","instanceId":882,"cardinalDirection":"West","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerLeft from Astra: {"x":2.808898687362671,"y":0.5026184320449829,"z":-8.327199745178223,"instanceId":882,"cardinalDirection":"West","astraCardinalDirection":"North","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerRight?????????: {"x":3.2964627742767336,"y":0.5009680390357971,"z":-3.4359328746795656,"type":"collision","instanceId":898,"cardinalDirection":"East","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerLeft from Astra: {"x":3.2964627742767334,"y":0.5009680390357971,"z":-2.7359328746795653,"instanceId":898,"cardinalDirection":"East","astraCardinalDirection":"North","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerFront?????????: {"x":3.299506664276123,"y":0.5008666515350342,"z":-1.0976698398590088,"type":"collision","instanceId":902,"cardinalDirection":"North","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerFront from Astra: {"x":3.299506664276123,"y":0.5008666515350342,"z":-1.7976698398590087,"instanceId":902,"cardinalDirection":"North","astraCardinalDirection":"South","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerRight?????????: {"x":3.2954819202423097,"y":0.5001775622367859,"z":-1.1998323202133179,"type":"collision","instanceId":898,"cardinalDirection":"East","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerLeft from Astra: {"x":2.5954819202423094,"y":0.5001775622367859,"z":-1.1998323202133179,"instanceId":898,"cardinalDirection":"East","astraCardinalDirection":"West","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerFront?????????: {"x":1.1038495302200318,"y":0.5021162629127502,"z":-1.1068977117538453,"type":"collision","instanceId":902,"cardinalDirection":"North","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerFront from Astra: {"x":1.8038495302200317,"y":0.5021162629127502,"z":-1.1068977117538452,"instanceId":902,"cardinalDirection":"North","astraCardinalDirection":"East","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerRight?????????: {"x":3.313065767288208,"y":0.5002387166023254,"z":-1.1054202318191529,"type":"collision","instanceId":898,"cardinalDirection":"East","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerLeft from Astra: {"x":3.313065767288208,"y":0.5002387166023254,"z":-0.4054202318191529,"instanceId":898,"cardinalDirection":"East","astraCardinalDirection":"North","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerFront?????????: {"x":3.2940196990966799,"y":0.5012790560722351,"z":-1.0517245531082154,"type":"collision","instanceId":902,"cardinalDirection":"North","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerFront from Astra: {"x":3.2940196990966797,"y":0.5012790560722351,"z":-1.7517245531082153,"instanceId":902,"cardinalDirection":"North","astraCardinalDirection":"South","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerRight?????????: {"x":3.290591239929199,"y":0.500518262386322,"z":-1.1642357110977173,"type":"collision","instanceId":898,"cardinalDirection":"East","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerLeft from Astra: {"x":2.590591239929199,"y":0.500518262386322,"z":-1.1642357110977173,"instanceId":898,"cardinalDirection":"East","astraCardinalDirection":"West","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerLeft?????????: {"x":0.6897023320198059,"y":0.49990782141685488,"z":-1.1865724325180054,"type":"collision","instanceId":888,"cardinalDirection":"West","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerLeft from Astra: {"x":0.6897023320198059,"y":0.49990782141685486,"z":-0.4865724325180054,"instanceId":888,"cardinalDirection":"West","astraCardinalDirection":"North","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerFront?????????: {"x":0.7110933661460877,"y":0.5006932616233826,"z":-1.0993133783340455,"type":"collision","instanceId":902,"cardinalDirection":"North","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerFront from Astra: {"x":0.011093366146087691,"y":0.5006932616233826,"z":-1.0993133783340454,"instanceId":902,"cardinalDirection":"North","astraCardinalDirection":"West","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerLeft?????????: {"x":0.7145808935165405,"y":0.5003506541252136,"z":-1.1313928365707398,"type":"collision","instanceId":888,"cardinalDirection":"West","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerLeft from Astra: {"x":1.4145808935165405,"y":0.5003506541252136,"z":-1.1313928365707397,"instanceId":888,"cardinalDirection":"West","astraCardinalDirection":"East","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerRight?????????: {"x":3.3026809692382814,"y":0.5002884268760681,"z":-1.1686402559280396,"type":"collision","instanceId":898,"cardinalDirection":"East","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerLeft from Astra: {"x":3.3026809692382812,"y":0.5002884268760681,"z":-0.4686402559280396,"instanceId":898,"cardinalDirection":"East","astraCardinalDirection":"North","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerFront?????????: {"x":3.2949631214141847,"y":0.5005270838737488,"z":-1.0886290073394776,"type":"collision","instanceId":902,"cardinalDirection":"North","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerFront from Astra: {"x":3.9949631214141847,"y":0.5005270838737488,"z":-1.0886290073394775,"instanceId":902,"cardinalDirection":"North","astraCardinalDirection":"East","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerLeft?????????: {"x":4.416764736175537,"y":0.5176014304161072,"z":-1.1100867986679078,"type":"collision","instanceId":898,"cardinalDirection":"West","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerLeft from Astra: {"x":4.416764736175537,"y":0.5176014304161072,"z":-1.8100867986679077,"instanceId":898,"cardinalDirection":"West","astraCardinalDirection":"South","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerRight?????????: {"x":4.83578634262085,"y":0.501670241355896,"z":-2.7811625003814699,"type":"collision","instanceId":906,"cardinalDirection":"East","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerLeft from Astra: {"x":4.83578634262085,"y":0.501670241355896,"z":-3.48116250038147,"instanceId":906,"cardinalDirection":"East","astraCardinalDirection":"South","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerBack?????????: {"x":5.019800662994385,"y":0.5020862817764282,"z":-9.516096115112305,"type":"collision","instanceId":890,"cardinalDirection":"South","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerBack from Astra: {"x":5.719800662994385,"y":0.5020862817764282,"z":-9.516096115112305,"instanceId":890,"cardinalDirection":"South","astraCardinalDirection":"East","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerRight?????????: {"x":9.042268753051758,"y":0.5022584795951843,"z":-9.383687019348145,"type":"collision","instanceId":922,"cardinalDirection":"East","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerLeft from Astra: {"x":9.042268753051758,"y":0.5022584795951843,"z":-10.083687019348144,"instanceId":922,"cardinalDirection":"East","astraCardinalDirection":"South","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerBack?????????: {"x":9.000126838684082,"y":0.5000536441802979,"z":-9.521337509155274,"type":"collision","instanceId":890,"cardinalDirection":"South","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerBack from Astra: {"x":8.300126838684083,"y":0.5000536441802979,"z":-9.521337509155273,"instanceId":890,"cardinalDirection":"South","astraCardinalDirection":"West","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerLeft?????????: {"x":2.7831478118896486,"y":0.5023731589317322,"z":-9.243633270263672,"type":"collision","instanceId":882,"cardinalDirection":"West","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerLeft from Astra: {"x":2.7831478118896484,"y":0.5023731589317322,"z":-9.943633270263671,"instanceId":882,"cardinalDirection":"West","astraCardinalDirection":"South","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerBack?????????: {"x":2.824009895324707,"y":0.5012863874435425,"z":-9.520661354064942,"type":"collision","instanceId":890,"cardinalDirection":"South","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerBack from Astra: {"x":2.824009895324707,"y":0.5012863874435425,"z":-8.820661354064942,"instanceId":890,"cardinalDirection":"South","astraCardinalDirection":"North","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerRight?????????: {"x":3.295684576034546,"y":0.5014193654060364,"z":-2.6566221714019777,"type":"collision","instanceId":898,"cardinalDirection":"East","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerLeft from Astra: {"x":2.5956845760345457,"y":0.5014193654060364,"z":-2.6566221714019775,"instanceId":898,"cardinalDirection":"East","astraCardinalDirection":"West","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerLeft?????????: {"x":2.8012454509735109,"y":0.502743124961853,"z":-2.635733127593994,"type":"collision","instanceId":882,"cardinalDirection":"West","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerLeft from Astra: {"x":3.501245450973511,"y":0.502743124961853,"z":-2.635733127593994,"instanceId":882,"cardinalDirection":"West","astraCardinalDirection":"East","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerRight?????????: {"x":3.314964771270752,"y":0.5019410252571106,"z":-2.6303868293762209,"type":"collision","instanceId":898,"cardinalDirection":"East","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerLeft from Astra: {"x":3.314964771270752,"y":0.5019410252571106,"z":-1.9303868293762207,"instanceId":898,"cardinalDirection":"East","astraCardinalDirection":"North","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerFront?????????: {"x":3.1728272438049318,"y":0.5027681589126587,"z":-1.0764179229736329,"type":"collision","instanceId":902,"cardinalDirection":"North","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerFront from Astra: {"x":2.4728272438049315,"y":0.5027681589126587,"z":-1.0764179229736328,"instanceId":902,"cardinalDirection":"North","astraCardinalDirection":"West","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerLeft?????????: {"x":0.7026351094245911,"y":0.500896155834198,"z":-1.1586655378341675,"type":"collision","instanceId":888,"cardinalDirection":"West","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerLeft from Astra: {"x":0.7026351094245911,"y":0.500896155834198,"z":-1.8586655378341674,"instanceId":888,"cardinalDirection":"West","astraCardinalDirection":"South","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerRight?????????: {"x":1.5366498231887818,"y":0.5015780925750732,"z":-7.63798189163208,"type":"collision","instanceId":882,"cardinalDirection":"East","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerLeft from Astra: {"x":1.5366498231887817,"y":0.5015780925750732,"z":-8.33798189163208,"instanceId":882,"cardinalDirection":"East","astraCardinalDirection":"South","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerBack?????????: {"x":1.5327308177947999,"y":0.5022167563438416,"z":-9.52450942993164,"type":"collision","instanceId":890,"cardinalDirection":"South","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerBack from Astra: {"x":0.8327308177947998,"y":0.5022167563438416,"z":-9.52450942993164,"instanceId":890,"cardinalDirection":"South","astraCardinalDirection":"West","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerLeft?????????: {"x":-9.024115562438965,"y":0.5023868083953857,"z":-9.0045747756958,"type":"collision","instanceId":878,"cardinalDirection":"West","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerLeft from Astra: {"x":-8.324115562438966,"y":0.5023868083953857,"z":-9.0045747756958,"instanceId":878,"cardinalDirection":"West","astraCardinalDirection":"East","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerFront?????????: {"x":-7.534228324890137,"y":0.5007749795913696,"z":-8.96707534790039,"type":"collision","instanceId":914,"cardinalDirection":"North","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerFront from Astra: {"x":-7.534228324890137,"y":0.5007749795913696,"z":-9.66707534790039,"instanceId":914,"cardinalDirection":"North","astraCardinalDirection":"South","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerBack?????????: {"x":-7.517083168029785,"y":0.5029007196426392,"z":-9.761130332946778,"type":"collision","instanceId":890,"cardinalDirection":"South","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerBack from Astra: {"x":-6.817083168029785,"y":0.5029007196426392,"z":-9.761130332946777,"instanceId":890,"cardinalDirection":"South","astraCardinalDirection":"East","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerLeft?????????: {"x":-7.4182257652282719,"y":0.5033198595046997,"z":-9.746062278747559,"type":"collision","instanceId":890,"cardinalDirection":"West","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerLeft from Astra: {"x":-7.4182257652282715,"y":0.5033198595046997,"z":-10.446062278747558,"instanceId":890,"cardinalDirection":"West","astraCardinalDirection":"South","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerRight?????????: {"x":-7.403152942657471,"y":0.499432235956192,"z":-9.844842910766602,"type":"collision","instanceId":890,"cardinalDirection":"East","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerLeft from Astra: {"x":-7.403152942657471,"y":0.499432235956192,"z":-9.144842910766602,"instanceId":890,"cardinalDirection":"East","astraCardinalDirection":"North","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerBack?????????: {"x":-7.4667253494262699,"y":0.5095902681350708,"z":-7.801042079925537,"type":"collision","instanceId":914,"cardinalDirection":"South","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerBack from Astra: {"x":-6.766725349426269,"y":0.5095902681350708,"z":-7.801042079925537,"instanceId":914,"cardinalDirection":"South","astraCardinalDirection":"East","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerRight?????????: {"x":-0.5276899337768555,"y":0.500813364982605,"z":-7.699245452880859,"type":"collision","instanceId":904,"cardinalDirection":"East","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerLeft from Astra: {"x":-0.5276899337768555,"y":0.500813364982605,"z":-6.999245452880859,"instanceId":904,"cardinalDirection":"East","astraCardinalDirection":"North","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerFront?????????: {"x":-0.7311493158340454,"y":0.502723753452301,"z":-5.153624534606934,"type":"collision","instanceId":920,"cardinalDirection":"North","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerFront from Astra: {"x":-0.7311493158340454,"y":0.502723753452301,"z":-5.853624534606934,"instanceId":920,"cardinalDirection":"North","astraCardinalDirection":"South","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerBack?????????: {"x":-0.8788959383964539,"y":0.5011911988258362,"z":-7.729753494262695,"type":"collision","instanceId":914,"cardinalDirection":"South","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerBack from Astra: {"x":-0.8788959383964539,"y":0.5011911988258362,"z":-7.029753494262695,"instanceId":914,"cardinalDirection":"South","astraCardinalDirection":"North","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerFront?????????: {"x":-1.0772857666015626,"y":0.5023656487464905,"z":-5.176943778991699,"type":"collision","instanceId":920,"cardinalDirection":"North","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerFront from Astra: {"x":-1.7772857666015625,"y":0.5023656487464905,"z":-5.176943778991699,"instanceId":920,"cardinalDirection":"North","astraCardinalDirection":"West","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerLeft?????????: {"x":-9.029890060424805,"y":0.5020877122879028,"z":-5.122739315032959,"type":"collision","instanceId":878,"cardinalDirection":"West","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerLeft from Astra: {"x":-9.029890060424805,"y":0.5020877122879028,"z":-5.822739315032959,"instanceId":878,"cardinalDirection":"West","astraCardinalDirection":"South","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerBack?????????: {"x":-9.02016544342041,"y":0.5005924105644226,"z":-5.951638698577881,"type":"collision","instanceId":876,"cardinalDirection":"South","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerBack from Astra: {"x":-8.32016544342041,"y":0.5005924105644226,"z":-5.951638698577881,"instanceId":876,"cardinalDirection":"South","astraCardinalDirection":"East","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerRight?????????: {"x":-0.5425742864608765,"y":0.5011993050575256,"z":-5.6923089027404789,"type":"collision","instanceId":904,"cardinalDirection":"East","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerLeft from Astra: {"x":-1.2425742864608764,"y":0.5011993050575256,"z":-5.6923089027404785,"instanceId":904,"cardinalDirection":"East","astraCardinalDirection":"West","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerLeft?????????: {"x":-9.014152526855469,"y":0.5019246935844421,"z":-5.283597946166992,"type":"collision","instanceId":878,"cardinalDirection":"West","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerLeft from Astra: {"x":-9.014152526855469,"y":0.5019246935844421,"z":-4.583597946166992,"instanceId":878,"cardinalDirection":"West","astraCardinalDirection":"North","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerFront?????????: {"x":-8.833305358886719,"y":0.5017973184585571,"z":-3.1403796672821047,"type":"collision","instanceId":912,"cardinalDirection":"North","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerFront from Astra: {"x":-8.13330535888672,"y":0.5017973184585571,"z":-3.1403796672821045,"instanceId":912,"cardinalDirection":"North","astraCardinalDirection":"East","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerRight?????????: {"x":-0.5474786758422852,"y":0.5022246837615967,"z":-3.1022276878356935,"type":"collision","instanceId":888,"cardinalDirection":"East","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerLeft from Astra: {"x":-0.5474786758422852,"y":0.5022246837615967,"z":-2.402227687835693,"instanceId":888,"cardinalDirection":"East","astraCardinalDirection":"North","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerFront?????????: {"x":-0.6928666234016419,"y":0.501194179058075,"z":-1.0746697187423707,"type":"collision","instanceId":902,"cardinalDirection":"North","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerFront from Astra: {"x":-0.6928666234016418,"y":0.501194179058075,"z":-1.7746697187423706,"instanceId":902,"cardinalDirection":"North","astraCardinalDirection":"South","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerBack?????????: {"x":-0.82418292760849,"y":0.5004251003265381,"z":-3.9343080520629885,"type":"collision","instanceId":920,"cardinalDirection":"South","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerBack from Astra: {"x":-0.82418292760849,"y":0.5004251003265381,"z":-3.234308052062988,"instanceId":920,"cardinalDirection":"South","astraCardinalDirection":"North","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerFront?????????: {"x":-1.0160243511199952,"y":0.5015493631362915,"z":-1.0757956504821778,"type":"collision","instanceId":902,"cardinalDirection":"North","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerFront from Astra: {"x":-1.716024351119995,"y":0.5015493631362915,"z":-1.0757956504821777,"instanceId":902,"cardinalDirection":"North","astraCardinalDirection":"West","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerLeft?????????: {"x":-9.02433967590332,"y":0.4998401403427124,"z":-1.2782090902328492,"type":"collision","instanceId":878,"cardinalDirection":"West","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerLeft from Astra: {"x":-9.02433967590332,"y":0.4998401403427124,"z":-1.978209090232849,"instanceId":878,"cardinalDirection":"West","astraCardinalDirection":"South","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerBack?????????: {"x":-8.956854820251465,"y":0.5032792687416077,"z":-1.8998061418533326,"type":"collision","instanceId":912,"cardinalDirection":"South","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerBack from Astra: {"x":-8.956854820251465,"y":0.5032792687416077,"z":-1.1998061418533326,"instanceId":912,"cardinalDirection":"South","astraCardinalDirection":"North","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION DATA SEND TO ASTRA???????SupportPlayerFront?????????: {"x":-8.412450790405274,"y":0.5006258487701416,"z":4.362902641296387,"type":"collision","instanceId":880,"cardinalDirection":"North","astraCardinalDirection":""}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+COLLISION RECEIVED SupportPlayerFront from Astra: {"x":-7.712450790405273,"y":0.5006258487701416,"z":4.362902641296387,"instanceId":880,"cardinalDirection":"North","astraCardinalDirection":"East","type":"collision"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OnTriggerEnter: PickUp
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
