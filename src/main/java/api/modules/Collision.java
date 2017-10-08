@@ -13,6 +13,7 @@ import com.google.gson.Gson;
 
 import api.AstraApi;
 import api.modules.utils.Position;
+import api.modules.utils.Scale;
 import api.modules.utils.UnityJson;
 import astra.core.Module;
 
@@ -64,6 +65,7 @@ public class Collision extends Module {
 		// get current collision passed from Unity
 		UnityJson requestFromUnity = gson.fromJson(event, UnityJson.class);
         Position reuestFromUnityPosition = requestFromUnity.getPosition();
+        Scale reuestFromUnityScale = requestFromUnity.getScale();
         
 		String cardinalDirection = requestFromUnity.getCardinalDirection();
 		int instanceId = requestFromUnity.getInstanceId();
@@ -79,6 +81,7 @@ public class Collision extends Module {
 		responseFromAstra.setInstanceId(requestFromUnity.getInstanceId());
 		responseFromAstra.setCardinalDirection(requestFromUnity.getCardinalDirection());
         responseFromAstra.setPosition(reuestFromUnityPosition);
+        responseFromAstra.setScale(reuestFromUnityScale);
         
 		// get the last agent collision data if exist
 		if (cardinalDirections.isEmpty() || (!cardinalDirections.isEmpty() && cardinalDirections.get(key) == null)) {

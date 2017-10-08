@@ -7,6 +7,7 @@ public class UnityJson implements Serializable {
 	private static final long serialVersionUID = -5120509323047032926L;
 	
 	public Position position;
+	public Scale scale;
 	
 	public String cardinalDirection;
 	
@@ -20,6 +21,14 @@ public class UnityJson implements Serializable {
 
 	public void setPosition(Position position) {
 		this.position = position;
+	}
+
+	public Scale getScale() {
+		return scale;
+	}
+
+	public void setScale(Scale scale) {
+		this.scale = scale;
 	}
 
 	public int getInstanceId() {
