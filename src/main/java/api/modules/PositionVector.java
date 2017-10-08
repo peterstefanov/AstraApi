@@ -128,6 +128,12 @@ public class PositionVector extends Module {
 		}
 	}
 
+	/**
+	 * Check if the vector for contains only zero entries and set the current one.
+	 * Basically there is no change from the event passed from Unity, therefore
+	 * position won't change.
+	 * @param responsePosition
+	 */
 	private void checkForZeroVector(Position responsePosition) {
 		if (responsePosition.getX() == AstraApi.ZERO && responsePosition.getY() == AstraApi.ZERO && responsePosition.getZ() == AstraApi.ZERO) {
 			setNonZeroAxis(responsePosition, currentCardinalDirection);
@@ -135,7 +141,7 @@ public class PositionVector extends Module {
 	}
 	
 	/**
-	 * i
+	 * Set coordinates that have non zero entry 
 	 * @param responsePosition
 	 * @param cardinalDirection
 	 */
