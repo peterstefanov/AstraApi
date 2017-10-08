@@ -40,15 +40,15 @@ import astra.core.Module;
  * </br>
  * 
  * <b>Expect input as a Json in the format of:</b></br>
- * {"x":1.649999976158142,"y":1.0,"z":2.700000047683716,"instanceId":9670,"cardinalDirection":South}</br>
+ * {"position":{"x":1.649999976158142,"y":1.0,"z":2.700000047683716},"scale":{"x":0.5,"y":1.0,"z":0.5},"instanceId":9670,"cardinalDirection":"South"}</br>
  * <b>Returns:</b></br>
  * <ul>
  * <li><b>North</b></li>
- * {"x":1.649999976158142,"y":1.0,"z":3.200000047683716,"cardinalDirection":"South","instanceId":9670,"astraCardinalDirection":"North"}
+ * {"position":{"x":1.649999976158142,"y":1.0,"z":3.200000047683716},"scale":{"x":0.5,"y":1.0,"z":0.5},"cardinalDirection":"South","instanceId":9670,"astraCardinalDirection":"North"}
  * <li><b>or West</b></li>
- * {"x":1.149999976158142,"y":1.0,"z":2.700000047683716,"cardinalDirection":"South","instanceId":9670,"astraCardinalDirection":"West"}
+ * {"position":{"x":1.149999976158142,"y":1.0,"z":2.700000047683716},"scale":{"x":0.5,"y":1.0,"z":0.5},"cardinalDirection":"South","instanceId":9670,"astraCardinalDirection":"West"}
  * <li><b>or East</b></li>
- * {"x":2.149999976158142,"y":1.0,"z":2.700000047683716,"cardinalDirection":"South","instanceId":9670,"astraCardinalDirection":"East"}
+ * {"position":{"x":2.149999976158142,"y":1.0,"z":2.700000047683716},"scale":{"x":0.5,"y":1.0,"z":0.5},"cardinalDirection":"South","instanceId":9670,"astraCardinalDirection":"East"}
  * </ul>
  */
 public class Collision extends Module {

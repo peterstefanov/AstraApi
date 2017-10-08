@@ -25,7 +25,7 @@ public class DirectionVectorEventTest extends EventTypeTest{
 	public void initialSingleDirectionvectorSyncEventSouthTest() {
 		//Agent created
 		String agent = createAgent();			
-		String event = "{\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z + "},\"cardinalDirection\":" + AstraApi.SOUTH + "}";			
+		String event = "{\"scale\":{\"x\":0.5,\"y\":1.0,\"z\":0.5},\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z + "},\"cardinalDirection\":" + AstraApi.SOUTH + "}";			
 		
 		String syncEventPosition = api.syncEvent(agent, EventType.DIRECTION_VECTOR, new Object[] {event});							
 		UnityJson json = (UnityJson) gson.fromJson(syncEventPosition, UnityJson.class);
@@ -40,7 +40,7 @@ public class DirectionVectorEventTest extends EventTypeTest{
 	public void initialSingleDirectionvectorSyncEventNorthTest() {
 		//Agent created
 		String agent = createAgent();			
-		String event = "{\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z + "},\"cardinalDirection\":" + AstraApi.NORTH + "}";			
+		String event = "{\"scale\":{\"x\":0.5,\"y\":1.0,\"z\":0.5},\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z + "},\"cardinalDirection\":" + AstraApi.NORTH + "}";			
 		
 		String syncEventPosition = api.syncEvent(agent, EventType.DIRECTION_VECTOR, new Object[] {event});							
 		UnityJson json = (UnityJson) gson.fromJson(syncEventPosition, UnityJson.class);
@@ -55,7 +55,7 @@ public class DirectionVectorEventTest extends EventTypeTest{
 	public void initialSingleDirectionvectorSyncEventWestTest() {
 		//Agent created
 		String agent = createAgent();			
-		String event = "{\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z + "},\"cardinalDirection\":" + AstraApi.WEST + "}";			
+		String event = "{\"scale\":{\"x\":0.5,\"y\":1.0,\"z\":0.5},\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z + "},\"cardinalDirection\":" + AstraApi.WEST + "}";			
 		
 		String syncEventPosition = api.syncEvent(agent, EventType.DIRECTION_VECTOR, new Object[] {event});							
 		UnityJson json = (UnityJson) gson.fromJson(syncEventPosition, UnityJson.class);
@@ -70,7 +70,7 @@ public class DirectionVectorEventTest extends EventTypeTest{
 	public void initialSingleDirectionvectorSyncEventEastTest() {
 		//Agent created
 		String agent = createAgent();			
-		String event = "{\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z + "},\"cardinalDirection\":" + AstraApi.EAST + "}";			
+		String event = "{\"scale\":{\"x\":0.5,\"y\":1.0,\"z\":0.5},\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z + "},\"cardinalDirection\":" + AstraApi.EAST + "}";			
 		
 		String syncEventPosition = api.syncEvent(agent, EventType.DIRECTION_VECTOR, new Object[] {event});							
 		UnityJson json = (UnityJson) gson.fromJson(syncEventPosition, UnityJson.class);

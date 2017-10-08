@@ -3,11 +3,13 @@ package api.command.directionvector;
 import api.EventType;
 import api.command.AstraCommand;
 import api.modules.utils.Position;
+import api.modules.utils.Scale;
 import api.modules.utils.UnityJson;
 
 public class DirectionVectorCommand extends AstraCommand {
 
 	public Position position;
+	public Scale scale;
 	
 	public DirectionVectorCommand(final Object[] value) {
 		super(EventType.DIRECTION_VECTOR);
@@ -18,5 +20,6 @@ public class DirectionVectorCommand extends AstraCommand {
 		UnityJson json = (UnityJson) gson.fromJson(value[0].toString(), UnityJson.class);
 		
 		this.position = new Position(json.getPosition());
+		this.scale = new Scale(json.getScale());
 	}
 }
