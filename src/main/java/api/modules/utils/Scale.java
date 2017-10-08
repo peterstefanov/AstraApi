@@ -12,10 +12,10 @@ public class Scale implements Serializable {
 	
 	public Scale () {}
 
-	public Scale (Scale position) {
-		this.x = position.getX();
-		this.y = position.getY();
-		this.z = position.getZ();
+	public Scale (Scale scale) {
+		this.x = scale.getX();
+		this.y = scale.getY();
+		this.z = scale.getZ();
 	}
 	
 	public Double getX() {
