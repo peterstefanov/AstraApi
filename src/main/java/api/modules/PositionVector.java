@@ -24,7 +24,7 @@ import astra.core.Module;
  * <li><b>very first time</b></li>
  * {"type":"position_vector","position":{"x":1.649999976158142,"y":1.0,"z":2.700000047683716},"scale":{"x":0.5,"y":1.0,"z":0.5},"cardinalDirection":"South"}
  * <li><b>every next time</b></li>
- * {"type":"position_vector","position":{"x":1.649999976158142,"y":1.0,"z":2.500000047683716}"scale":{"x":0.5,"y":1.0,"z":0.5},} </br>
+ * {"type":"position_vector","position":{"x":1.649999976158142,"y":1.0,"z":2.500000047683716}"scale":{"x":0.5,"y":1.0,"z":0.5}} </br>
  * and compare it with the previous recorded coordinates
  * </ul>
  * <b>Returns:</b></br>
