@@ -13,15 +13,12 @@ public class SupportPlayerBack : MonoBehaviour {
 	}
 
 	void OnCollisionEnter (Collision collision) {
-		if (collision.gameObject.CompareTag ("Wall") && !avatar.currentCollider.Equals(GameManager.CARDINAL_DIRECTION_SOUTH)) {
+		if (avatar.shouldMove && collision.gameObject.CompareTag ("Wall") && !avatar.currentCollider.Equals(GameManager.CARDINAL_DIRECTION_SOUTH)) {
 			avatar.currentCollider = GameManager.CARDINAL_DIRECTION_SOUTH;
 
 			avatar.isCollided = true;
 
-			PositionJson collisionDirection = new PositionJson ();
-			collisionDirection.x = avatar.transform.position.x;
-			collisionDirection.y = avatar.transform.position.y;
-			collisionDirection.z = avatar.transform.position.z;
+			AstraJson collisionDirection = new AstraJson (this.transform);
 			collisionDirection.instanceId = collision.collider.GetInstanceID ();
 			collisionDirection.cardinalDirection = GameManager.CARDINAL_DIRECTION_SOUTH;
 			collisionDirection.type = GameManager.EVENT_COLLISION;
@@ -31,7 +28,7 @@ public class SupportPlayerBack : MonoBehaviour {
 			string collisionFromAstra = GameManager.api.syncEvent (avatar.agentName, GameManager.EVENT_COLLISION, new object[] { collisionDirectionJson });
 
 			Debug.Log ("COLLISION RECEIVED SupportPlayerBack from Astra: " + collisionFromAstra);
-			PositionJson collisionResponse = JsonUtility.FromJson<PositionJson> (collisionFromAstra); 
+			AstraJson collisionResponse = JsonUtility.FromJson<AstraJson> (collisionFromAstra); 
 
 			//align with Astra update and change the direction for position_vector
 			GameManager.api.clear(avatar.agentName, GameManager.EVENT_POSITION_VECTOR);

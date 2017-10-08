@@ -33,9 +33,10 @@ public class PlayerMovement : MonoBehaviour {
 			string positionVectorFromAstra = GameManager.api.receive(agentName, GameManager.EVENT_POSITION_VECTOR);
 
 			if (positionVectorFromAstra != null && !isCollided) {
-				//Debug.Log ("POSITION VECTOR RECEIVED from Astra: " + positionVectorFromAstra);
-				PositionJson positionVector = JsonUtility.FromJson<PositionJson> (positionVectorFromAstra); 
-				Vector3 movement = new Vector3 (positionVector.x, 0.0f, positionVector.z);
+				Debug.Log ("POSITION VECTOR RECEIVED from Astra: " + positionVectorFromAstra);
+				AstraJson positionVector = JsonUtility.FromJson<AstraJson> (positionVectorFromAstra); 
+				Debug.Log ("positionVector: " + positionVector);
+				Vector3 movement = new Vector3 (positionVector.position.x, 0.0f, positionVector.position.z);
 				//for direction vector-use transform Translate to apply the direction vector
 				this.transform.Translate (movement * moveSpeed * Time.deltaTime, Space.Self);
 				//for position vector - directly assign the coordinates
@@ -49,7 +50,6 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-		Debug.Log ("OnTriggerEnter: " + other.gameObject.tag);
 		if (other.gameObject.CompareTag("PickUp")) {
 			other.gameObject.SetActive(false);
 			winText.text = "Founded";
@@ -60,33 +60,27 @@ public class PlayerMovement : MonoBehaviour {
 	private void UpdateAgentVectorDirection () {
 		//only if no acting collision keep sending position updates
 		if (!isCollided && shouldMove) {
-			PositionJson directions = new PositionJson ();
-			directions.x = this.transform.position.x;
-			directions.y = this.transform.position.y;
-			directions.z = this.transform.position.z;
+			AstraJson directions = new AstraJson (this.transform);
 			directions.type = GameManager.EVENT_POSITION_VECTOR;
 
 			string json = JsonUtility.ToJson (directions);
-			//Debug.Log ("UpdateAgentVectorDirection: " + json);
+			Debug.Log ("UpdateAgentVectorDirection: " + json);
 			GameManager.api.asyncEvent (agentName, GameManager.EVENT_POSITION_VECTOR, new object[] { json });
 		}
 	}
 
 	public void UpdateAgentInitialVectorDirection (string cardinalDirection) {
 		//make the agent move
-		PositionJson directions = new PositionJson ();
-		directions.x = this.transform.position.x;
-		directions.y = this.transform.position.y;
-		directions.z = this.transform.position.z;
+		AstraJson directions = new AstraJson (this.transform);
 		directions.type = GameManager.EVENT_POSITION;
 		directions.cardinalDirection = cardinalDirection;
 	    string initialJson = JsonUtility.ToJson (directions);
-		//Debug.Log ("UpdateAgentInitialVectorDirection: " + initialJson);
+		Debug.Log ("UpdateAgentInitialVectorDirection: " + initialJson);
 		string response = GameManager.api.syncEvent (agentName, GameManager.EVENT_POSITION_VECTOR, new object[] { initialJson });
 
-		//Debug.Log ("POSITION INITIAL VECTOR RECEIVED from Astra: " + response);
-		PositionJson positionInitialVector = JsonUtility.FromJson<PositionJson> (response); 
-		Vector3 movement = new Vector3 (positionInitialVector.x, 0.0f, positionInitialVector.z);
+		Debug.Log ("POSITION INITIAL VECTOR RECEIVED from Astra: " + response);
+		AstraJson positionInitialVector = JsonUtility.FromJson<AstraJson> (response); 
+		Vector3 movement = new Vector3 (positionInitialVector.position.x, 0.0f, positionInitialVector.position.z);
 		//this.transform.rotation = Quaternion.LookRotation(movement);
 		this.transform.Translate (movement * moveSpeed * Time.deltaTime, Space.Self);
 
