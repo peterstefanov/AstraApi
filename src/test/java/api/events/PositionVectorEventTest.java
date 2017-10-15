@@ -129,7 +129,7 @@ public class PositionVectorEventTest extends EventTypeTest{
 		assertEquals(AstraApi.ONE, position.getZ());
 	}
 	
-	//@Test
+	@Test
 	public void multiplePositionVectorSyncEventChangeDirectionTest() {
 		//Agent created
 		String agent = createAgent();			
@@ -164,7 +164,7 @@ public class PositionVectorEventTest extends EventTypeTest{
 		values = (UnityJson) gson.fromJson(syncEventPosition, UnityJson.class);
 		position = values.getPosition();
 		
-		assertEquals(new Double(-AstraApi.ONE.doubleValue()), position.getX());
+		assertEquals(new Double(AstraApi.ONE.doubleValue()), position.getX());
 		assertEquals(AstraApi.ZERO, position.getY());		
 		assertEquals(AstraApi.ZERO, position.getZ());
 	}

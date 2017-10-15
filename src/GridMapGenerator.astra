@@ -1,0 +1,21 @@
+agent GridMapGenerator extends Player {
+	module Console console;
+		
+	rule +!collision(string collision, string event) {
+	    //record on map
+	    string collisionEvent = gridMap.updateGridMap(event);
+	    Player::!collision(collision, collisionEvent);
+	}
+	
+	rule +!positionVector(string positionVector, string event) {
+	    //record on map
+	    string positionEvent = gridMap.updateGridMap(event);
+	    Player::!positionVector(positionVector, positionEvent);
+	}
+	
+	rule +!position(string position, string event) {
+	    //record on map
+	    string positionEvent = gridMap.updateGridMap(event);
+	    Player::!position(position, positionEvent);
+	}
+}

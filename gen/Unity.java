@@ -62,6 +62,7 @@ public class Unity extends ASTRAClass {
 		fragment.addModule("positionModule",api.modules.Position.class,agent);
 		fragment.addModule("collisionModule",api.modules.Collision.class,agent);
 		fragment.addModule("positionVectorModule",api.modules.PositionVector.class,agent);
+		fragment.addModule("gridMap",api.modules.ai.GridMap.class,agent);
 		return fragment;
 	}
 

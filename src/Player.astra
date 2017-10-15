@@ -7,22 +7,32 @@ agent Player extends Unity {
 		Unity::!unity(api);
 	}
 
-	rule $unityModule.event("position", [string position]) {	
-		string direction = positionModule.getDirections(position);
-		console.println("position : " + direction);
-        !sendCommand("position", direction);
+	rule $unityModule.event("position", [string event]) {	
+        !position("position", event);
 	}
 	
-	rule $unityModule.event("position_vector", [string position]) {	
-		string direction = positionVectorModule.getDirectionsVector(position);
-		console.println("position_vector : " + direction);
-        !sendCommand("position_vector", direction);
+	rule +!position(string position, string event) {
+	    position = positionModule.getDirections(event);
+	    !sendCommand("position", position);
+	}
+	
+	rule $unityModule.event("position_vector", [string event]) {	
+	    !positionVector("position_vector", event);	   
+	}
+	
+	rule +!positionVector(string positionVector, string event) {
+	    positionVector = positionVectorModule.getDirectionsVector(event);
+	    console.println("positionVectorResponse: " + positionVector);
+	    !sendCommand("position_vector", positionVector);
 	}
 		
-	rule $unityModule.event("collision", [string cardinalDirection]) {	
-		string collision = collisionModule.getDirections(cardinalDirection);
-		console.println("collision : " + collision);
-        !sendCommand("collision", collision);
+	rule $unityModule.event("collision", [string event]) {
+	    !collision("collision", event);	   
+	}
+	
+	rule +!collision(string collision, string event) {
+	    collision = collisionModule.getDirections(event);
+	    !sendCommand("collision", collision);
 	}
 	
 	rule +!sendCommand(string EventType, string Command) {

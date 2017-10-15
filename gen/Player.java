@@ -44,13 +44,13 @@ public class Player extends ASTRAClass {
 			)
 		));
 		addRule(new Rule(
-			"Player", new int[] {10,9,10,60},
+			"Player", new int[] {10,9,10,57},
 			new ModuleEvent("unityModule",
 				"$ue",
 				new Predicate("event", new Term[] {
 					Primitive.newPrimitive("position"),
 					new ListTerm(new Term[] {
-						new Variable(Type.STRING, "position",false)
+						new Variable(Type.STRING, "event",false)
 					})
 				}),
 				new ModuleEventAdaptor() {
@@ -64,14 +64,40 @@ public class Player extends ASTRAClass {
 			),
 			Predicate.TRUE,
 			new Block(
-				"Player", new int[] {10,59,14,5},
+				"Player", new int[] {10,56,12,5},
 				new Statement[] {
-					new Declaration(
-						new Variable(Type.STRING, "direction"),
-						"Player", new int[] {11,8,14,5},
+					new Subgoal(
+						"Player", new int[] {11,8,12,5},
+						new Goal(
+							new Predicate("position", new Term[] {
+								Primitive.newPrimitive("position"),
+								new Variable(Type.STRING, "event")
+							})
+						)
+					)
+				}
+			)
+		));
+		addRule(new Rule(
+			"Player", new int[] {14,9,14,52},
+			new GoalEvent('+',
+				new Goal(
+					new Predicate("position", new Term[] {
+						new Variable(Type.STRING, "position",false),
+						new Variable(Type.STRING, "event",false)
+					})
+				)
+			),
+			Predicate.TRUE,
+			new Block(
+				"Player", new int[] {14,51,17,5},
+				new Statement[] {
+					new Assignment(
+						new Variable(Type.STRING, "position"),
+						"Player", new int[] {15,8,17,5},
 						new ModuleTerm("positionModule", Type.STRING,
 							new Predicate("getDirections", new Term[] {
-								new Variable(Type.STRING, "position")
+								new Variable(Type.STRING, "event")
 							}),
 							new ModuleTermAdaptor() {
 								public Object invoke(Intention intention, Predicate predicate) {
@@ -87,32 +113,12 @@ public class Player extends ASTRAClass {
 							}
 						)
 					),
-					new ModuleCall("console",
-						"Player", new int[] {12,8,12,50},
-						new Predicate("println", new Term[] {
-							Operator.newOperator('+',
-								Primitive.newPrimitive("position : "),
-								new Variable(Type.STRING, "direction")
-							)
-						}),
-						new DefaultModuleCallAdaptor() {
-							public boolean inline() {
-								return false;
-							}
-
-							public boolean invoke(Intention intention, Predicate predicate) {
-								return ((astra.lang.Console) intention.getModule("Player","console")).println(
-									(java.lang.String) intention.evaluate(predicate.getTerm(0))
-								);
-							}
-						}
-					),
 					new Subgoal(
-						"Player", new int[] {13,8,14,5},
+						"Player", new int[] {16,8,17,5},
 						new Goal(
 							new Predicate("sendCommand", new Term[] {
 								Primitive.newPrimitive("position"),
-								new Variable(Type.STRING, "direction")
+								new Variable(Type.STRING, "position")
 							})
 						)
 					)
@@ -120,13 +126,13 @@ public class Player extends ASTRAClass {
 			)
 		));
 		addRule(new Rule(
-			"Player", new int[] {16,9,16,67},
+			"Player", new int[] {19,9,19,64},
 			new ModuleEvent("unityModule",
 				"$ue",
 				new Predicate("event", new Term[] {
 					Primitive.newPrimitive("position_vector"),
 					new ListTerm(new Term[] {
-						new Variable(Type.STRING, "position",false)
+						new Variable(Type.STRING, "event",false)
 					})
 				}),
 				new ModuleEventAdaptor() {
@@ -140,14 +146,40 @@ public class Player extends ASTRAClass {
 			),
 			Predicate.TRUE,
 			new Block(
-				"Player", new int[] {16,66,20,5},
+				"Player", new int[] {19,63,21,5},
 				new Statement[] {
-					new Declaration(
-						new Variable(Type.STRING, "direction"),
-						"Player", new int[] {17,8,20,5},
+					new Subgoal(
+						"Player", new int[] {20,8,21,5},
+						new Goal(
+							new Predicate("positionVector", new Term[] {
+								Primitive.newPrimitive("position_vector"),
+								new Variable(Type.STRING, "event")
+							})
+						)
+					)
+				}
+			)
+		));
+		addRule(new Rule(
+			"Player", new int[] {23,9,23,64},
+			new GoalEvent('+',
+				new Goal(
+					new Predicate("positionVector", new Term[] {
+						new Variable(Type.STRING, "positionVector",false),
+						new Variable(Type.STRING, "event",false)
+					})
+				)
+			),
+			Predicate.TRUE,
+			new Block(
+				"Player", new int[] {23,63,27,5},
+				new Statement[] {
+					new Assignment(
+						new Variable(Type.STRING, "positionVector"),
+						"Player", new int[] {24,8,27,5},
 						new ModuleTerm("positionVectorModule", Type.STRING,
 							new Predicate("getDirectionsVector", new Term[] {
-								new Variable(Type.STRING, "position")
+								new Variable(Type.STRING, "event")
 							}),
 							new ModuleTermAdaptor() {
 								public Object invoke(Intention intention, Predicate predicate) {
@@ -164,11 +196,11 @@ public class Player extends ASTRAClass {
 						)
 					),
 					new ModuleCall("console",
-						"Player", new int[] {18,8,18,57},
+						"Player", new int[] {25,8,25,68},
 						new Predicate("println", new Term[] {
 							Operator.newOperator('+',
-								Primitive.newPrimitive("position_vector : "),
-								new Variable(Type.STRING, "direction")
+								Primitive.newPrimitive("positionVectorResponse: "),
+								new Variable(Type.STRING, "positionVector")
 							)
 						}),
 						new DefaultModuleCallAdaptor() {
@@ -184,11 +216,11 @@ public class Player extends ASTRAClass {
 						}
 					),
 					new Subgoal(
-						"Player", new int[] {19,8,20,5},
+						"Player", new int[] {26,8,27,5},
 						new Goal(
 							new Predicate("sendCommand", new Term[] {
 								Primitive.newPrimitive("position_vector"),
-								new Variable(Type.STRING, "direction")
+								new Variable(Type.STRING, "positionVector")
 							})
 						)
 					)
@@ -196,13 +228,13 @@ public class Player extends ASTRAClass {
 			)
 		));
 		addRule(new Rule(
-			"Player", new int[] {22,9,22,70},
+			"Player", new int[] {29,9,29,58},
 			new ModuleEvent("unityModule",
 				"$ue",
 				new Predicate("event", new Term[] {
 					Primitive.newPrimitive("collision"),
 					new ListTerm(new Term[] {
-						new Variable(Type.STRING, "cardinalDirection",false)
+						new Variable(Type.STRING, "event",false)
 					})
 				}),
 				new ModuleEventAdaptor() {
@@ -216,14 +248,40 @@ public class Player extends ASTRAClass {
 			),
 			Predicate.TRUE,
 			new Block(
-				"Player", new int[] {22,69,26,5},
+				"Player", new int[] {29,57,31,5},
 				new Statement[] {
-					new Declaration(
+					new Subgoal(
+						"Player", new int[] {30,8,31,5},
+						new Goal(
+							new Predicate("collision", new Term[] {
+								Primitive.newPrimitive("collision"),
+								new Variable(Type.STRING, "event")
+							})
+						)
+					)
+				}
+			)
+		));
+		addRule(new Rule(
+			"Player", new int[] {33,9,33,54},
+			new GoalEvent('+',
+				new Goal(
+					new Predicate("collision", new Term[] {
+						new Variable(Type.STRING, "collision",false),
+						new Variable(Type.STRING, "event",false)
+					})
+				)
+			),
+			Predicate.TRUE,
+			new Block(
+				"Player", new int[] {33,53,36,5},
+				new Statement[] {
+					new Assignment(
 						new Variable(Type.STRING, "collision"),
-						"Player", new int[] {23,8,26,5},
+						"Player", new int[] {34,8,36,5},
 						new ModuleTerm("collisionModule", Type.STRING,
 							new Predicate("getDirections", new Term[] {
-								new Variable(Type.STRING, "cardinalDirection")
+								new Variable(Type.STRING, "event")
 							}),
 							new ModuleTermAdaptor() {
 								public Object invoke(Intention intention, Predicate predicate) {
@@ -239,28 +297,8 @@ public class Player extends ASTRAClass {
 							}
 						)
 					),
-					new ModuleCall("console",
-						"Player", new int[] {24,8,24,51},
-						new Predicate("println", new Term[] {
-							Operator.newOperator('+',
-								Primitive.newPrimitive("collision : "),
-								new Variable(Type.STRING, "collision")
-							)
-						}),
-						new DefaultModuleCallAdaptor() {
-							public boolean inline() {
-								return false;
-							}
-
-							public boolean invoke(Intention intention, Predicate predicate) {
-								return ((astra.lang.Console) intention.getModule("Player","console")).println(
-									(java.lang.String) intention.evaluate(predicate.getTerm(0))
-								);
-							}
-						}
-					),
 					new Subgoal(
-						"Player", new int[] {25,8,26,5},
+						"Player", new int[] {35,8,36,5},
 						new Goal(
 							new Predicate("sendCommand", new Term[] {
 								Primitive.newPrimitive("collision"),
@@ -272,7 +310,7 @@ public class Player extends ASTRAClass {
 			)
 		));
 		addRule(new Rule(
-			"Player", new int[] {28,9,28,58},
+			"Player", new int[] {38,9,38,58},
 			new GoalEvent('+',
 				new Goal(
 					new Predicate("sendCommand", new Term[] {
@@ -283,10 +321,10 @@ public class Player extends ASTRAClass {
 			),
 			Predicate.TRUE,
 			new Block(
-				"Player", new int[] {28,57,30,5},
+				"Player", new int[] {38,57,40,5},
 				new Statement[] {
 					new ModuleCall("unityModule",
-						"Player", new int[] {29,8,29,68},
+						"Player", new int[] {39,8,39,68},
 						new Predicate("sendCommand", new Term[] {
 							new ModuleTerm("system", Type.STRING,
 								new Predicate("name", new Term[] {}),
