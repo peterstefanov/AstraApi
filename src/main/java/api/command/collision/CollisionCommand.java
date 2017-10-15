@@ -3,6 +3,7 @@ package api.command.collision;
 import api.EventType;
 import api.command.AstraCommand;
 import api.modules.utils.Position;
+import api.modules.utils.Rotation;
 import api.modules.utils.Scale;
 import api.modules.utils.UnityJson;
 
@@ -10,6 +11,8 @@ public class CollisionCommand extends AstraCommand {
 
 	public Position position;
 	public Scale scale;
+	public Rotation rotation;
+	
 	public int instanceId;
 	public String cardinalDirection;
 	public String astraCardinalDirection;
@@ -24,6 +27,8 @@ public class CollisionCommand extends AstraCommand {
 		
 		this.position = new Position(json.getPosition());	
 		this.scale = new Scale(json.getScale());
+		this.rotation = new Rotation(json.getRotation());
+		
 		this.cardinalDirection = json.getCardinalDirection();
 		this.astraCardinalDirection = json.getAstraCardinalDirection();
 		this.instanceId = json.getInstanceId();

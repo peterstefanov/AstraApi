@@ -8,6 +8,7 @@ public class UnityJson implements Serializable {
 	
 	public Position position;
 	public Scale scale;
+	public Rotation rotation;
 	
 	public String cardinalDirection;
 	
@@ -29,6 +30,14 @@ public class UnityJson implements Serializable {
 
 	public void setScale(Scale scale) {
 		this.scale = scale;
+	}
+
+	public Rotation getRotation() {
+		return rotation;
+	}
+
+	public void setRotation(Rotation rotation) {
+		this.rotation = rotation;
 	}
 
 	public int getInstanceId() {

@@ -11,10 +11,10 @@ public class Rotation implements Serializable {
 	
 	public Rotation () {}
 
-	public Rotation (Rotation position) {
-		this.x = position.getX();
-		this.y = position.getY();
-		this.z = position.getZ();
+	public Rotation (Rotation rotation) {
+		this.x = rotation.getX();
+		this.y = rotation.getY();
+		this.z = rotation.getZ();
 	}
 	
 	public Double getX() {

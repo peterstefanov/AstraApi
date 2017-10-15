@@ -13,6 +13,7 @@ import com.google.gson.Gson;
 
 import api.AstraApi;
 import api.modules.utils.Position;
+import api.modules.utils.Rotation;
 import api.modules.utils.Scale;
 import api.modules.utils.UnityJson;
 import astra.core.Module;
@@ -40,15 +41,15 @@ import astra.core.Module;
  * </br>
  * 
  * <b>Expect input as a Json in the format of:</b></br>
- * {"position":{"x":1.649999976158142,"y":1.0,"z":2.700000047683716},"scale":{"x":0.5,"y":1.0,"z":0.5},"instanceId":9670,"cardinalDirection":"South"}</br>
+ * {"position":{"x":1.649999976158142,"y":1.0,"z":2.700000047683716},"scale":{"x":0.5,"y":1.0,"z":0.5},"rotation":{"x":0.0,"y":0.0,"z":0.0},"instanceId":9670,"cardinalDirection":"South"}</br>
  * <b>Returns:</b></br>
  * <ul>
  * <li><b>North</b></li>
- * {"position":{"x":1.649999976158142,"y":1.0,"z":3.200000047683716},"scale":{"x":0.5,"y":1.0,"z":0.5},"cardinalDirection":"South","instanceId":9670,"astraCardinalDirection":"North"}
+ * {"position":{"x":1.649999976158142,"y":1.0,"z":3.200000047683716},"scale":{"x":0.5,"y":1.0,"z":0.5},"rotation":{"x":0.0,"y":0.0,"z":0.0},"cardinalDirection":"South","instanceId":9670,"astraCardinalDirection":"North"}
  * <li><b>or West</b></li>
- * {"position":{"x":1.149999976158142,"y":1.0,"z":2.700000047683716},"scale":{"x":0.5,"y":1.0,"z":0.5},"cardinalDirection":"South","instanceId":9670,"astraCardinalDirection":"West"}
+ * {"position":{"x":1.149999976158142,"y":1.0,"z":2.700000047683716},"scale":{"x":0.5,"y":1.0,"z":0.5},"rotation":{"x":0.0,"y":0.0,"z":0.0},"cardinalDirection":"South","instanceId":9670,"astraCardinalDirection":"West"}
  * <li><b>or East</b></li>
- * {"position":{"x":2.149999976158142,"y":1.0,"z":2.700000047683716},"scale":{"x":0.5,"y":1.0,"z":0.5},"cardinalDirection":"South","instanceId":9670,"astraCardinalDirection":"East"}
+ * {"position":{"x":2.149999976158142,"y":1.0,"z":2.700000047683716},"scale":{"x":0.5,"y":1.0,"z":0.5},"rotation":{"x":0.0,"y":0.0,"z":0.0},"cardinalDirection":"South","instanceId":9670,"astraCardinalDirection":"East"}
  * </ul>
  */
 public class Collision extends Module {
@@ -66,6 +67,7 @@ public class Collision extends Module {
 		UnityJson requestFromUnity = gson.fromJson(event, UnityJson.class);
         Position reuestFromUnityPosition = requestFromUnity.getPosition();
         Scale reuestFromUnityScale = requestFromUnity.getScale();
+        Rotation reuestFromUnityRotation = requestFromUnity.getRotation();
         
 		String cardinalDirection = requestFromUnity.getCardinalDirection();
 		int instanceId = requestFromUnity.getInstanceId();
@@ -82,6 +84,7 @@ public class Collision extends Module {
 		responseFromAstra.setCardinalDirection(requestFromUnity.getCardinalDirection());
         responseFromAstra.setPosition(reuestFromUnityPosition);
         responseFromAstra.setScale(reuestFromUnityScale);
+        responseFromAstra.setRotation(reuestFromUnityRotation);
         
 		// get the last agent collision data if exist
 		if (cardinalDirections.isEmpty() || (!cardinalDirections.isEmpty() && cardinalDirections.get(key) == null)) {
