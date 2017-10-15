@@ -272,83 +272,7 @@ public class Player extends ASTRAClass {
 			)
 		));
 		addRule(new Rule(
-			"Player", new int[] {28,9,28,76},
-			new ModuleEvent("unityModule",
-				"$ue",
-				new Predicate("event", new Term[] {
-					Primitive.newPrimitive("direction_vector"),
-					new ListTerm(new Term[] {
-						new Variable(Type.STRING, "directionsVector",false)
-					})
-				}),
-				new ModuleEventAdaptor() {
-					public Event generate(astra.core.Agent agent, Predicate predicate) {
-						return ((api.modules.Unity) agent.getModule("Player","unityModule")).event(
-							predicate.getTerm(0),
-							predicate.getTerm(1)
-						);
-					}
-				}
-			),
-			Predicate.TRUE,
-			new Block(
-				"Player", new int[] {28,75,32,5},
-				new Statement[] {
-					new Declaration(
-						new Variable(Type.STRING, "direction"),
-						"Player", new int[] {29,8,32,5},
-						new ModuleTerm("directionVector", Type.STRING,
-							new Predicate("getDirections", new Term[] {
-								new Variable(Type.STRING, "directionsVector")
-							}),
-							new ModuleTermAdaptor() {
-								public Object invoke(Intention intention, Predicate predicate) {
-									return ((api.modules.DirectionVector) intention.getModule("Player","directionVector")).getDirections(
-										(java.lang.String) intention.evaluate(predicate.getTerm(0))
-									);
-								}
-								public Object invoke(BindingsEvaluateVisitor visitor, Predicate predicate) {
-									return ((api.modules.DirectionVector) visitor.agent().getModule("Player","directionVector")).getDirections(
-										(java.lang.String) visitor.evaluate(predicate.getTerm(0))
-									);
-								}
-							}
-						)
-					),
-					new ModuleCall("console",
-						"Player", new int[] {30,8,30,58},
-						new Predicate("println", new Term[] {
-							Operator.newOperator('+',
-								Primitive.newPrimitive("direction_vector : "),
-								new Variable(Type.STRING, "direction")
-							)
-						}),
-						new DefaultModuleCallAdaptor() {
-							public boolean inline() {
-								return false;
-							}
-
-							public boolean invoke(Intention intention, Predicate predicate) {
-								return ((astra.lang.Console) intention.getModule("Player","console")).println(
-									(java.lang.String) intention.evaluate(predicate.getTerm(0))
-								);
-							}
-						}
-					),
-					new Subgoal(
-						"Player", new int[] {31,8,32,5},
-						new Goal(
-							new Predicate("sendCommand", new Term[] {
-								Primitive.newPrimitive("direction_vector"),
-								new Variable(Type.STRING, "direction")
-							})
-						)
-					)
-				}
-			)
-		));
-		addRule(new Rule(
-			"Player", new int[] {34,9,34,58},
+			"Player", new int[] {28,9,28,58},
 			new GoalEvent('+',
 				new Goal(
 					new Predicate("sendCommand", new Term[] {
@@ -359,10 +283,10 @@ public class Player extends ASTRAClass {
 			),
 			Predicate.TRUE,
 			new Block(
-				"Player", new int[] {34,57,36,5},
+				"Player", new int[] {28,57,30,5},
 				new Statement[] {
 					new ModuleCall("unityModule",
-						"Player", new int[] {35,8,35,68},
+						"Player", new int[] {29,8,29,68},
 						new Predicate("sendCommand", new Term[] {
 							new ModuleTerm("system", Type.STRING,
 								new Predicate("name", new Term[] {}),

@@ -20,13 +20,13 @@ import astra.core.Module;
  * <b>Expect input as a Json in the format of:</b></br>
  * <ul>
  * <li><b>very first time</b></li>
- * {"type":"position","scale":{"x":0.5,"y":1.0,"z":0.5},"position":{"x":1.649999976158142,"y":1.0,"z":2.700000047683716},"cardinalDirection":"South"}
+ * {"type":"position","scale":{"x":0.5,"y":1.0,"z":0.5},"rotation":{"x":0.0,"y":0.0,"z":0.0},"position":{"x":1.649999976158142,"y":1.0,"z":2.700000047683716},"cardinalDirection":"South"}
  * <li><b>every next time</b></li>
- * {"type":"position","scale":{"x":0.5,"y":1.0,"z":0.5},"position":{"x":1.649999976158142,"y":1.0,"z":2.700000047683716}} </br>
+ * {"type":"position","scale":{"x":0.5,"y":1.0,"z":0.5},"rotation":{"x":0.0,"y":0.0,"z":0.0},"position":{"x":1.649999976158142,"y":1.0,"z":2.700000047683716}} </br>
  * and compare it with the previous recorded coordinates
  * </ul>
  * <b>Returns:</b></br>
- * {"position":{"x":1.649999976158142,"y":1.0,"z":2.200000047683716},"scale":{"x":0.5,"y":1.0,"z":0.5},"type":"position"}
+ * {"position":{"x":1.649999976158142,"y":1.0,"z":2.200000047683716},"scale":{"x":0.5,"y":1.0,"z":0.5},"rotation":{"x":0.0,"y":0.0,"z":0.0},"type":"position"}
  */
 public class Position extends Module {
 
