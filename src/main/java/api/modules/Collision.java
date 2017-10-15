@@ -156,7 +156,7 @@ public class Collision extends Module {
 		position.setY(position.getY());
 		position.setZ(position.getZ());
 
-		// based on astra cardinal direction modify coordinates
+		// based on Astra cardinal direction modify coordinates
 		switch (cardinalDirection) {
 		case AstraApi.NORTH:
 			position.setZ(position.getZ() + AstraApi.API_CHANGE_RATE);
