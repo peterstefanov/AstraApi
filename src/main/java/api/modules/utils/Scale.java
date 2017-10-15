@@ -41,4 +41,8 @@ public class Scale implements Serializable {
 	public void setZ(Double z) {
 		this.z = z;
 	}
+	
+	public String toString() {
+		return "'scale':{'x':" + getX() + ", 'y':" + getY() + ", 'z':" +getZ() + "}" ;
+	}
 }

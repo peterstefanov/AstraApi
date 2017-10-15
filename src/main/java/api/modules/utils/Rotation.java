@@ -2,17 +2,16 @@ package api.modules.utils;
 
 import java.io.Serializable;
 
-public class Position implements Serializable {
+public class Rotation implements Serializable {
 
-	private static final long serialVersionUID = 8450079507452997947L;
-	
+	private static final long serialVersionUID = -5080728242440736168L;
 	public Double x;
 	public Double y;
 	public Double z;
 	
-	public Position () {}
+	public Rotation () {}
 
-	public Position (Position position) {
+	public Rotation (Rotation position) {
 		this.x = position.getX();
 		this.y = position.getY();
 		this.z = position.getZ();
@@ -43,6 +42,6 @@ public class Position implements Serializable {
 	}
 	
 	public String toString() {
-		return "'position':{'x':" + getX() + ", 'y':" + getY() + ", 'z':" +getZ() + "}" ;
+		return "'rotation':{'x':" + getX() + ", 'y':" + getY() + ", 'z':" +getZ() + "}" ;
 	}
 }
