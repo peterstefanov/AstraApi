@@ -65,6 +65,69 @@ public class GridMapGeneratorTest {
 	}	
 	
 	@Test
+	public void multipleAsyncPositionVectorMovingNorthTest() {
+			
+		//Agent created	
+		String agent = createAgent();			
+		
+		//Agent created	
+		String agentTwo = createAgent();
+		//String agentTwo = api.createAgent("GridMapGenerator", "GridMapGenerator"); 
+		
+		String agentSmartyPans = api.createAgent("smartyPans", "SmartyPans");
+		
+		LinkedList<String> listEvents = new LinkedList<String>();
+		
+		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":0.0},\"scale\":{\"x\":0.5,\"y\":1.0,\"z\":0.5},\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z + "},\"cardinalDirection\":" + AstraApi.NORTH + "}"});
+		getEventResponse(agent, listEvents, EventType.POSITION_VECTOR);
+		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":0.0},\"scale\":{\"x\":0.5,\"y\":1.0,\"z\":0.5},\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_1 + "}}"});
+		getEventResponse(agent, listEvents, EventType.POSITION_VECTOR);
+		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":0.0},\"scale\":{\"x\":0.5,\"y\":1.0,\"z\":0.5},\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_2 + "}}"});
+		getEventResponse(agent, listEvents, EventType.POSITION_VECTOR);
+		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":0.0},\"scale\":{\"x\":0.5,\"y\":1.0,\"z\":0.5},\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_3 + "}}"});
+		getEventResponse(agent, listEvents, EventType.POSITION_VECTOR);
+		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":0.0},\"scale\":{\"x\":0.5,\"y\":1.0,\"z\":0.5},\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_4 + "}}"});
+		getEventResponse(agent, listEvents, EventType.POSITION_VECTOR);
+		
+		assertTrue(listEvents.size() == 5);
+		
+		int countItems = 0;
+		
+		for (int i = 0; i < listEvents.size(); i ++) {
+			UnityJson values = (UnityJson) gson.fromJson(listEvents.get(i), UnityJson.class);
+			Position position = values.getPosition();
+			
+			assertEquals(AstraApi.ZERO, position.getX());
+			assertEquals(AstraApi.ZERO, position.getY());		
+			if (countItems == 0) {
+				assertEquals(AstraApi.ONE, position.getZ());
+			} else if (countItems == 1) {
+				assertEquals(AstraApi.ONE, position.getZ());
+			} else if (countItems == 2) {
+				assertEquals(AstraApi.ONE, position.getZ());
+			} else if (countItems == 3) {
+				assertEquals(AstraApi.ONE, position.getZ());
+			} else if (countItems == 4) {
+				assertEquals(AstraApi.ONE, position.getZ());
+			}
+						
+			countItems ++;
+		}
+		
+		String collisionSouthEvent = api.syncEvent(agentTwo, EventType.COLLISION, new Object[] { SOUTH_COLLISION });
+		System.out.println("collisionSouthEvent agentTwo: " + collisionSouthEvent);
+		
+		String collisionNorthEvent = api.syncEvent(agentTwo, EventType.COLLISION, new Object[] { NORTH_COLLISION });
+		System.out.println("collisionNorthEvent agentTwo: " + collisionNorthEvent);
+		
+		String collisionNorthEvent1 = api.syncEvent(agent, EventType.COLLISION, new Object[] { NORTH_COLLISION });
+		System.out.println("collisionNorthEvent1 agent: " + collisionNorthEvent1);
+		
+		String collisionNorthEvent2 = api.syncEvent(agent, EventType.POSITION, new Object[] { NORTH_COLLISION });
+		System.out.println("collisionNorthEvent1 agent: " + collisionNorthEvent2);
+	}
+	
+	@Test
 	public void initialSinglePositionVectorSyncEventSouthTest() {
 		//Agent created
 		String agent = createAgent();			

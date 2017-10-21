@@ -1,21 +1,79 @@
 agent GridMapGenerator extends Player {
 	module Console console;
+    module Messaging messaging;
+	module System system;
 		
+	types mapGenerator_types{
+	    formula state(string);
+		formula taskPathReady(string);
+	}
+		
+	initial !init();
+	
+	rule +!init() {
+        //messaging.installService("rmi", "astra.messaging.rmi.RMIService");
+        //messaging.startService("rmi");
+	}
+	
 	rule +!collision(string collision, string event) {
-	    //record on map
-	    string collisionEvent = gridMap.updateGridMap(event);
-	    Player::!collision(collision, collisionEvent);
+
+	    int size = gridMap.getMapSize();
+	    
+	    if (size > 99) {
+           !doNotify(mapSize(size));            
+	    } else {
+	       //update on map
+	       gridMap.updateGridMap(collision, event);  
+	    }	   
+	    
+	    Player::!collision(collision, event);   
 	}
 	
 	rule +!positionVector(string positionVector, string event) {
-	    //record on map
-	    string positionEvent = gridMap.updateGridMap(event);
-	    Player::!positionVector(positionVector, positionEvent);
+
+	    int size = gridMap.getMapSize();
+	    
+	    if (size > 99) {
+           !doNotify(mapSize(size));           
+	    } else {
+	       //update the map
+	       gridMap.updateGridMap(positionVector, event);
+	    }  
+
+	    Player::!positionVector(positionVector, event); 
 	}
 	
 	rule +!position(string position, string event) {
-	    //record on map
-	    string positionEvent = gridMap.updateGridMap(event);
-	    Player::!position(position, positionEvent);
+	   
+	    int size = gridMap.getMapSize();	    
+	    
+	    if (size > 99) {
+           !doNotify(mapSize(size));          
+	    } else {
+	       //update on map
+	       gridMap.updateGridMap(position, event);
+	    } 
+	     
+	    Player::!position(position, event);
+	}
+	
+	rule +!doNotify(mapSize(int X)) : X == 100 {
+		send(request, "smartyPans", taskPathReady("Ready to go"));
+	}
+	
+	rule +!doNotify(mapSize(int X)) : X > 100 {
+	    console.println("DO NOTHING: " + X);
+	}
+	
+	rule @message(agree, string From, state(string Response)) {
+		console.println(From + " : " + Response);   
+	}
+	
+	rule @message(refuse, string From, state(string Response)) {
+		console.println(From + " : " + Response);
+	}
+	
+	rule @message(failure, string From, state(string Response)) {
+		console.println(From + " : " + Response);
 	}
 }

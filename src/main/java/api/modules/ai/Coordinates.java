@@ -2,7 +2,7 @@ package api.modules.ai;
 
 /**
  * x and y are the coordinates in the grid, they define each cell. Each cell has a side 
- * where this side can be either blocked or unblocked.
+ * where this side can be either blocked or unblocked, basically the direction to move.
  */
 public class Coordinates {
 

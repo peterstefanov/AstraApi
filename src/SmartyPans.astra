@@ -1,0 +1,33 @@
+agent SmartyPans extends Player {
+	
+	module Console console;
+	module System system;
+	
+	types smartyPans_types{
+		formula state(string);
+		formula taskPathReady(string);
+	}
+	
+	//listen for a message from MapGenerator if path is ready
+	rule @message(request, string From, taskPathReady(string Ready)){
+
+		if(Ready == "Ready to go") {
+			send(agree, From, state(system.name() + " agreed to move!"));
+			try {
+				!satrtMovingNow(" received a message from Map generator");
+			} recover {
+				send(failure, From, state(system.name() + " fails to move"));
+			}
+			
+		} else {
+			send(refuse, From, state(system.name() + " refused to move, path is not ready yet!"));
+		}
+	}
+	
+	rule +!satrtMovingNow(string Text) {
+	    //TODO start sending command via the api - the agent suppose to listen in Unity/
+	    console.println(" SmartyPans: " + Text);
+	    string map = gridMap.getBreadCrumbs();
+	    console.println("SmartyPans - get the map: " + map);	    
+	}
+}
