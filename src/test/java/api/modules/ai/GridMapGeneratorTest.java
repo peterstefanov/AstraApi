@@ -12,10 +12,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.google.gson.Gson;
-
 import api.AstraApi;
-import api.AstraApiImpl;
 import api.EventType;
 import api.events.EventTypeTest;
 import api.modules.utils.Position;
@@ -23,8 +20,6 @@ import api.modules.utils.UnityJson;
 
 public class GridMapGeneratorTest extends EventTypeTest {
 
-	private AstraApiImpl api;
-	private Gson gson;
 	
 	private static final Double X = new Double("1.649999976158142");
 	private static final Double Y = new Double("1.0");
