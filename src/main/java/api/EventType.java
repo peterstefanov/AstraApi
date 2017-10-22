@@ -5,7 +5,7 @@ public class EventType {
 	public final static String POSITION = "position";
 	public final static String COLLISION = "collision";
 	public final static String POSITION_VECTOR = "position_vector";
-	public final static String MESSAGE = "messsaging";
+	public final static String MESSAGE = "messaging";
 	
 	public static boolean isEventTypeSupported(String unityEvent) {
 

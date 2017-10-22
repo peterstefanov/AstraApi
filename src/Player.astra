@@ -22,7 +22,6 @@ agent Player extends Unity {
 	
 	rule +!positionVector(string positionVector, string event) {
 	    positionVector = positionVectorModule.getDirectionsVector(event);
-	    console.println("positionVectorResponse: " + positionVector);
 	    !sendCommand("position_vector", positionVector);
 	}
 		

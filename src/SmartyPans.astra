@@ -14,7 +14,7 @@ agent SmartyPans extends Player {
 		if(Ready == "Ready to go") {
 			send(agree, From, state(system.name() + " agreed to move!"));
 			try {
-				!satrtMovingNow(" received a message from Map generator");
+				!satrtMovingNow("Ready");
 			} recover {
 				send(failure, From, state(system.name() + " fails to move"));
 			}
@@ -24,12 +24,8 @@ agent SmartyPans extends Player {
 		}
 	}
 	
-	rule +!satrtMovingNow(string Text) {
-	    //TODO start sending command via the api - the agent suppose to listen in Unity/
-	    console.println(" SmartyPans: " + Text);
-	    string map = gridMap.getBreadCrumbs();
-	    console.println("SmartyPans - get the map: " + map);	
-	    !messaging("messaging", "Ready");    
+	rule +!satrtMovingNow(string Text) {	
+	    !messaging("messaging", "{'message': 'Ready'}");    
 	}
 	
 	rule +!messaging(string messaging, string event) {	   	    

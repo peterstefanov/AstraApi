@@ -71,7 +71,7 @@ public class SmartyPans extends ASTRAClass {
 												"SmartyPans", new int[] {17,16,18,13},
 												new Goal(
 													new Predicate("satrtMovingNow", new Term[] {
-														Primitive.newPrimitive(" received a message from Map generator")
+														Primitive.newPrimitive("Ready")
 													})
 												)
 											)
@@ -149,71 +149,14 @@ public class SmartyPans extends ASTRAClass {
 			),
 			Predicate.TRUE,
 			new Block(
-				"SmartyPans", new int[] {27,39,33,5},
+				"SmartyPans", new int[] {27,39,29,5},
 				new Statement[] {
-					new ModuleCall("console",
-						"SmartyPans", new int[] {29,8,29,47},
-						new Predicate("println", new Term[] {
-							Operator.newOperator('+',
-								Primitive.newPrimitive(" SmartyPans: "),
-								new Variable(Type.STRING, "Text")
-							)
-						}),
-						new DefaultModuleCallAdaptor() {
-							public boolean inline() {
-								return false;
-							}
-
-							public boolean invoke(Intention intention, Predicate predicate) {
-								return ((astra.lang.Console) intention.getModule("SmartyPans","console")).println(
-									(java.lang.String) intention.evaluate(predicate.getTerm(0))
-								);
-							}
-						}
-					),
-					new Declaration(
-						new Variable(Type.STRING, "map"),
-						"SmartyPans", new int[] {30,8,33,5},
-						new ModuleTerm("gridMap", Type.STRING,
-							new Predicate("getBreadCrumbs", new Term[] {}),
-							new ModuleTermAdaptor() {
-								public Object invoke(Intention intention, Predicate predicate) {
-									return ((api.modules.ai.GridMap) intention.getModule("SmartyPans","gridMap")).getBreadCrumbs(
-									);
-								}
-								public Object invoke(BindingsEvaluateVisitor visitor, Predicate predicate) {
-									return ((api.modules.ai.GridMap) visitor.agent().getModule("SmartyPans","gridMap")).getBreadCrumbs(
-									);
-								}
-							}
-						)
-					),
-					new ModuleCall("console",
-						"SmartyPans", new int[] {31,8,31,59},
-						new Predicate("println", new Term[] {
-							Operator.newOperator('+',
-								Primitive.newPrimitive("SmartyPans - get the map: "),
-								new Variable(Type.STRING, "map")
-							)
-						}),
-						new DefaultModuleCallAdaptor() {
-							public boolean inline() {
-								return false;
-							}
-
-							public boolean invoke(Intention intention, Predicate predicate) {
-								return ((astra.lang.Console) intention.getModule("SmartyPans","console")).println(
-									(java.lang.String) intention.evaluate(predicate.getTerm(0))
-								);
-							}
-						}
-					),
 					new Subgoal(
-						"SmartyPans", new int[] {32,8,33,5},
+						"SmartyPans", new int[] {28,8,29,5},
 						new Goal(
 							new Predicate("messaging", new Term[] {
 								Primitive.newPrimitive("messaging"),
-								Primitive.newPrimitive("Ready")
+								Primitive.newPrimitive("{'message': 'Ready'}")
 							})
 						)
 					)
@@ -221,7 +164,7 @@ public class SmartyPans extends ASTRAClass {
 			)
 		));
 		addRule(new Rule(
-			"SmartyPans", new int[] {35,9,35,54},
+			"SmartyPans", new int[] {31,9,31,54},
 			new GoalEvent('+',
 				new Goal(
 					new Predicate("messaging", new Term[] {
@@ -232,10 +175,10 @@ public class SmartyPans extends ASTRAClass {
 			),
 			Predicate.TRUE,
 			new Block(
-				"SmartyPans", new int[] {35,53,37,5},
+				"SmartyPans", new int[] {31,53,33,5},
 				new Statement[] {
 					new ScopedSubgoal(
-						"SmartyPans", new int[] {36,8,37,5},
+						"SmartyPans", new int[] {32,8,33,5},
 						"Player",
 						new Goal(
 							new Predicate("messaging", new Term[] {

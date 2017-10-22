@@ -19,7 +19,7 @@ public class GridMapGenerator extends ASTRAClass {
 	public GridMapGenerator() {
 		setParents(new Class[] {Player.class});
 		addRule(new Rule(
-			"GridMapGenerator", new int[] {13,9,13,19},
+			"GridMapGenerator", new int[] {14,9,14,19},
 			new GoalEvent('+',
 				new Goal(
 					new Predicate("init", new Term[] {})
@@ -27,13 +27,13 @@ public class GridMapGenerator extends ASTRAClass {
 			),
 			Predicate.TRUE,
 			new Block(
-				"GridMapGenerator", new int[] {13,18,16,5},
+				"GridMapGenerator", new int[] {14,18,17,5},
 				new Statement[] {
 				}
 			)
 		));
 		addRule(new Rule(
-			"GridMapGenerator", new int[] {18,9,18,54},
+			"GridMapGenerator", new int[] {19,9,19,54},
 			new GoalEvent('+',
 				new Goal(
 					new Predicate("collision", new Term[] {
@@ -44,11 +44,11 @@ public class GridMapGenerator extends ASTRAClass {
 			),
 			Predicate.TRUE,
 			new Block(
-				"GridMapGenerator", new int[] {18,53,30,5},
+				"GridMapGenerator", new int[] {19,53,31,5},
 				new Statement[] {
 					new Declaration(
 						new Variable(Type.INTEGER, "size"),
-						"GridMapGenerator", new int[] {20,8,30,5},
+						"GridMapGenerator", new int[] {21,8,31,5},
 						new ModuleTerm("gridMap", Type.INTEGER,
 							new Predicate("getMapSize", new Term[] {}),
 							new ModuleTermAdaptor() {
@@ -64,16 +64,16 @@ public class GridMapGenerator extends ASTRAClass {
 						)
 					),
 					new If(
-						"GridMapGenerator", new int[] {22,8,30,5},
+						"GridMapGenerator", new int[] {23,8,31,5},
 						new Comparison(">",
 							new Variable(Type.INTEGER, "size"),
 							Primitive.newPrimitive(99)
 						),
 						new Block(
-							"GridMapGenerator", new int[] {22,22,24,9},
+							"GridMapGenerator", new int[] {23,22,25,9},
 							new Statement[] {
 								new Subgoal(
-									"GridMapGenerator", new int[] {23,11,24,9},
+									"GridMapGenerator", new int[] {24,11,25,9},
 									new Goal(
 										new Predicate("doNotify", new Term[] {
 											new Funct("mapSize", new Term[] {
@@ -85,10 +85,10 @@ public class GridMapGenerator extends ASTRAClass {
 							}
 						),
 						new Block(
-							"GridMapGenerator", new int[] {24,15,30,5},
+							"GridMapGenerator", new int[] {25,15,31,5},
 							new Statement[] {
 								new ModuleCall("gridMap",
-									"GridMapGenerator", new int[] {26,11,26,50},
+									"GridMapGenerator", new int[] {27,11,27,50},
 									new Predicate("updateGridMap", new Term[] {
 										new Variable(Type.STRING, "collision"),
 										new Variable(Type.STRING, "event")
@@ -110,7 +110,7 @@ public class GridMapGenerator extends ASTRAClass {
 						)
 					),
 					new ScopedSubgoal(
-						"GridMapGenerator", new int[] {29,8,30,5},
+						"GridMapGenerator", new int[] {30,8,31,5},
 						"Player",
 						new Goal(
 							new Predicate("collision", new Term[] {
@@ -123,7 +123,7 @@ public class GridMapGenerator extends ASTRAClass {
 			)
 		));
 		addRule(new Rule(
-			"GridMapGenerator", new int[] {32,9,32,64},
+			"GridMapGenerator", new int[] {33,9,33,64},
 			new GoalEvent('+',
 				new Goal(
 					new Predicate("positionVector", new Term[] {
@@ -134,11 +134,11 @@ public class GridMapGenerator extends ASTRAClass {
 			),
 			Predicate.TRUE,
 			new Block(
-				"GridMapGenerator", new int[] {32,63,44,5},
+				"GridMapGenerator", new int[] {33,63,45,5},
 				new Statement[] {
 					new Declaration(
 						new Variable(Type.INTEGER, "size"),
-						"GridMapGenerator", new int[] {34,8,44,5},
+						"GridMapGenerator", new int[] {35,8,45,5},
 						new ModuleTerm("gridMap", Type.INTEGER,
 							new Predicate("getMapSize", new Term[] {}),
 							new ModuleTermAdaptor() {
@@ -154,16 +154,16 @@ public class GridMapGenerator extends ASTRAClass {
 						)
 					),
 					new If(
-						"GridMapGenerator", new int[] {36,8,44,5},
+						"GridMapGenerator", new int[] {37,8,45,5},
 						new Comparison(">",
 							new Variable(Type.INTEGER, "size"),
 							Primitive.newPrimitive(99)
 						),
 						new Block(
-							"GridMapGenerator", new int[] {36,22,38,9},
+							"GridMapGenerator", new int[] {37,22,39,9},
 							new Statement[] {
 								new Subgoal(
-									"GridMapGenerator", new int[] {37,11,38,9},
+									"GridMapGenerator", new int[] {38,11,39,9},
 									new Goal(
 										new Predicate("doNotify", new Term[] {
 											new Funct("mapSize", new Term[] {
@@ -175,10 +175,10 @@ public class GridMapGenerator extends ASTRAClass {
 							}
 						),
 						new Block(
-							"GridMapGenerator", new int[] {38,15,44,5},
+							"GridMapGenerator", new int[] {39,15,45,5},
 							new Statement[] {
 								new ModuleCall("gridMap",
-									"GridMapGenerator", new int[] {40,11,40,55},
+									"GridMapGenerator", new int[] {41,11,41,55},
 									new Predicate("updateGridMap", new Term[] {
 										new Variable(Type.STRING, "positionVector"),
 										new Variable(Type.STRING, "event")
@@ -200,7 +200,7 @@ public class GridMapGenerator extends ASTRAClass {
 						)
 					),
 					new ScopedSubgoal(
-						"GridMapGenerator", new int[] {43,8,44,5},
+						"GridMapGenerator", new int[] {44,8,45,5},
 						"Player",
 						new Goal(
 							new Predicate("positionVector", new Term[] {
@@ -213,7 +213,7 @@ public class GridMapGenerator extends ASTRAClass {
 			)
 		));
 		addRule(new Rule(
-			"GridMapGenerator", new int[] {46,9,46,52},
+			"GridMapGenerator", new int[] {47,9,47,52},
 			new GoalEvent('+',
 				new Goal(
 					new Predicate("position", new Term[] {
@@ -224,11 +224,11 @@ public class GridMapGenerator extends ASTRAClass {
 			),
 			Predicate.TRUE,
 			new Block(
-				"GridMapGenerator", new int[] {46,51,58,5},
+				"GridMapGenerator", new int[] {47,51,59,5},
 				new Statement[] {
 					new Declaration(
 						new Variable(Type.INTEGER, "size"),
-						"GridMapGenerator", new int[] {48,8,58,5},
+						"GridMapGenerator", new int[] {49,8,59,5},
 						new ModuleTerm("gridMap", Type.INTEGER,
 							new Predicate("getMapSize", new Term[] {}),
 							new ModuleTermAdaptor() {
@@ -244,16 +244,16 @@ public class GridMapGenerator extends ASTRAClass {
 						)
 					),
 					new If(
-						"GridMapGenerator", new int[] {50,8,58,5},
+						"GridMapGenerator", new int[] {51,8,59,5},
 						new Comparison(">",
 							new Variable(Type.INTEGER, "size"),
 							Primitive.newPrimitive(99)
 						),
 						new Block(
-							"GridMapGenerator", new int[] {50,22,52,9},
+							"GridMapGenerator", new int[] {51,22,53,9},
 							new Statement[] {
 								new Subgoal(
-									"GridMapGenerator", new int[] {51,11,52,9},
+									"GridMapGenerator", new int[] {52,11,53,9},
 									new Goal(
 										new Predicate("doNotify", new Term[] {
 											new Funct("mapSize", new Term[] {
@@ -265,10 +265,10 @@ public class GridMapGenerator extends ASTRAClass {
 							}
 						),
 						new Block(
-							"GridMapGenerator", new int[] {52,15,58,5},
+							"GridMapGenerator", new int[] {53,15,59,5},
 							new Statement[] {
 								new ModuleCall("gridMap",
-									"GridMapGenerator", new int[] {54,11,54,49},
+									"GridMapGenerator", new int[] {55,11,55,49},
 									new Predicate("updateGridMap", new Term[] {
 										new Variable(Type.STRING, "position"),
 										new Variable(Type.STRING, "event")
@@ -290,7 +290,7 @@ public class GridMapGenerator extends ASTRAClass {
 						)
 					),
 					new ScopedSubgoal(
-						"GridMapGenerator", new int[] {57,8,58,5},
+						"GridMapGenerator", new int[] {58,8,59,5},
 						"Player",
 						new Goal(
 							new Predicate("position", new Term[] {
@@ -303,7 +303,7 @@ public class GridMapGenerator extends ASTRAClass {
 			)
 		));
 		addRule(new Rule(
-			"GridMapGenerator", new int[] {60,9,60,47},
+			"GridMapGenerator", new int[] {61,9,61,47},
 			new GoalEvent('+',
 				new Goal(
 					new Predicate("doNotify", new Term[] {
@@ -318,9 +318,9 @@ public class GridMapGenerator extends ASTRAClass {
 				Primitive.newPrimitive(100)
 			),
 			new Block(
-				"GridMapGenerator", new int[] {60,46,62,5},
+				"GridMapGenerator", new int[] {61,46,63,5},
 				new Statement[] {
-					new Send("GridMapGenerator", new int[] {61,8,61,65},
+					new Send("GridMapGenerator", new int[] {62,8,62,65},
 						new Performative("request"),
 						Primitive.newPrimitive("smartyPans"),
 						new Predicate("taskPathReady", new Term[] {
@@ -331,7 +331,7 @@ public class GridMapGenerator extends ASTRAClass {
 			)
 		));
 		addRule(new Rule(
-			"GridMapGenerator", new int[] {64,9,64,46},
+			"GridMapGenerator", new int[] {65,9,65,37},
 			new GoalEvent('+',
 				new Goal(
 					new Predicate("doNotify", new Term[] {
@@ -341,15 +341,12 @@ public class GridMapGenerator extends ASTRAClass {
 					})
 				)
 			),
-			new Comparison(">",
-				new Variable(Type.INTEGER, "X"),
-				Primitive.newPrimitive(100)
-			),
+			Predicate.TRUE,
 			new Block(
-				"GridMapGenerator", new int[] {64,45,66,5},
+				"GridMapGenerator", new int[] {65,36,67,5},
 				new Statement[] {
 					new ModuleCall("console",
-						"GridMapGenerator", new int[] {65,8,65,43},
+						"GridMapGenerator", new int[] {66,8,66,43},
 						new Predicate("println", new Term[] {
 							Operator.newOperator('+',
 								Primitive.newPrimitive("DO NOTHING: "),
@@ -372,7 +369,7 @@ public class GridMapGenerator extends ASTRAClass {
 			)
 		));
 		addRule(new Rule(
-			"GridMapGenerator", new int[] {68,9,68,63},
+			"GridMapGenerator", new int[] {69,9,69,63},
 			new MessageEvent(
 				new Performative("agree"),
 				new Variable(Type.STRING, "From",false),
@@ -382,10 +379,10 @@ public class GridMapGenerator extends ASTRAClass {
 			),
 			Predicate.TRUE,
 			new Block(
-				"GridMapGenerator", new int[] {68,62,70,5},
+				"GridMapGenerator", new int[] {69,62,71,5},
 				new Statement[] {
 					new ModuleCall("console",
-						"GridMapGenerator", new int[] {69,8,69,48},
+						"GridMapGenerator", new int[] {70,8,70,48},
 						new Predicate("println", new Term[] {
 							Operator.newOperator('+',
 								new Variable(Type.STRING, "From"),
@@ -411,7 +408,7 @@ public class GridMapGenerator extends ASTRAClass {
 			)
 		));
 		addRule(new Rule(
-			"GridMapGenerator", new int[] {72,9,72,64},
+			"GridMapGenerator", new int[] {73,9,73,64},
 			new MessageEvent(
 				new Performative("refuse"),
 				new Variable(Type.STRING, "From",false),
@@ -421,10 +418,10 @@ public class GridMapGenerator extends ASTRAClass {
 			),
 			Predicate.TRUE,
 			new Block(
-				"GridMapGenerator", new int[] {72,63,74,5},
+				"GridMapGenerator", new int[] {73,63,75,5},
 				new Statement[] {
 					new ModuleCall("console",
-						"GridMapGenerator", new int[] {73,8,73,48},
+						"GridMapGenerator", new int[] {74,8,74,48},
 						new Predicate("println", new Term[] {
 							Operator.newOperator('+',
 								new Variable(Type.STRING, "From"),
@@ -450,7 +447,7 @@ public class GridMapGenerator extends ASTRAClass {
 			)
 		));
 		addRule(new Rule(
-			"GridMapGenerator", new int[] {76,9,76,65},
+			"GridMapGenerator", new int[] {77,9,77,65},
 			new MessageEvent(
 				new Performative("failure"),
 				new Variable(Type.STRING, "From",false),
@@ -460,10 +457,10 @@ public class GridMapGenerator extends ASTRAClass {
 			),
 			Predicate.TRUE,
 			new Block(
-				"GridMapGenerator", new int[] {76,64,78,5},
+				"GridMapGenerator", new int[] {77,64,79,5},
 				new Statement[] {
 					new ModuleCall("console",
-						"GridMapGenerator", new int[] {77,8,77,48},
+						"GridMapGenerator", new int[] {78,8,78,48},
 						new Predicate("println", new Term[] {
 							Operator.newOperator('+',
 								new Variable(Type.STRING, "From"),

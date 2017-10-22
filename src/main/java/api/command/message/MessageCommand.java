@@ -15,6 +15,7 @@ public class MessageCommand extends AstraCommand {
 
 	private void processValues(Object[] value) {
 		UnityJson json = (UnityJson) gson.fromJson(value[0].toString(), UnityJson.class);
+		
 		this.message = json.getMessage();
 	}
 }

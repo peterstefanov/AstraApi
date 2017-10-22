@@ -6,6 +6,7 @@ agent GridMapGenerator extends Player {
 	types mapGenerator_types{
 	    formula state(string);
 		formula taskPathReady(string);
+		formula mapSize(int);
 	}
 		
 	initial !init();
@@ -61,7 +62,7 @@ agent GridMapGenerator extends Player {
 		send(request, "smartyPans", taskPathReady("Ready to go"));
 	}
 	
-	rule +!doNotify(mapSize(int X)) : X > 100 {
+	rule +!doNotify(mapSize(int X)) {
 	    console.println("DO NOTHING: " + X);
 	}
 	

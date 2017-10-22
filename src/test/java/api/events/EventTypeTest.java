@@ -19,7 +19,7 @@ public class EventTypeTest {
 		api = new AstraApiImpl();
 	}
 	
-	protected String createAgent() {
+	public String createAgent() {
 		return api.createAgent(getUniqueString(), "Player");
 	}
 	

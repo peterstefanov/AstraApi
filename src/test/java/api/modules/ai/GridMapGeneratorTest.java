@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Random;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -18,10 +17,11 @@ import com.google.gson.Gson;
 import api.AstraApi;
 import api.AstraApiImpl;
 import api.EventType;
+import api.events.EventTypeTest;
 import api.modules.utils.Position;
 import api.modules.utils.UnityJson;
 
-public class GridMapGeneratorTest {
+public class GridMapGeneratorTest extends EventTypeTest {
 
 	private AstraApiImpl api;
 	private Gson gson;
@@ -57,24 +57,16 @@ public class GridMapGeneratorTest {
 	public static final String NEGATIVE_NORTH_COLLISION = "{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":0.0},\"scale\":{\"x\":0.5,\"y\":1.0,\"z\":0.5},\"position\":{\"x\":" + X_N + ",\"y\":" + Y_N + ",\"z\":" + Z_N + "},\"instanceId\":" + INSTANCE_ID + ",\"cardinalDirection\":" + AstraApi.NORTH +"}";
 	
 
-	
 	@Before
 	public void setUp() {	
-		gson = new Gson();
-		api = new AstraApiImpl();
-	}	
+		super.setUp();
+	}
 	
 	@Test
 	public void multipleAsyncPositionVectorMovingNorthTest() {
 			
 		//Agent created	
-		String agent = createAgent();			
-		
-		//Agent created	
-		String agentTwo = createAgent();
-		//String agentTwo = api.createAgent("GridMapGenerator", "GridMapGenerator"); 
-		
-		String agentSmartyPans = api.createAgent("smartyPans", "SmartyPans");
+		String agent = createAgent();					
 		
 		LinkedList<String> listEvents = new LinkedList<String>();
 		
@@ -113,18 +105,6 @@ public class GridMapGeneratorTest {
 						
 			countItems ++;
 		}
-		
-		String collisionSouthEvent = api.syncEvent(agentTwo, EventType.COLLISION, new Object[] { SOUTH_COLLISION });
-		System.out.println("collisionSouthEvent agentTwo: " + collisionSouthEvent);
-		
-		String collisionNorthEvent = api.syncEvent(agentTwo, EventType.COLLISION, new Object[] { NORTH_COLLISION });
-		System.out.println("collisionNorthEvent agentTwo: " + collisionNorthEvent);
-		
-		String collisionNorthEvent1 = api.syncEvent(agent, EventType.COLLISION, new Object[] { NORTH_COLLISION });
-		System.out.println("collisionNorthEvent1 agent: " + collisionNorthEvent1);
-		
-		String collisionNorthEvent2 = api.syncEvent(agent, EventType.POSITION, new Object[] { NORTH_COLLISION });
-		System.out.println("collisionNorthEvent1 agent: " + collisionNorthEvent2);
 	}
 	
 	@Test
@@ -936,18 +916,7 @@ public class GridMapGeneratorTest {
 		}
 	}
 	
-	private String createAgent() {
+	public String createAgent() {
 		return api.createAgent(getUniqueString(), "GridMapGenerator");
 	}
-	
-	private String getUniqueString() {
-        String alphabet = "abcdefghijklmnoprstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-        StringBuilder salt = new StringBuilder();
-        Random r = new Random();
-        while (salt.length() < 9) { // length of the random string.
-            int index = (int) (r.nextFloat() * alphabet.length());
-            salt.append(alphabet.charAt(index));
-        }
-        return salt.toString();
-    }
 }

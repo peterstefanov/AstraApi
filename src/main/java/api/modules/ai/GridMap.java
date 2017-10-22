@@ -38,12 +38,6 @@ public class GridMap extends Module {
         //round the double we are concerned 
         Coordinates coord = new Coordinates((int) Math.round(position.getX()), (int) Math.round(position.getZ()), cardinalDirection);
         breadCrumbs.add(coord);
-		
-		if (!breadCrumbs.isEmpty()) {
-			for (Coordinates coords : breadCrumbs) {
-				System.out.println(coords.toString());
-			}
-		}
 
         return true;
 	}
