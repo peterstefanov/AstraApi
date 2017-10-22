@@ -30,6 +30,7 @@ public class Unity extends Module {
 		commandFactory.put(EventType.POSITION,  new AstraCommandFactory(EventType.POSITION));
 		commandFactory.put(EventType.COLLISION, new AstraCommandFactory(EventType.COLLISION));
 		commandFactory.put(EventType.POSITION_VECTOR, new AstraCommandFactory(EventType.POSITION_VECTOR));
+		commandFactory.put(EventType.MESSAGE, new AstraCommandFactory(EventType.MESSAGE));
 	}
 	
 	@ACTION

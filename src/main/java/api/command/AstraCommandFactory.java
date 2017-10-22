@@ -2,6 +2,7 @@ package api.command;
 
 import api.EventType;
 import api.command.collision.CollisionCommand;
+import api.command.message.MessageCommand;
 import api.command.possition.PositionCommand;
 import api.command.possition.PositionVectorCommand;
 
@@ -23,6 +24,8 @@ public class AstraCommandFactory extends AstraCommand implements CommandFactory 
 			return new CollisionCommand(arguments);
 		case EventType.POSITION_VECTOR:
 			return new PositionVectorCommand(arguments);
+		case EventType.MESSAGE:
+			return new MessageCommand(arguments);
 		default:
 			return new PositionCommand(arguments);
 		}

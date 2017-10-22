@@ -3,6 +3,7 @@ agent Unity {
 	module api.modules.Position positionModule;
     module api.modules.Collision collisionModule;
     module api.modules.PositionVector positionVectorModule;
+    module api.modules.Messaging messagingModule;
     module api.modules.ai.GridMap gridMap; 
     
 	rule +!unity(api.AstraApi api) {

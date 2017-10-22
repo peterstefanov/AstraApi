@@ -16,6 +16,8 @@ public class UnityJson implements Serializable {
 	public int instanceId;
 	public String astraCardinalDirection;
 
+	public String message;
+	
 	public Position getPosition() {
 		return position;
 	}
@@ -62,5 +64,13 @@ public class UnityJson implements Serializable {
 
 	public void setAstraCardinalDirection(String astraCardinalDirection) {
 		this.astraCardinalDirection = astraCardinalDirection;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
 	}
 }

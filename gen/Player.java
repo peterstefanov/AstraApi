@@ -311,6 +311,88 @@ public class Player extends ASTRAClass {
 		));
 		addRule(new Rule(
 			"Player", new int[] {38,9,38,58},
+			new ModuleEvent("unityModule",
+				"$ue",
+				new Predicate("event", new Term[] {
+					Primitive.newPrimitive("messaging"),
+					new ListTerm(new Term[] {
+						new Variable(Type.STRING, "event",false)
+					})
+				}),
+				new ModuleEventAdaptor() {
+					public Event generate(astra.core.Agent agent, Predicate predicate) {
+						return ((api.modules.Unity) agent.getModule("Player","unityModule")).event(
+							predicate.getTerm(0),
+							predicate.getTerm(1)
+						);
+					}
+				}
+			),
+			Predicate.TRUE,
+			new Block(
+				"Player", new int[] {38,57,40,5},
+				new Statement[] {
+					new Subgoal(
+						"Player", new int[] {39,8,40,5},
+						new Goal(
+							new Predicate("messaging", new Term[] {
+								Primitive.newPrimitive("messaging"),
+								new Variable(Type.STRING, "event")
+							})
+						)
+					)
+				}
+			)
+		));
+		addRule(new Rule(
+			"Player", new int[] {42,9,42,54},
+			new GoalEvent('+',
+				new Goal(
+					new Predicate("messaging", new Term[] {
+						new Variable(Type.STRING, "messaging",false),
+						new Variable(Type.STRING, "event",false)
+					})
+				)
+			),
+			Predicate.TRUE,
+			new Block(
+				"Player", new int[] {42,53,45,5},
+				new Statement[] {
+					new Assignment(
+						new Variable(Type.STRING, "messaging"),
+						"Player", new int[] {43,8,45,5},
+						new ModuleTerm("messagingModule", Type.STRING,
+							new Predicate("sendMessage", new Term[] {
+								new Variable(Type.STRING, "event")
+							}),
+							new ModuleTermAdaptor() {
+								public Object invoke(Intention intention, Predicate predicate) {
+									return ((api.modules.Messaging) intention.getModule("Player","messagingModule")).sendMessage(
+										(java.lang.String) intention.evaluate(predicate.getTerm(0))
+									);
+								}
+								public Object invoke(BindingsEvaluateVisitor visitor, Predicate predicate) {
+									return ((api.modules.Messaging) visitor.agent().getModule("Player","messagingModule")).sendMessage(
+										(java.lang.String) visitor.evaluate(predicate.getTerm(0))
+									);
+								}
+							}
+						)
+					),
+					new Subgoal(
+						"Player", new int[] {44,8,45,5},
+						new Goal(
+							new Predicate("sendCommand", new Term[] {
+								Primitive.newPrimitive("messaging"),
+								new Variable(Type.STRING, "messaging")
+							})
+						)
+					)
+				}
+			)
+		));
+		addRule(new Rule(
+			"Player", new int[] {47,9,47,58},
 			new GoalEvent('+',
 				new Goal(
 					new Predicate("sendCommand", new Term[] {
@@ -321,10 +403,10 @@ public class Player extends ASTRAClass {
 			),
 			Predicate.TRUE,
 			new Block(
-				"Player", new int[] {38,57,40,5},
+				"Player", new int[] {47,57,49,5},
 				new Statement[] {
 					new ModuleCall("unityModule",
-						"Player", new int[] {39,8,39,68},
+						"Player", new int[] {48,8,48,68},
 						new Predicate("sendCommand", new Term[] {
 							new ModuleTerm("system", Type.STRING,
 								new Predicate("name", new Term[] {}),

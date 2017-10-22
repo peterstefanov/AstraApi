@@ -149,7 +149,7 @@ public class SmartyPans extends ASTRAClass {
 			),
 			Predicate.TRUE,
 			new Block(
-				"SmartyPans", new int[] {27,39,32,5},
+				"SmartyPans", new int[] {27,39,33,5},
 				new Statement[] {
 					new ModuleCall("console",
 						"SmartyPans", new int[] {29,8,29,47},
@@ -173,7 +173,7 @@ public class SmartyPans extends ASTRAClass {
 					),
 					new Declaration(
 						new Variable(Type.STRING, "map"),
-						"SmartyPans", new int[] {30,8,32,5},
+						"SmartyPans", new int[] {30,8,33,5},
 						new ModuleTerm("gridMap", Type.STRING,
 							new Predicate("getBreadCrumbs", new Term[] {}),
 							new ModuleTermAdaptor() {
@@ -207,6 +207,42 @@ public class SmartyPans extends ASTRAClass {
 								);
 							}
 						}
+					),
+					new Subgoal(
+						"SmartyPans", new int[] {32,8,33,5},
+						new Goal(
+							new Predicate("messaging", new Term[] {
+								Primitive.newPrimitive("messaging"),
+								Primitive.newPrimitive("Ready")
+							})
+						)
+					)
+				}
+			)
+		));
+		addRule(new Rule(
+			"SmartyPans", new int[] {35,9,35,54},
+			new GoalEvent('+',
+				new Goal(
+					new Predicate("messaging", new Term[] {
+						new Variable(Type.STRING, "messaging",false),
+						new Variable(Type.STRING, "event",false)
+					})
+				)
+			),
+			Predicate.TRUE,
+			new Block(
+				"SmartyPans", new int[] {35,53,37,5},
+				new Statement[] {
+					new ScopedSubgoal(
+						"SmartyPans", new int[] {36,8,37,5},
+						"Player",
+						new Goal(
+							new Predicate("messaging", new Term[] {
+								new Variable(Type.STRING, "messaging"),
+								new Variable(Type.STRING, "event")
+							})
+						)
 					)
 				}
 			)

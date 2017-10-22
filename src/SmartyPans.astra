@@ -28,6 +28,11 @@ agent SmartyPans extends Player {
 	    //TODO start sending command via the api - the agent suppose to listen in Unity/
 	    console.println(" SmartyPans: " + Text);
 	    string map = gridMap.getBreadCrumbs();
-	    console.println("SmartyPans - get the map: " + map);	    
+	    console.println("SmartyPans - get the map: " + map);	
+	    !messaging("messaging", "Ready");    
+	}
+	
+	rule +!messaging(string messaging, string event) {	   	    
+	    Player::!messaging(messaging, event);   
 	}
 }

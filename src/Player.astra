@@ -35,6 +35,15 @@ agent Player extends Unity {
 	    !sendCommand("collision", collision);
 	}
 	
+	rule $unityModule.event("messaging", [string event]) {
+	    !messaging("messaging", event);	   
+	}
+	
+	rule +!messaging(string messaging, string event) {
+	    messaging = messagingModule.sendMessage(event);
+	    !sendCommand("messaging", messaging);
+	}
+	
 	rule +!sendCommand(string EventType, string Command) {
 		unityModule.sendCommand(system.name(), EventType, [Command]);
 	}	
