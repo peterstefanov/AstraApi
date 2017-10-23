@@ -29,46 +29,31 @@ public class SmartyPans extends ASTRAClass {
 			),
 			Predicate.TRUE,
 			new Block(
-				"SmartyPans", new int[] {12,68,25,5},
+				"SmartyPans", new int[] {12,68,24,5},
 				new Statement[] {
 					new If(
-						"SmartyPans", new int[] {14,8,25,5},
+						"SmartyPans", new int[] {13,8,24,5},
 						new Comparison("==",
 							new Variable(Type.STRING, "Ready"),
-							Primitive.newPrimitive("Ready to go")
+							Primitive.newPrimitive("Ready")
 						),
 						new Block(
-							"SmartyPans", new int[] {14,35,22,9},
+							"SmartyPans", new int[] {13,29,21,9},
 							new Statement[] {
-								new Send("SmartyPans", new int[] {15,12,15,72},
+								new Send("SmartyPans", new int[] {14,12,14,45},
 									new Performative("agree"),
 									new Variable(Type.STRING, "From"),
 									new Predicate("state", new Term[] {
-										Operator.newOperator('+',
-											new ModuleTerm("system", Type.STRING,
-												new Predicate("name", new Term[] {}),
-												new ModuleTermAdaptor() {
-													public Object invoke(Intention intention, Predicate predicate) {
-														return ((astra.lang.System) intention.getModule("SmartyPans","system")).name(
-														);
-													}
-													public Object invoke(BindingsEvaluateVisitor visitor, Predicate predicate) {
-														return ((astra.lang.System) visitor.agent().getModule("SmartyPans","system")).name(
-														);
-													}
-												}
-											),
-											Primitive.newPrimitive(" agreed to move!")
-										)
+										Primitive.newPrimitive("Agree")
 									})
 								),
 								new TryRecover(
-									"SmartyPans", new int[] {16,12,22,9},
+									"SmartyPans", new int[] {15,12,21,9},
 									new Block(
-										"SmartyPans", new int[] {16,16,18,13},
+										"SmartyPans", new int[] {15,16,17,13},
 										new Statement[] {
 											new Subgoal(
-												"SmartyPans", new int[] {17,16,18,13},
+												"SmartyPans", new int[] {16,16,17,13},
 												new Goal(
 													new Predicate("satrtMovingNow", new Term[] {
 														Primitive.newPrimitive("Ready")
@@ -78,28 +63,13 @@ public class SmartyPans extends ASTRAClass {
 										}
 									),
 									new Block(
-										"SmartyPans", new int[] {18,22,22,9},
+										"SmartyPans", new int[] {17,22,21,9},
 										new Statement[] {
-											new Send("SmartyPans", new int[] {19,16,19,76},
+											new Send("SmartyPans", new int[] {18,16,18,53},
 												new Performative("failure"),
 												new Variable(Type.STRING, "From"),
 												new Predicate("state", new Term[] {
-													Operator.newOperator('+',
-														new ModuleTerm("system", Type.STRING,
-															new Predicate("name", new Term[] {}),
-															new ModuleTermAdaptor() {
-																public Object invoke(Intention intention, Predicate predicate) {
-																	return ((astra.lang.System) intention.getModule("SmartyPans","system")).name(
-																	);
-																}
-																public Object invoke(BindingsEvaluateVisitor visitor, Predicate predicate) {
-																	return ((astra.lang.System) visitor.agent().getModule("SmartyPans","system")).name(
-																	);
-																}
-															}
-														),
-														Primitive.newPrimitive(" fails to move")
-													)
+													Primitive.newPrimitive("Failure")
 												})
 											)
 										}
@@ -108,28 +78,13 @@ public class SmartyPans extends ASTRAClass {
 							}
 						),
 						new Block(
-							"SmartyPans", new int[] {22,15,25,5},
+							"SmartyPans", new int[] {21,15,24,5},
 							new Statement[] {
-								new Send("SmartyPans", new int[] {23,12,23,97},
+								new Send("SmartyPans", new int[] {22,12,22,47},
 									new Performative("refuse"),
 									new Variable(Type.STRING, "From"),
 									new Predicate("state", new Term[] {
-										Operator.newOperator('+',
-											new ModuleTerm("system", Type.STRING,
-												new Predicate("name", new Term[] {}),
-												new ModuleTermAdaptor() {
-													public Object invoke(Intention intention, Predicate predicate) {
-														return ((astra.lang.System) intention.getModule("SmartyPans","system")).name(
-														);
-													}
-													public Object invoke(BindingsEvaluateVisitor visitor, Predicate predicate) {
-														return ((astra.lang.System) visitor.agent().getModule("SmartyPans","system")).name(
-														);
-													}
-												}
-											),
-											Primitive.newPrimitive(" refused to move, path is not ready yet!")
-										)
+										Primitive.newPrimitive("Refuse")
 									})
 								)
 							}
@@ -139,7 +94,7 @@ public class SmartyPans extends ASTRAClass {
 			)
 		));
 		addRule(new Rule(
-			"SmartyPans", new int[] {27,9,27,40},
+			"SmartyPans", new int[] {26,9,26,40},
 			new GoalEvent('+',
 				new Goal(
 					new Predicate("satrtMovingNow", new Term[] {
@@ -149,10 +104,10 @@ public class SmartyPans extends ASTRAClass {
 			),
 			Predicate.TRUE,
 			new Block(
-				"SmartyPans", new int[] {27,39,29,5},
+				"SmartyPans", new int[] {26,39,28,5},
 				new Statement[] {
 					new Subgoal(
-						"SmartyPans", new int[] {28,8,29,5},
+						"SmartyPans", new int[] {27,8,28,5},
 						new Goal(
 							new Predicate("messaging", new Term[] {
 								Primitive.newPrimitive("messaging"),
@@ -164,7 +119,7 @@ public class SmartyPans extends ASTRAClass {
 			)
 		));
 		addRule(new Rule(
-			"SmartyPans", new int[] {31,9,31,54},
+			"SmartyPans", new int[] {30,9,30,54},
 			new GoalEvent('+',
 				new Goal(
 					new Predicate("messaging", new Term[] {
@@ -175,17 +130,89 @@ public class SmartyPans extends ASTRAClass {
 			),
 			Predicate.TRUE,
 			new Block(
-				"SmartyPans", new int[] {31,53,33,5},
+				"SmartyPans", new int[] {30,53,33,5},
 				new Statement[] {
-					new ScopedSubgoal(
-						"SmartyPans", new int[] {32,8,33,5},
-						"Player",
-						new Goal(
-							new Predicate("messaging", new Term[] {
-								new Variable(Type.STRING, "messaging"),
+					new Assignment(
+						new Variable(Type.STRING, "messaging"),
+						"SmartyPans", new int[] {31,8,33,5},
+						new ModuleTerm("messagingModule", Type.STRING,
+							new Predicate("sendMessage", new Term[] {
 								new Variable(Type.STRING, "event")
+							}),
+							new ModuleTermAdaptor() {
+								public Object invoke(Intention intention, Predicate predicate) {
+									return ((api.modules.Messaging) intention.getModule("SmartyPans","messagingModule")).sendMessage(
+										(java.lang.String) intention.evaluate(predicate.getTerm(0))
+									);
+								}
+								public Object invoke(BindingsEvaluateVisitor visitor, Predicate predicate) {
+									return ((api.modules.Messaging) visitor.agent().getModule("SmartyPans","messagingModule")).sendMessage(
+										(java.lang.String) visitor.evaluate(predicate.getTerm(0))
+									);
+								}
+							}
+						)
+					),
+					new Subgoal(
+						"SmartyPans", new int[] {32,8,33,5},
+						new Goal(
+							new Predicate("sendCommand", new Term[] {
+								Primitive.newPrimitive("messaging"),
+								new Variable(Type.STRING, "messaging")
 							})
 						)
+					)
+				}
+			)
+		));
+		addRule(new Rule(
+			"SmartyPans", new int[] {35,9,35,58},
+			new GoalEvent('+',
+				new Goal(
+					new Predicate("sendCommand", new Term[] {
+						new Variable(Type.STRING, "EventType",false),
+						new Variable(Type.STRING, "Command",false)
+					})
+				)
+			),
+			Predicate.TRUE,
+			new Block(
+				"SmartyPans", new int[] {35,57,37,5},
+				new Statement[] {
+					new ModuleCall("unityModule",
+						"SmartyPans", new int[] {36,8,36,68},
+						new Predicate("sendCommand", new Term[] {
+							new ModuleTerm("system", Type.STRING,
+								new Predicate("name", new Term[] {}),
+								new ModuleTermAdaptor() {
+									public Object invoke(Intention intention, Predicate predicate) {
+										return ((astra.lang.System) intention.getModule("SmartyPans","system")).name(
+										);
+									}
+									public Object invoke(BindingsEvaluateVisitor visitor, Predicate predicate) {
+										return ((astra.lang.System) visitor.agent().getModule("SmartyPans","system")).name(
+										);
+									}
+								}
+							),
+							new Variable(Type.STRING, "EventType"),
+							new ListTerm(new Term[] {
+								new Variable(Type.STRING, "Command")
+							})
+						}),
+						new DefaultModuleCallAdaptor() {
+							public boolean inline() {
+								return false;
+							}
+
+							public boolean invoke(Intention intention, Predicate predicate) {
+								return ((api.modules.Unity) intention.getModule("SmartyPans","unityModule")).sendCommand(
+									(java.lang.String) intention.evaluate(predicate.getTerm(0)),
+									(java.lang.String) intention.evaluate(predicate.getTerm(1)),
+									(astra.term.ListTerm) intention.evaluate(predicate.getTerm(2))
+								);
+							}
+						}
 					)
 				}
 			)

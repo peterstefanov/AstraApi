@@ -101,6 +101,7 @@ public class AstraApiImpl implements AstraApi {
 	}
 
 	public synchronized String receive(String agentIdentifier, String eventIdentifier) {
+		
 		String key = agentIdentifier.concat(eventIdentifier);
 		if (agentsEvent.containsKey(key)) {
 			Queue<String> agentEvents = agentsEvent.get(key);

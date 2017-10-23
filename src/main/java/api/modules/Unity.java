@@ -76,6 +76,7 @@ public class Unity extends Module {
 		if (cf == null) return false;
 		
 		String command = getCommand(cf.create(args));
+
 		api.submitCommand(agentIdentifier, eventIdentifier, command);
 		return true;
 	}

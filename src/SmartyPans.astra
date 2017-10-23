@@ -10,17 +10,16 @@ agent SmartyPans extends Player {
 	
 	//listen for a message from MapGenerator if path is ready
 	rule @message(request, string From, taskPathReady(string Ready)){
-
-		if(Ready == "Ready to go") {
-			send(agree, From, state(system.name() + " agreed to move!"));
+		if(Ready == "Ready") {
+			send(agree, From, state("Agree"));
 			try {
 				!satrtMovingNow("Ready");
 			} recover {
-				send(failure, From, state(system.name() + " fails to move"));
+				send(failure, From, state("Failure"));
 			}
 			
 		} else {
-			send(refuse, From, state(system.name() + " refused to move, path is not ready yet!"));
+			send(refuse, From, state("Refuse"));
 		}
 	}
 	
@@ -28,7 +27,12 @@ agent SmartyPans extends Player {
 	    !messaging("messaging", "{'message': 'Ready'}");    
 	}
 	
-	rule +!messaging(string messaging, string event) {	   	    
-	    Player::!messaging(messaging, event);   
+	rule +!messaging(string messaging, string event) {
+	    messaging = messagingModule.sendMessage(event);
+	    !sendCommand("messaging", messaging);
 	}
+	
+	rule +!sendCommand(string EventType, string Command) {
+		unityModule.sendCommand(system.name(), EventType, [Command]);
+	}	
 }

@@ -7,9 +7,10 @@ agent GridMapGenerator extends Player {
 	    formula state(string);
 		formula taskPathReady(string);
 		formula mapSize(int);
+		formula isNotified(string);
 	}
 		
-	initial !init();
+	initial state("Idle");
 	
 	rule +!init() {
         //messaging.installService("rmi", "astra.messaging.rmi.RMIService");
@@ -20,7 +21,7 @@ agent GridMapGenerator extends Player {
 
 	    int size = gridMap.getMapSize();
 	    
-	    if (size > 99) {
+	    if (size > 350) {
            !doNotify(mapSize(size));            
 	    } else {
 	       //update on map
@@ -31,11 +32,11 @@ agent GridMapGenerator extends Player {
 	}
 	
 	rule +!positionVector(string positionVector, string event) {
-
+ 
 	    int size = gridMap.getMapSize();
 	    
-	    if (size > 99) {
-           !doNotify(mapSize(size));           
+	    if (size > 350) {
+           !doNotify(mapSize(size));    
 	    } else {
 	       //update the map
 	       gridMap.updateGridMap(positionVector, event);
@@ -48,7 +49,7 @@ agent GridMapGenerator extends Player {
 	   
 	    int size = gridMap.getMapSize();	    
 	    
-	    if (size > 99) {
+	    if (size > 350) {
            !doNotify(mapSize(size));          
 	    } else {
 	       //update on map
@@ -58,23 +59,26 @@ agent GridMapGenerator extends Player {
 	    Player::!position(position, event);
 	}
 	
-	rule +!doNotify(mapSize(int X)) : X == 100 {
-		send(request, "smartyPans", taskPathReady("Ready to go"));
+	rule +!doNotify(mapSize(int X)) : X == 351 & ~state("Agree") {	    
+		send(request, "smartyPans", taskPathReady("Ready"));
 	}
 	
 	rule +!doNotify(mapSize(int X)) {
 	    console.println("DO NOTHING: " + X);
 	}
 	
-	rule @message(agree, string From, state(string Response)) {
-		console.println(From + " : " + Response);   
+	rule @message(agree, string From, state(string Agree)) {
+	    +state(Agree);
+		console.println(From + " : " + Agree);   
 	}
 	
-	rule @message(refuse, string From, state(string Response)) {
-		console.println(From + " : " + Response);
+	rule @message(refuse, string From, state(string Refuse)) {
+	    +state(Refuse);
+		console.println(From + " : " + Refuse);
 	}
 	
-	rule @message(failure, string From, state(string Response)) {
-		console.println(From + " : " + Response);
+	rule @message(failure, string From, state(string Failure)) {
+	    +state(Failure);
+		console.println(From + " : " + Failure);
 	}
 }
