@@ -37,17 +37,20 @@ public class MessageEventTypeTest extends EventTypeTest {
 		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":0.0},\"scale\":{\"x\":0.5,\"y\":1.0,\"z\":0.5},\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z + "},\"cardinalDirection\":" + AstraApi.NORTH + "}"});
 		getEventResponse(agent, listEvents, EventType.POSITION_VECTOR);
 		
-		for (int i = 0; i <= 351; i ++) {
+		for (int i = 0; i <= 251; i ++) {
 			api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":0.0},\"scale\":{\"x\":0.5,\"y\":1.0,\"z\":0.5},\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + (Z + i) + "}}"});
 			getEventResponse(agent, listEvents, EventType.POSITION_VECTOR);		
 		}			
-		assertTrue(listEvents.size() == 353);
+		assertTrue(listEvents.size() == 253);
 		
 		getEventResponse(agentSmartyPans, listMessageEvents, EventType.MESSAGE);
 		assertTrue(listMessageEvents.size() == 1);
 		String message = listMessageEvents.getFirst();
 		UnityJson values = (UnityJson) gson.fromJson(message, UnityJson.class);		
 		assertEquals("Ready", values.getMessage());
+		
+		api.asyncEvent(agentSmartyPans, EventType.POSITION_VECTOR, new Object[] {"{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":0.0},\"scale\":{\"x\":0.5,\"y\":1.0,\"z\":0.5},\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z + "},\"cardinalDirection\":" + AstraApi.NORTH + "}"});
+		getEventResponse(agentSmartyPans, listEvents, EventType.POSITION_VECTOR);
 	}
 	
 	@Test

@@ -67,7 +67,7 @@ public class GridMapGenerator extends ASTRAClass {
 						"GridMapGenerator", new int[] {24,8,32,5},
 						new Comparison(">",
 							new Variable(Type.INTEGER, "size"),
-							Primitive.newPrimitive(350)
+							Primitive.newPrimitive(250)
 						),
 						new Block(
 							"GridMapGenerator", new int[] {24,23,26,9},
@@ -157,7 +157,7 @@ public class GridMapGenerator extends ASTRAClass {
 						"GridMapGenerator", new int[] {38,8,46,5},
 						new Comparison(">",
 							new Variable(Type.INTEGER, "size"),
-							Primitive.newPrimitive(350)
+							Primitive.newPrimitive(250)
 						),
 						new Block(
 							"GridMapGenerator", new int[] {38,23,40,9},
@@ -247,7 +247,7 @@ public class GridMapGenerator extends ASTRAClass {
 						"GridMapGenerator", new int[] {52,8,60,5},
 						new Comparison(">",
 							new Variable(Type.INTEGER, "size"),
-							Primitive.newPrimitive(350)
+							Primitive.newPrimitive(250)
 						),
 						new Block(
 							"GridMapGenerator", new int[] {52,23,54,9},
@@ -316,7 +316,7 @@ public class GridMapGenerator extends ASTRAClass {
 			new AND(
 				new Comparison("==",
 					new Variable(Type.INTEGER, "X"),
-					Primitive.newPrimitive(351)
+					Primitive.newPrimitive(251)
 				),
 				new NOT(
 					new Predicate("state", new Term[] {

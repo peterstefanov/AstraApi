@@ -35,4 +35,13 @@ agent SmartyPans extends Player {
 	rule +!sendCommand(string EventType, string Command) {
 		unityModule.sendCommand(system.name(), EventType, [Command]);
 	}	
+	
+	rule +!positionVector(string positionVector, string event) {
+ 
+	    int size = gridMap.getMapSize();  
+        console.println("Knowledge map size: " + size);
+        
+	    positionVector = gridMap.getDirectionsVector(event);
+	    !sendCommand("position_vector", positionVector);
+	}
 }
