@@ -16,7 +16,6 @@ public class GridMap extends Module {
 	//make it static to be available to all agents
 	static LinkedHashSet<Coordinates> breadCrumbs = new LinkedHashSet<Coordinates>();
 
-
 	/**
 	 * The goal of this is to record each move made by the agent/s, thus
 	 * an knowledge map is build which can be used to navigate directly to the 

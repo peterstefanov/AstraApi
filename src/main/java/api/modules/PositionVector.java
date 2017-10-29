@@ -91,7 +91,7 @@ public class PositionVector extends Module {
 			int signY = FormattingService.signBit(coordinatesPosition.getY().floatValue());
 			int signZ = FormattingService.signBit(coordinatesPosition.getZ().floatValue());
 			
-			//compare the absolute values with accuracy of 0.001, manipulate the coordinates and add the sign 
+			//compare the absolute values with accuracy of 0.1, manipulate the coordinates and add the sign 
 			if (lastX != null && !(Math.abs(coordinatesPosition.getX().doubleValue() - lastX.doubleValue()) < FormattingService.EPSILON)) {
 				double valueX = (Math.abs(coordinatesPosition.getX().doubleValue()) > Math.abs(lastX.doubleValue()) &&  !(Math.abs(lastX.doubleValue() - coordinatesPosition.getX().doubleValue()) < FormattingService.EPSILON)) ? 
 						           AstraApi.ONE : -AstraApi.ONE;
@@ -134,7 +134,7 @@ public class PositionVector extends Module {
 	}
 
 	/**
-	 * Check if the vector for contains only zero entries and set the current one.
+	 * Check if the vector contains only zero entries and set the current one.
 	 * Basically there is no change from the event passed from Unity, therefore
 	 * position won't change.
 	 * @param responsePosition
