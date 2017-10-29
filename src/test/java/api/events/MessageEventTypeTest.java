@@ -17,6 +17,7 @@ public class MessageEventTypeTest extends EventTypeTest {
 	private static final Double X = new Double("1.649999976158142");
 	private static final Double Y = new Double("1.0");
 	private static final Double Z = new Double("2.700000047683716");
+	private static final Double Z_N = new Double("-2.700000047683716");
 	
 	@Before
 	public void setUp() {	
@@ -37,11 +38,16 @@ public class MessageEventTypeTest extends EventTypeTest {
 		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":0.0},\"scale\":{\"x\":0.5,\"y\":1.0,\"z\":0.5},\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z + "},\"cardinalDirection\":" + AstraApi.NORTH + "}"});
 		getEventResponse(agent, listEvents, EventType.POSITION_VECTOR);
 		
-		for (int i = 0; i <= 251; i ++) {
+		for (int i = 0; i <= 201; i ++) {
 			api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":0.0},\"scale\":{\"x\":0.5,\"y\":1.0,\"z\":0.5},\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + (Z + i) + "}}"});
 			getEventResponse(agent, listEvents, EventType.POSITION_VECTOR);		
-		}			
-		assertTrue(listEvents.size() == 253);
+		}
+		for (int i = 0; i <= 50; i ++) {
+			api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":0.0},\"scale\":{\"x\":0.5,\"y\":1.0,\"z\":0.5},\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + (Z_N - i) + "}}"});
+			getEventResponse(agent, listEvents, EventType.POSITION_VECTOR);		
+		}
+		
+		assertEquals(listEvents.size(), 254);
 		
 		getEventResponse(agentSmartyPans, listMessageEvents, EventType.MESSAGE);
 		assertTrue(listMessageEvents.size() == 1);
