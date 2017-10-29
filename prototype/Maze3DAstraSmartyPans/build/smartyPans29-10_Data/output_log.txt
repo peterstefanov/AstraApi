@@ -1,0 +1,347 @@
+Initialize engine version: 5.6.2f1 (a2913c821e27)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 10.1]
+    Renderer: NVIDIA NVS 3100M (ID=0xa6c)
+    Vendor:   NVIDIA
+    VRAM:     2001 MB
+    Driver:   9.18.13.1269
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\astra-api.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\astra-api.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\ICSharpCode.SharpZipLib.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\ICSharpCode.SharpZipLib.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.AWT.WinForms.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.AWT.WinForms.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.Beans.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.Beans.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.Charsets.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.Charsets.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.Cldrdata.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.Cldrdata.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.Corba.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.Corba.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.Core.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.Core.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.Jdbc.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.Jdbc.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.Localedata.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.Localedata.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.Management.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.Management.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.Media.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.Media.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.Misc.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.Misc.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.Naming.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.Naming.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.Nashorn.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.Nashorn.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.Remoting.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.Remoting.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.Security.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.Security.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.SwingAWT.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.SwingAWT.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.Text.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.Text.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.Tools.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.Tools.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.Util.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.Util.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.XML.API.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.XML.API.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.XML.Bind.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.XML.Bind.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.XML.Crypto.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.XML.Crypto.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.XML.Parse.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.XML.Parse.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.XML.Transform.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.XML.Transform.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.XML.WebServices.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.XML.WebServices.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.XML.XPath.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.OpenJDK.XML.XPath.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.Reflection.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.Reflection.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.Runtime.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.Runtime.dll into Unity Child Domain
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.Runtime.JNI.dll (this message is harmless)
+Loading C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\IKVM.Runtime.JNI.dll into Unity Child Domain
+- Completed reload, in  0.154 seconds
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1200 59Hz; virtual: 3360x1200 at 0,0
+<RI> Initializing input.
+XInput1_3.dll not found. Trying XInput9_1_0.dll instead...
+<RI> Input initialized.
+<RI> Initialized touch support.
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\System.Configuration.dll (this message is harmless)
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\System.Xml.dll (this message is harmless)
+UnloadTime: 2.523045 ms
+Platform assembly: C:\Users\stefp\UnityProjects\Maze3DAstraSmartyPans\build\smartyPans29-10_Data\Managed\Mono.Security.dll (this message is harmless)
+Agent created with name: smartyPans
+0x01482A2B (smartyPans29-10) 
+0x0148415B (smartyPans29-10) 
+0x0137660B (smartyPans29-10) 
+0x01078A5A (smartyPans29-10) 
+0x01078D8A (smartyPans29-10) 
+0x0132BB2C (smartyPans29-10) 
+0x0FE90415 (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,string,UnityEngine.Object)
+0x0FE903B6 (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x0FE90199 (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x056FFEB9 (Mono JIT Code) UnityEngine.Debug:Log (object)
+0x05653C14 (Mono JIT Code) SmartyPans:Start ()
+0x0560A189 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x100F18F9 (mono) mono_set_defaults
+0x1005D868 (mono) mono_runtime_invoke
+0x011C70D0 (smartyPans29-10) 
+0x011C3B42 (smartyPans29-10) 
+0x0136E46C (smartyPans29-10) 
+0x0136E867 (smartyPans29-10) 
+0x0136EE85 (smartyPans29-10) 
+0x00EDD577 (smartyPans29-10) 
+0x01362D20 (smartyPans29-10) 
+0x766E6D3A (USER32) GetThreadDesktop
+0x7670DDBD (USER32) GetMenuInfo
+0x766E6E44 (USER32) GetThreadDesktop
+0x77D0011A (ntdll) KiUserCallbackDispatcher
+0x766E6A8C (USER32) gapfnScSendMessage
+0x6CBD7744 (uxtheme) GetThemeBool
+0x6CBDA092 (uxtheme) SetWindowThemeAttribute
+0x6CBD0B0D (uxtheme) 
+0x6CBD0B96 (uxtheme) 
+0x766E729A (USER32) GetPropW
+0x00CE4284 (smartyPans29-10) 
+0x766E62FA (USER32) gapfnScSendMessage
+0x766E7316 (USER32) GetDC
+0x766E6DE8 (USER32) GetThreadDesktop
+0x766E6E44 (USER32) GetThreadDesktop
+0x77D0011A (ntdll) KiUserCallbackDispatcher
+0x766E6A8C (USER32) gapfnScSendMessage
+0x6CBD7744 (uxtheme) GetThemeBool
+0x6CBE6E85 (uxtheme) GetCurrentThemeName
+0x6CBD0B0D (uxtheme) 
+0x6CBD0B96 (uxtheme) 
+0x766E729A (USER32) GetPropW
+0x00CE4284 (smartyPans29-10) 
+0x766E62FA (USER32) gapfnScSendMessage
+0x766E6D3A (USER32) GetThreadDesktop
+0x766E77C4 (USER32) CharPrevW
+0x766E7BCA (USER32) DispatchMessageA
+0x014AFC8F (smartyPans29-10) 
+0x00CD8C63 (smartyPans29-10) 
+0x00CE736A (smartyPans29-10) 
+0x014BC048 (smartyPans29-10) 
+0x014F9CC4 (smartyPans29-10) 
+0x75C7336A (kernel32) BaseThreadInitThunk
+0x77D298F2 (ntdll) RtlInitializeExceptionChain
+0x77D298C5 (ntdll) RtlInitializeExceptionChain
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 3e74 -> priority: 1 
+  Thread -> id: 563c -> priority: 1 
+Fallback handler could not load library C:/Users/stefp/UnityProjects/Maze3DAstraSmartyPans/build/smartyPans29-10_Data/Mono/libc
+Fallback handler could not load library C:/Users/stefp/UnityProjects/Maze3DAstraSmartyPans/build/smartyPans29-10_Data/Mono/.\libc
+Fallback handler could not load library C:/Users/stefp/UnityProjects/Maze3DAstraSmartyPans/build/smartyPans29-10_Data/Mono/libc
+!SmartyPans received a message!: {"message":"Ready","type":"messaging"}
+0x01482A2B (smartyPans29-10) 
+0x0148415B (smartyPans29-10) 
+0x0137660B (smartyPans29-10) 
+0x01078A5A (smartyPans29-10) 
+0x01078D8A (smartyPans29-10) 
+0x0132BB2C (smartyPans29-10) 
+0x0FE90415 (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,string,UnityEngine.Object)
+0x0FE903B6 (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x0FE90199 (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x056FFEB9 (Mono JIT Code) UnityEngine.Debug:Log (object)
+0x0FED6D52 (Mono JIT Code) SmartyPans:Update ()
+0x0560A189 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x100F18F9 (mono) mono_set_defaults
+0x1005D868 (mono) mono_runtime_invoke
+0x011C70D0 (smartyPans29-10) 
+0x011C3B42 (smartyPans29-10) 
+0x0136CA0E (smartyPans29-10) 
+0x0136EC61 (smartyPans29-10) 
+0x0136EC77 (smartyPans29-10) 
+0x0109CC51 (smartyPans29-10) 
+0x00CE736A (smartyPans29-10) 
+0x014BC048 (smartyPans29-10) 
+0x014F9CC4 (smartyPans29-10) 
+0x75C7336A (kernel32) BaseThreadInitThunk
+0x77D298F2 (ntdll) RtlInitializeExceptionChain
+0x77D298C5 (ntdll) RtlInitializeExceptionChain
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Message received is: AssemblyCSharp.AstraJson
+0x01482A2B (smartyPans29-10) 
+0x0148415B (smartyPans29-10) 
+0x0137660B (smartyPans29-10) 
+0x01078A5A (smartyPans29-10) 
+0x01078D8A (smartyPans29-10) 
+0x0132BB2C (smartyPans29-10) 
+0x0FE90415 (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,string,UnityEngine.Object)
+0x0FE903B6 (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x0FE90199 (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x056FFEB9 (Mono JIT Code) UnityEngine.Debug:Log (object)
+0x0FED6DA5 (Mono JIT Code) SmartyPans:Update ()
+0x0560A189 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x100F18F9 (mono) mono_set_defaults
+0x1005D868 (mono) mono_runtime_invoke
+0x011C70D0 (smartyPans29-10) 
+0x011C3B42 (smartyPans29-10) 
+0x0136CA0E (smartyPans29-10) 
+0x0136EC61 (smartyPans29-10) 
+0x0136EC77 (smartyPans29-10) 
+0x0109CC51 (smartyPans29-10) 
+0x00CE736A (smartyPans29-10) 
+0x014BC048 (smartyPans29-10) 
+0x014F9CC4 (smartyPans29-10) 
+0x75C7336A (kernel32) BaseThreadInitThunk
+0x77D298F2 (ntdll) RtlInitializeExceptionChain
+0x77D298C5 (ntdll) RtlInitializeExceptionChain
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+!SmartyPans received a message!: {"message":"Ready","type":"messaging"}
+0x01482A2B (smartyPans29-10) 
+0x0148415B (smartyPans29-10) 
+0x0137660B (smartyPans29-10) 
+0x01078A5A (smartyPans29-10) 
+0x01078D8A (smartyPans29-10) 
+0x0132BB2C (smartyPans29-10) 
+0x0FE90415 (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,string,UnityEngine.Object)
+0x0FE903B6 (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x0FE90199 (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x056FFEB9 (Mono JIT Code) UnityEngine.Debug:Log (object)
+0x0FED6D52 (Mono JIT Code) SmartyPans:Update ()
+0x0560A189 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x100F18F9 (mono) mono_set_defaults
+0x1005D868 (mono) mono_runtime_invoke
+0x011C70D0 (smartyPans29-10) 
+0x011C3B42 (smartyPans29-10) 
+0x0136CA0E (smartyPans29-10) 
+0x0136EC61 (smartyPans29-10) 
+0x0136EC77 (smartyPans29-10) 
+0x0109CC51 (smartyPans29-10) 
+0x00CE736A (smartyPans29-10) 
+0x014BC048 (smartyPans29-10) 
+0x014F9CC4 (smartyPans29-10) 
+0x75C7336A (kernel32) BaseThreadInitThunk
+0x77D298F2 (ntdll) RtlInitializeExceptionChain
+0x77D298C5 (ntdll) RtlInitializeExceptionChain
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Message received is: AssemblyCSharp.AstraJson
+0x01482A2B (smartyPans29-10) 
+0x0148415B (smartyPans29-10) 
+0x0137660B (smartyPans29-10) 
+0x01078A5A (smartyPans29-10) 
+0x01078D8A (smartyPans29-10) 
+0x0132BB2C (smartyPans29-10) 
+0x0FE90415 (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,string,UnityEngine.Object)
+0x0FE903B6 (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x0FE90199 (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x056FFEB9 (Mono JIT Code) UnityEngine.Debug:Log (object)
+0x0FED6DA5 (Mono JIT Code) SmartyPans:Update ()
+0x0560A189 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x100F18F9 (mono) mono_set_defaults
+0x1005D868 (mono) mono_runtime_invoke
+0x011C70D0 (smartyPans29-10) 
+0x011C3B42 (smartyPans29-10) 
+0x0136CA0E (smartyPans29-10) 
+0x0136EC61 (smartyPans29-10) 
+0x0136EC77 (smartyPans29-10) 
+0x0109CC51 (smartyPans29-10) 
+0x00CE736A (smartyPans29-10) 
+0x014BC048 (smartyPans29-10) 
+0x014F9CC4 (smartyPans29-10) 
+0x75C7336A (kernel32) BaseThreadInitThunk
+0x77D298F2 (ntdll) RtlInitializeExceptionChain
+0x77D298C5 (ntdll) RtlInitializeExceptionChain
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at SmartyPans.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+!SmartyPans received a message!: {"message":"Ready","type":"messaging"}
+0x01482A2B (smartyPans29-10) 
+0x0148415B (smartyPans29-10) 
+0x0137660B (smartyPans29-10) 
+0x01078A5A (smartyPans29-10) 
+0x01078D8A (smartyPans29-10) 
+0x0132BB2C (smartyPans29-10) 
+0x0FE90415 (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,string,UnityEngine.Object)
+0x0FE903B6 (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x0FE90199 (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x056FFEB9 (Mono JIT Code) UnityEngine.Debug:Log (object)
+0x0FED6D52 (Mono JIT Code) SmartyPans:Update ()
+0x0560A189 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x100F18F9 (mono) mono_set_defaults
+0x1005D868 (mono) mono_runtime_invoke
+0x011C70D0 (smartyPans29-10) 
+0x011C3B42 (smartyPans29-10) 
+0x0136CA0E (smartyPans29-10) 
+0x0136EC61 (smartyPans29-10) 
+0x0136EC77 (smartyPans29-10) 
+0x0109CC51 (smartyPans29-10) 
+0x00CE736A (smartyPans29-10) 
+0x014BC048 (smartyPans29-10) 
+0x014F9CC4 (smartyPans29-10) 
+0x75C7336A (kernel32) BaseThreadInitThunk
+0x77D298F2 (ntdll) RtlInitializeExceptionChain
+0x77D298C5 (ntdll) RtlInitializeExceptionChain
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Message received is: AssemblyCSharp.AstraJson
+0x01482A2B (smartyPans29-10) 
+0x0148415B (smartyPans29-10) 
+0x0137660B (smartyPans29-10) 
+0x01078A5A (smartyPans29-10) 
+0x01078D8A (smartyPans29-10) 
+0x0132BB2C (smartyPans29-10) 
+0x0FE90415 (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,string,UnityEngine.Object)
+0x0FE903B6 (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x0FE90199 (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x056FFEB9 (Mono JIT Code) UnityEngine.Debug:Log (object)
+0x0FED6DA5 (Mono JIT Code) SmartyPans:Update ()
+0x0560A189 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x100F18F9 (mono) mono_set_defaults
+0x1005D868 (mono) mono_runtime_invoke
+0x011C70D0 (smartyPans29-10) 
+0x011C3B42 (smartyPans29-10) 
+0x0136CA0E (smartyPans29-10) 
+0x0136EC61 (smartyPans29-10) 
+0x0136EC77 (smartyPans29-10) 
+0x0109CC51 (smartyPans29-10) 
+0x00CE736A (smartyPans29-10) 
+0x014BC048 (smartyPans29-10) 
+0x014F9CC4 (smartyPans29-10) 
+0x75C7336A (kernel32) BaseThreadInitThunk
+0x77D298F2 (ntdll) RtlInitializeExceptionChain
+0x77D298C5 (ntdll) RtlInitializeExceptionChain
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at SmartyPans.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
