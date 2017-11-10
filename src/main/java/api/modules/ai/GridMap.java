@@ -63,9 +63,21 @@ public class GridMap extends Module {
 		return gson.toJson(breadCrumbs);
 	}
 
+	/**
+	 * This method tries to decides which way to go based on current position and
+	 * the knowledge map. How it works current position is rounded to whole number
+	 * and it is compared with knowledge map. From knowledge map we can decide which
+	 * direction there is no obstacles and direct the agent in this direction. We do
+	 * use the previous Agent position to gather the direction from which he is
+	 * coming.
+	 * 
+	 * @param event
+	 * @return Json in format:</br>
+	 *         {"position":{"x":0.0,"y":0.0,"z":-1.0},"scale":{"x":0.5,"y":1.0,"z":0.5},"rotation":{"x":0.0,"y":0.0,"z":0.0},"type":"position_vector"}
+	 */
 	@TERM
 	public String getDirectionsVector(String event) {
-
+        
 		Double lastX = null;
 		Double lastY = null;
 		Double lastZ = null;
