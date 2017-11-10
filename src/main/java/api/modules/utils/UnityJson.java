@@ -73,4 +73,11 @@ public class UnityJson implements Serializable {
 	public void setMessage(String message) {
 		this.message = message;
 	}
+	
+	@Override
+	public String toString() {
+		return "UnityJson [position=" + position + ", scale=" + scale + ", rotation=" + rotation
+				+ ", cardinalDirection=" + cardinalDirection + ", instanceId=" + instanceId
+				+ ", astraCardinalDirection=" + astraCardinalDirection + ", message=" + message + "]";
+	}
 }

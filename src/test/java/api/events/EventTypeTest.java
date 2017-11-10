@@ -23,7 +23,8 @@ public class EventTypeTest {
 	public static final Double Z_N = new Double("-2.700000047683716");
 	
 	public static final Double X_1 = new Double("2.849999976158142");
-
+	public static final Double X_2 = new Double("3.849999976158142");
+	
 	public static final Double Z_1 = new Double("3.900000047683716");
 	public static final Double Z_2 = new Double("4.100000047683716");
 	public static final Double Z_3 = new Double("5.100000047683716");
@@ -41,8 +42,7 @@ public class EventTypeTest {
 
 	public static final String NEGATIVE_SOUTH_COLLISION = "{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":0.0},\"scale\":{\"x\":0.5,\"y\":1.0,\"z\":0.5},\"position\":{\"x\":" + X_N + ",\"y\":" + Y_N + ",\"z\":" + Z_N + "},\"instanceId\":" + INSTANCE_ID + ",\"cardinalDirection\":" + AstraApi.SOUTH +"}";
 	public static final String NEGATIVE_NORTH_COLLISION = "{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":0.0},\"scale\":{\"x\":0.5,\"y\":1.0,\"z\":0.5},\"position\":{\"x\":" + X_N + ",\"y\":" + Y_N + ",\"z\":" + Z_N + "},\"instanceId\":" + INSTANCE_ID + ",\"cardinalDirection\":" + AstraApi.NORTH +"}";
-	
-	
+		
 	public AstraApiImpl api;
 	public Gson gson;
 	
