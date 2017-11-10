@@ -25,8 +25,8 @@ public class GridMap extends Module {
 	
 	/**
 	 * The goal of this is to record each move made by the agent/s, thus
-	 * an knowledge map is build which can be used to navigate directly to the 
-	 * end of the maze. Position and collisions are recorded, where when 
+	 * a knowledge map is build which can be used to navigate smoothly 
+	 * in the maze. Position and collisions are recorded, where when 
 	 * collision occurs the blocked side in the cell is recorded.
 	 * @param event
 	 * @return the same event

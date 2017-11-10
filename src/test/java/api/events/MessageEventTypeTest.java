@@ -13,11 +13,6 @@ import api.EventType;
 import api.modules.utils.UnityJson;
 
 public class MessageEventTypeTest extends EventTypeTest {
-
-	private static final Double X = new Double("1.649999976158142");
-	private static final Double Y = new Double("1.0");
-	private static final Double Z = new Double("2.700000047683716");
-	private static final Double Z_N = new Double("-2.700000047683716");
 	
 	@Before
 	public void setUp() {	
@@ -82,28 +77,6 @@ public class MessageEventTypeTest extends EventTypeTest {
 		getEventResponse(agentSmartyPans, listMessageEvents, EventType.MESSAGE);
 
 		assertTrue(listMessageEvents.size() == 0);
-	}
-	
-	private void getEventResponse(String agent, LinkedList<String> listEvents, String eventType) {
-		String asyncEventPosition = null;
-		int count = 0;
-		while(count < 5) {
-			asyncEventPosition = api.receive(agent, eventType);
-			if (asyncEventPosition == null) {			
-				try {
-					Thread.sleep(50);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}	
-			}
-			if (asyncEventPosition != null) {
-				listEvents.add(asyncEventPosition);
-				if (listEvents.size() == 3) {
-					break;
-				}
-			}
-			count ++;
-		}
 	}
 	
 	public String createAgent() {

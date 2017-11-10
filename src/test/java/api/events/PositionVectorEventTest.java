@@ -14,22 +14,6 @@ import api.modules.utils.Position;
 import api.modules.utils.UnityJson;
 
 public class PositionVectorEventTest extends EventTypeTest{
-
-	  
-	private static final Double X = new Double("1.649999976158142");
-	private static final Double X_1 = new Double("2.849999976158142");
-	private static final Double Y = new Double("1.0");
-	private static final Double Z = new Double("2.700000047683716");
-	private static final Double Z_1 = new Double("3.900000047683716");
-	private static final Double Z_2 = new Double("4.100000047683716");
-	private static final Double Z_3 = new Double("5.100000047683716");
-	private static final Double Z_4 = new Double("6.200000047683716");
-	
-	private static final Double Z_N = new Double("-2.700000047683716");
-	private static final Double Z_1_N = new Double("-3.900000047683716");
-	private static final Double Z_2_N = new Double("-4.100000047683716");
-	private static final Double Z_3_N = new Double("-5.100000047683716");
-	private static final Double Z_4_N = new Double("-6.200000047683716");
 	
 	@Before
 	public void setUp() {		
@@ -178,15 +162,15 @@ public class PositionVectorEventTest extends EventTypeTest{
 		LinkedList<String> listEvents = new LinkedList<String>();
 		
 		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":0.0},\"scale\":{\"x\":0.5,\"y\":1.0,\"z\":0.5},\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z + "},\"cardinalDirection\":" + AstraApi.NORTH + "}"});
-		getEventResponse(agent, listEvents);
+		getEventResponse(agent, listEvents, EventType.POSITION_VECTOR);
 		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":0.0},\"scale\":{\"x\":0.5,\"y\":1.0,\"z\":0.5},\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_1 + "}}"});
-		getEventResponse(agent, listEvents);
+		getEventResponse(agent, listEvents, EventType.POSITION_VECTOR);
 		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":0.0},\"scale\":{\"x\":0.5,\"y\":1.0,\"z\":0.5},\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_2 + "}}"});
-		getEventResponse(agent, listEvents);
+		getEventResponse(agent, listEvents, EventType.POSITION_VECTOR);
 		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":0.0},\"scale\":{\"x\":0.5,\"y\":1.0,\"z\":0.5},\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_3 + "}}"});
-		getEventResponse(agent, listEvents);
+		getEventResponse(agent, listEvents, EventType.POSITION_VECTOR);
 		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":0.0},\"scale\":{\"x\":0.5,\"y\":1.0,\"z\":0.5},\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_4 + "}}"});
-		getEventResponse(agent, listEvents);
+		getEventResponse(agent, listEvents, EventType.POSITION_VECTOR);
 		
 		assertTrue(listEvents.size() == 5);
 		
@@ -223,15 +207,15 @@ public class PositionVectorEventTest extends EventTypeTest{
 		LinkedList<String> listEvents = new LinkedList<String>();
 		
 		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":0.0},\"scale\":{\"x\":0.5,\"y\":1.0,\"z\":0.5},\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_N + "},\"cardinalDirection\":" + AstraApi.SOUTH + "}"});
-		getEventResponse(agent, listEvents);
+		getEventResponse(agent, listEvents, EventType.POSITION_VECTOR);
 		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":0.0},\"scale\":{\"x\":0.5,\"y\":1.0,\"z\":0.5},\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_1_N + "}}"});
-		getEventResponse(agent, listEvents);
+		getEventResponse(agent, listEvents, EventType.POSITION_VECTOR);
 		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":0.0},\"scale\":{\"x\":0.5,\"y\":1.0,\"z\":0.5},\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_2_N + "}}"});
-		getEventResponse(agent, listEvents);
+		getEventResponse(agent, listEvents, EventType.POSITION_VECTOR);
 		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":0.0},\"scale\":{\"x\":0.5,\"y\":1.0,\"z\":0.5},\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_3_N + "}}"});
-		getEventResponse(agent, listEvents);
+		getEventResponse(agent, listEvents, EventType.POSITION_VECTOR);
 		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":0.0},\"scale\":{\"x\":0.5,\"y\":1.0,\"z\":0.5},\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_4_N + "}}"});
-		getEventResponse(agent, listEvents);
+		getEventResponse(agent, listEvents, EventType.POSITION_VECTOR);
 		
 		assertTrue(listEvents.size() == 5);
 		
@@ -268,15 +252,15 @@ public class PositionVectorEventTest extends EventTypeTest{
 		LinkedList<String> listEvents = new LinkedList<String>();
 		
 		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":0.0},\"scale\":{\"x\":0.5,\"y\":1.0,\"z\":0.5},\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_N + "},\"cardinalDirection\":" + AstraApi.SOUTH + "}"});
-		getEventResponse(agent, listEvents);
+		getEventResponse(agent, listEvents, EventType.POSITION_VECTOR);
 		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":0.0},\"scale\":{\"x\":0.5,\"y\":1.0,\"z\":0.5},\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_1_N + "}}"});
-		getEventResponse(agent, listEvents);
+		getEventResponse(agent, listEvents, EventType.POSITION_VECTOR);
 		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":0.0},\"scale\":{\"x\":0.5,\"y\":1.0,\"z\":0.5},\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_2_N + "}}"});
-		getEventResponse(agent, listEvents);
+		getEventResponse(agent, listEvents, EventType.POSITION_VECTOR);
 		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":0.0},\"scale\":{\"x\":0.5,\"y\":1.0,\"z\":0.5},\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_1_N + "}}"});
-		getEventResponse(agent, listEvents);
+		getEventResponse(agent, listEvents, EventType.POSITION_VECTOR);
 		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":0.0},\"scale\":{\"x\":0.5,\"y\":1.0,\"z\":0.5},\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_N + "}}"});
-		getEventResponse(agent, listEvents);
+		getEventResponse(agent, listEvents, EventType.POSITION_VECTOR);
 		
 		assertTrue(listEvents.size() == 5);
 		
@@ -313,15 +297,15 @@ public class PositionVectorEventTest extends EventTypeTest{
 		LinkedList<String> listEvents = new LinkedList<String>();
 		
 		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":0.0},\"scale\":{\"x\":0.5,\"y\":1.0,\"z\":0.5},\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_N + "},\"cardinalDirection\":" + AstraApi.SOUTH + "}"});
-		getEventResponse(agent, listEvents);
+		getEventResponse(agent, listEvents, EventType.POSITION_VECTOR);
 		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":0.0},\"scale\":{\"x\":0.5,\"y\":1.0,\"z\":0.5},\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_N + "}}"});
-		getEventResponse(agent, listEvents);
+		getEventResponse(agent, listEvents, EventType.POSITION_VECTOR);
 		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":0.0},\"scale\":{\"x\":0.5,\"y\":1.0,\"z\":0.5},\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_N + "}}"});
-		getEventResponse(agent, listEvents);
+		getEventResponse(agent, listEvents, EventType.POSITION_VECTOR);
 		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":0.0},\"scale\":{\"x\":0.5,\"y\":1.0,\"z\":0.5},\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_N + "}}"});
-		getEventResponse(agent, listEvents);
+		getEventResponse(agent, listEvents, EventType.POSITION_VECTOR);
 		api.asyncEvent(agent, EventType.POSITION_VECTOR, new Object[] {"{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":0.0},\"scale\":{\"x\":0.5,\"y\":1.0,\"z\":0.5},\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z_N + "}}"});
-		getEventResponse(agent, listEvents);
+		getEventResponse(agent, listEvents, EventType.POSITION_VECTOR);
 		
 		assertTrue(listEvents.size() == 5);
 		
@@ -354,27 +338,5 @@ public class PositionVectorEventTest extends EventTypeTest{
 		multipleAsyncPositionVectorUpdateNorthTest();
 		multipleAsyncPositionVectorUpdateNorthTest();
 		multipleAsyncPositionVectorUpdateNorthTest();
-	}
-	
-	private void getEventResponse(String agent, LinkedList<String> listEvents) {
-		String asyncEventPosition = null;
-		int count = 0;
-		while(count < 5) {
-			asyncEventPosition = api.receive(agent, EventType.POSITION_VECTOR);
-			if (asyncEventPosition == null) {			
-				try {
-					Thread.sleep(50);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}	
-			}
-			if (asyncEventPosition != null) {
-				listEvents.add(asyncEventPosition);
-				if (listEvents.size() == 3) {
-					break;
-				}
-			}
-			count ++;
-		}
 	}
 }

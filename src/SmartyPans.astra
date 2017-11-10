@@ -30,10 +30,6 @@ agent SmartyPans extends Player {
 	rule +!messaging(string messaging, string event) {
 	    messaging = messagingModule.sendMessage(event);
 	    !sendCommand("messaging", messaging);
-	}
-	
-	rule +!sendCommand(string EventType, string Command) {
-		unityModule.sendCommand(system.name(), EventType, [Command]);
 	}	
 	
 	rule +!positionVector(string positionVector, string event) {
@@ -43,5 +39,9 @@ agent SmartyPans extends Player {
         
 	    positionVector = gridMap.getDirectionsVector(event);
 	    !sendCommand("position_vector", positionVector);
+	}
+		
+	rule +!sendCommand(string EventType, string Command) {
+		unityModule.sendCommand(system.name(), EventType, [Command]);
 	}
 }

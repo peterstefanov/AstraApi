@@ -18,16 +18,6 @@ import api.modules.utils.Position;
 import api.modules.utils.UnityJson;
 
 public class CollisionEventTest extends EventTypeTest{
-
-	private static final Double X = new Double("1.649999976158142");
-	private static final Double Y = new Double("1.0");
-	private static final Double Z = new Double("2.700000047683716");
-	
-	private static final Double X_N = new Double("-1.649999976158142");
-	private static final Double Y_N = new Double("-1.0");
-	private static final Double Z_N = new Double("-2.700000047683716");
-
-	private static final int INSTANCE_ID = 9670;
 	
 	private List<String> listCardinals = new ArrayList<String>(Arrays.asList(AstraApi.CARDINAL_DIRECTION));
 	
@@ -292,15 +282,15 @@ public class CollisionEventTest extends EventTypeTest{
 		LinkedList<String> listEvents = new LinkedList<String>();
 		
 		api.asyncEvent(agent, EventType.COLLISION, new Object[] {SOUTH_COLLISION});	
-		getEventResponse(agent, listEvents);
+		getEventResponse(agent, listEvents, EventType.COLLISION);
 		api.asyncEvent(agent, EventType.COLLISION, new Object[] {SOUTH_COLLISION});
-		getEventResponse(agent, listEvents);
+		getEventResponse(agent, listEvents, EventType.COLLISION);
 		api.asyncEvent(agent, EventType.COLLISION, new Object[] {SOUTH_COLLISION});	
-		getEventResponse(agent, listEvents);
+		getEventResponse(agent, listEvents, EventType.COLLISION);
 		api.asyncEvent(agent, EventType.COLLISION, new Object[] {SOUTH_COLLISION});	
-		getEventResponse(agent, listEvents);
+		getEventResponse(agent, listEvents, EventType.COLLISION);
 		api.asyncEvent(agent, EventType.COLLISION, new Object[] {SOUTH_COLLISION});
-		getEventResponse(agent, listEvents);
+		getEventResponse(agent, listEvents, EventType.COLLISION);
 		
 		assertTrue(listEvents.size() == 5);
 		
@@ -326,15 +316,15 @@ public class CollisionEventTest extends EventTypeTest{
 		LinkedList<String> listEvents = new LinkedList<String>();
 		
 		api.asyncEvent(agent, EventType.COLLISION, new Object[] {NEGATIVE_SOUTH_COLLISION});	
-		getEventResponse(agent, listEvents);
+		getEventResponse(agent, listEvents, EventType.COLLISION);
 		api.asyncEvent(agent, EventType.COLLISION, new Object[] {NEGATIVE_SOUTH_COLLISION});
-		getEventResponse(agent, listEvents);
+		getEventResponse(agent, listEvents, EventType.COLLISION);
 		api.asyncEvent(agent, EventType.COLLISION, new Object[] {NEGATIVE_SOUTH_COLLISION});	
-		getEventResponse(agent, listEvents);
+		getEventResponse(agent, listEvents, EventType.COLLISION);
 		api.asyncEvent(agent, EventType.COLLISION, new Object[] {NEGATIVE_SOUTH_COLLISION});	
-		getEventResponse(agent, listEvents);
+		getEventResponse(agent, listEvents, EventType.COLLISION);
 		api.asyncEvent(agent, EventType.COLLISION, new Object[] {NEGATIVE_SOUTH_COLLISION});
-		getEventResponse(agent, listEvents);
+		getEventResponse(agent, listEvents, EventType.COLLISION);
 		
 		assertTrue(listEvents.size() == 5);
 		
@@ -347,7 +337,6 @@ public class CollisionEventTest extends EventTypeTest{
 			assertNegativeSouthCollisionAstraResponse(values, astraCardinalDirection);
 			
 			assertFalse(astraCardinalDirection.equals(values.getCardinalDirection()));
-
 		}
 	}
 	
@@ -447,36 +436,6 @@ public class CollisionEventTest extends EventTypeTest{
 		assertTrue(assertTest == 1);
 	}
 	
-	private void assertNorthCollisionAstraResponse(UnityJson values, String astraCardinalDirection) {
-		
-		Position position = values.getPosition();	
-		
-		int assertTest = 0;
-		// based on astra cardinal direction verify coordinates
-		switch (astraCardinalDirection) {
-		case AstraApi.SOUTH:
-			assertTest ++;
-			assertEquals(X, position.getX());
-			assertEquals(Y, position.getY());
-			assertEquals(new Double(Z - AstraApi.API_CHANGE_RATE), position.getZ());
-			break;
-		case AstraApi.WEST:
-			assertTest ++;
-			assertEquals(new Double(X - AstraApi.API_CHANGE_RATE), position.getX());
-			assertEquals(Y, position.getY());
-			assertEquals(Z, position.getZ());
-			break;
-		case AstraApi.EAST:
-			assertTest ++;
-			assertEquals(new Double(X + AstraApi.API_CHANGE_RATE), position.getX());
-			assertEquals(Y, position.getY());
-			assertEquals(Z, position.getZ());
-			break;
-		default:
-		}
-
-		assertTrue(assertTest == 1);
-	}
 	
 	private void assertNegativeNorthCollisionAstraResponse(UnityJson values, String astraCardinalDirection) {
 		
@@ -509,25 +468,34 @@ public class CollisionEventTest extends EventTypeTest{
 		assertTrue(assertTest == 1);
 	}
 	
-	private void getEventResponse(String agent, LinkedList<String> listEvents) {
-		String asyncEventPosition = null;
-		int count = 0;
-		while(count < 5) {
-			asyncEventPosition = api.receive(agent, EventType.COLLISION);
-			if (asyncEventPosition == null) {			
-				try {
-					Thread.sleep(50);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}	
-			}
-			if (asyncEventPosition != null) {
-				listEvents.add(asyncEventPosition);
-				if (listEvents.size() == 3) {
-					break;
-				}
-			}
-			count ++;
+	private void assertNorthCollisionAstraResponse(UnityJson values, String astraCardinalDirection) {
+		
+		Position position = values.getPosition();	
+		
+		int assertTest = 0;
+		// based on astra cardinal direction verify coordinates
+		switch (astraCardinalDirection) {
+		case AstraApi.SOUTH:
+			assertTest ++;
+			assertEquals(X, position.getX());
+			assertEquals(Y, position.getY());
+			assertEquals(new Double(Z - AstraApi.API_CHANGE_RATE), position.getZ());
+			break;
+		case AstraApi.WEST:
+			assertTest ++;
+			assertEquals(new Double(X - AstraApi.API_CHANGE_RATE), position.getX());
+			assertEquals(Y, position.getY());
+			assertEquals(Z, position.getZ());
+			break;
+		case AstraApi.EAST:
+			assertTest ++;
+			assertEquals(new Double(X + AstraApi.API_CHANGE_RATE), position.getX());
+			assertEquals(Y, position.getY());
+			assertEquals(Z, position.getZ());
+			break;
+		default:
 		}
+
+		assertTrue(assertTest == 1);
 	}
 }

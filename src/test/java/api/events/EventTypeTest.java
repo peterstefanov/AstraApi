@@ -1,5 +1,6 @@
 package api.events;
 
+import java.util.LinkedList;
 import java.util.Random;
 
 import org.junit.Before;
@@ -10,8 +11,30 @@ import api.AstraApiImpl;
 
 public class EventTypeTest {
 
-	protected AstraApiImpl api;
-	protected Gson gson;
+	public static final int INSTANCE_ID = 9670;
+	
+	public static final Double X = new Double("1.649999976158142");
+	public static final Double Y = new Double("1.0");
+	public static final Double Z = new Double("2.700000047683716");
+	
+	public static final Double X_N = new Double("-1.649999976158142");
+	public static final Double Y_N = new Double("-1.0");
+	public static final Double Z_N = new Double("-2.700000047683716");
+	
+	public static final Double X_1 = new Double("2.849999976158142");
+
+	public static final Double Z_1 = new Double("3.900000047683716");
+	public static final Double Z_2 = new Double("4.100000047683716");
+	public static final Double Z_3 = new Double("5.100000047683716");
+	public static final Double Z_4 = new Double("6.200000047683716");
+	
+	public static final Double Z_1_N = new Double("-3.900000047683716");
+	public static final Double Z_2_N = new Double("-4.100000047683716");
+	public static final Double Z_3_N = new Double("-5.100000047683716");
+	public static final Double Z_4_N = new Double("-6.200000047683716");
+	
+	public AstraApiImpl api;
+	public Gson gson;
 	
 	@Before
 	public void setUp() {		
@@ -23,7 +46,7 @@ public class EventTypeTest {
 		return api.createAgent(getUniqueString(), "Player");
 	}
 	
-	protected String getUniqueString() {
+	public String getUniqueString() {
         String alphabet = "abcdefghijklmnoprstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
         StringBuilder salt = new StringBuilder();
         Random r = new Random();
@@ -33,4 +56,26 @@ public class EventTypeTest {
         }
         return salt.toString();
     }
+	
+	public void getEventResponse(String agent, LinkedList<String> listEvents, String eventType) {
+		String asyncEventPosition = null;
+		int count = 0;
+		while(count < 7) {
+			asyncEventPosition = api.receive(agent, eventType);
+			if (asyncEventPosition == null) {			
+				try {
+					Thread.sleep(50);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}	
+			}
+			if (asyncEventPosition != null) {
+				listEvents.add(asyncEventPosition);
+				if (listEvents.size() == 3) {
+					break;
+				}
+			}
+			count ++;
+		}
+	}
 }

@@ -18,30 +18,7 @@ import api.events.EventTypeTest;
 import api.modules.utils.Position;
 import api.modules.utils.UnityJson;
 
-public class GridMapGeneratorTest extends EventTypeTest {
-
-	
-	private static final Double X = new Double("1.649999976158142");
-	private static final Double Y = new Double("1.0");
-	private static final Double Z = new Double("2.700000047683716");
-	
-	private static final Double X_N = new Double("-1.649999976158142");
-	private static final Double Y_N = new Double("-1.0");
-	private static final Double Z_N = new Double("-2.700000047683716");
-	
-
-	private static final Double X_1 = new Double("2.849999976158142");
-	private static final Double Z_1 = new Double("3.900000047683716");
-	private static final Double Z_2 = new Double("4.100000047683716");
-	private static final Double Z_3 = new Double("5.100000047683716");
-	private static final Double Z_4 = new Double("6.200000047683716");
-	
-	private static final Double Z_1_N = new Double("-3.900000047683716");
-	private static final Double Z_2_N = new Double("-4.100000047683716");
-	private static final Double Z_3_N = new Double("-5.100000047683716");
-	private static final Double Z_4_N = new Double("-6.200000047683716");
-	
-	private static final int INSTANCE_ID = 9670;
+public class GridMapGeneratorTest extends EventTypeTest {	
 	
 	private List<String> listCardinals = new ArrayList<String>(Arrays.asList(AstraApi.CARDINAL_DIRECTION));
 	
@@ -101,7 +78,7 @@ public class GridMapGeneratorTest extends EventTypeTest {
 			countItems ++;
 		}
 	}
-	
+
 	@Test
 	public void initialSinglePositionVectorSyncEventSouthTest() {
 		//Agent created
@@ -888,28 +865,6 @@ public class GridMapGeneratorTest extends EventTypeTest {
 
 		assertTrue(assertTest == 1);
 	}	
-	
-	private void getEventResponse(String agent, LinkedList<String> listEvents, String eventType) {
-		String asyncEventPosition = null;
-		int count = 0;
-		while(count < 5) {
-			asyncEventPosition = api.receive(agent, eventType);
-			if (asyncEventPosition == null) {			
-				try {
-					Thread.sleep(50);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}	
-			}
-			if (asyncEventPosition != null) {
-				listEvents.add(asyncEventPosition);
-				if (listEvents.size() == 3) {
-					break;
-				}
-			}
-			count ++;
-		}
-	}
 	
 	public String createAgent() {
 		return api.createAgent(getUniqueString(), "GridMapGenerator");
