@@ -30,6 +30,10 @@ public class Coordinates {
 		return y;
 	}
 
+	public String getDirection() {
+		return direction;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -65,6 +69,6 @@ public class Coordinates {
 	}
 
 	public String toString() {
-		return '(' + Integer.toString(x) + ',' + Integer.toString(y) + ',' + direction + ',' + blocked + ')';
+		return '(' + Integer.toString(x) + ',' + Integer.toString(y) + ',' + getDirection() + ',' + isBlocked() + ')';
 	}
 }
