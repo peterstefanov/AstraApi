@@ -6,7 +6,7 @@ agent GridMapGenerator extends Player {
 	types mapGenerator_types{
 	    formula state(string);
 		formula taskPathReady(string);
-		formula mapSize(int);
+		formula finishCount(int);
 		formula isNotified(string);
 	}
 		
@@ -19,10 +19,10 @@ agent GridMapGenerator extends Player {
 	
 	rule +!collision(string collision, string event) {
 
-	    int size = gridMap.getMapSize();
+	    int count = gridMap.getFinishCount();
 	    
-	    if (size > 250) {
-           !doNotify(mapSize(size));            
+	    if (count > 1) {
+           !doNotify(finishCount(count));          
 	    } else {
 	       //update on map
 	       gridMap.updateGridMap(collision, event);  
@@ -33,10 +33,10 @@ agent GridMapGenerator extends Player {
 	
 	rule +!positionVector(string positionVector, string event) {
  
-	    int size = gridMap.getMapSize();
+	    int count = gridMap.getFinishCount();
 	    
-	    if (size > 250) {
-           !doNotify(mapSize(size));    
+	    if (count > 1) {
+           !doNotify(finishCount(count));    
 	    } else {
 	       //update the map
 	       gridMap.updateGridMap(positionVector, event);
@@ -47,10 +47,10 @@ agent GridMapGenerator extends Player {
 	
 	rule +!position(string position, string event) {
 	   
-	    int size = gridMap.getMapSize();	    
+	    int count = gridMap.getFinishCount();
 	    
-	    if (size > 250) {
-           !doNotify(mapSize(size));          
+	    if (count > 1) {
+           !doNotify(finishCount(count));         
 	    } else {
 	       //update on map
 	       gridMap.updateGridMap(position, event);
@@ -59,11 +59,11 @@ agent GridMapGenerator extends Player {
 	    Player::!position(position, event);
 	}
 	
-	rule +!doNotify(mapSize(int X)) : X == 251 & ~state("Agree") {	    
+	rule +!doNotify(finishCount(int X)) : X == 2 & ~state("Agree") {	    
 		send(request, "smartyPans", taskPathReady("Ready"));
 	}
 	
-	rule +!doNotify(mapSize(int X)) {
+	rule +!doNotify(finishCount(int X)) {
 	    console.println("DO NOTHING: " + X);
 	}
 	

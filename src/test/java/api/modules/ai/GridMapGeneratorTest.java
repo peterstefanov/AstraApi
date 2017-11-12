@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -22,16 +23,16 @@ public class GridMapGeneratorTest extends EventTypeTest {
 	
 	private List<String> listCardinals = new ArrayList<String>(Arrays.asList(AstraApi.CARDINAL_DIRECTION));
 
+	private String agent;
+	
 	@Before
 	public void setUp() {	
 		super.setUp();
+		agent = createAgent();
 	}
 	
 	@Test
-	public void multipleAsyncPositionVectorMovingNorthTest() {
-			
-		//Agent created	
-		String agent = createAgent();					
+	public void multipleAsyncPositionVectorMovingNorthTest() {				
 		
 		LinkedList<String> listEvents = new LinkedList<String>();
 		
@@ -74,8 +75,7 @@ public class GridMapGeneratorTest extends EventTypeTest {
 
 	@Test
 	public void initialSinglePositionVectorSyncEventSouthTest() {
-		//Agent created
-		String agent = createAgent();			
+		
 		String event = "{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":0.0},\"scale\":{\"x\":0.5,\"y\":1.0,\"z\":0.5},\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z + "},\"cardinalDirection\":" + AstraApi.SOUTH + "}";			
 		
 		String syncEventPosition = api.syncEvent(agent, EventType.POSITION_VECTOR, new Object[] {event});							
@@ -89,8 +89,7 @@ public class GridMapGeneratorTest extends EventTypeTest {
 	
 	@Test
 	public void initialSinglePositionVectorSyncEventNorthTest() {
-		//Agent created
-		String agent = createAgent();			
+			
 		String event = "{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":0.0},\"scale\":{\"x\":0.5,\"y\":1.0,\"z\":0.5},\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z + "},\"cardinalDirection\":" + AstraApi.NORTH + "}";			
 		
 		String syncEventPosition = api.syncEvent(agent, EventType.POSITION_VECTOR, new Object[] {event});						
@@ -104,8 +103,7 @@ public class GridMapGeneratorTest extends EventTypeTest {
 	
 	@Test
 	public void initialSinglePositionVectorSyncEventWestTest() {
-		//Agent created
-		String agent = createAgent();			
+		
 		String event = "{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":0.0},\"scale\":{\"x\":0.5,\"y\":1.0,\"z\":0.5},\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z + "},\"cardinalDirection\":" + AstraApi.WEST + "}";			
 		
 		String syncEventPosition = api.syncEvent(agent, EventType.POSITION_VECTOR, new Object[] {event});						
@@ -119,8 +117,7 @@ public class GridMapGeneratorTest extends EventTypeTest {
 	
 	@Test
 	public void initialSinglePositionVectorSyncEventEastTest() {
-		//Agent created
-		String agent = createAgent();			
+			
 		String event = "{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":0.0},\"scale\":{\"x\":0.5,\"y\":1.0,\"z\":0.5},\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z + "},\"cardinalDirection\":" + AstraApi.EAST + "}";			
 		
 		String syncEventPosition = api.syncEvent(agent, EventType.POSITION_VECTOR, new Object[] {event});						
@@ -133,9 +130,7 @@ public class GridMapGeneratorTest extends EventTypeTest {
 	}
 	
 	@Test
-	public void singlePositionVectorAsyncEventTest() {
-		//Agent created
-		String agent = createAgent();			
+	public void singlePositionVectorAsyncEventTest() {			
 		
 		String event = "{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":0.0},\"scale\":{\"x\":0.5,\"y\":1.0,\"z\":0.5},\"position\":{\"x\":" + X + ",\"y\":" + Y + ",\"z\":" + Z + "},\"cardinalDirection\":" + AstraApi.NORTH + "}";			
 		
@@ -167,8 +162,7 @@ public class GridMapGeneratorTest extends EventTypeTest {
 	
 	@Test
 	public void multiplePositionVectorSyncEventChangeDirectionTest() {
-		//Agent created
-		String agent = createAgent();			
+			
 		UnityJson values= null;
 		String syncEventPosition = null;
 		
@@ -206,10 +200,7 @@ public class GridMapGeneratorTest extends EventTypeTest {
 	}
 	
 	@Test
-	public void multipleAsyncPositionVectorUpdateNorthTest() {
-			
-		//Agent created	
-		String agent = createAgent();			
+	public void multipleAsyncPositionVectorUpdateNorthTest() {		
 		
 		LinkedList<String> listEvents = new LinkedList<String>();
 		
@@ -251,10 +242,7 @@ public class GridMapGeneratorTest extends EventTypeTest {
 	}
 	
 	@Test
-	public void multipleAsyncPositionVectorUpdateSouthTest() {
-			
-		//Agent created	
-		String agent = createAgent();			
+	public void multipleAsyncPositionVectorUpdateSouthTest() {		
 		
 		LinkedList<String> listEvents = new LinkedList<String>();
 		
@@ -296,10 +284,7 @@ public class GridMapGeneratorTest extends EventTypeTest {
 	}
 	
 	@Test
-	public void multipleAsyncPositionVectorDecreaseUpdateSouthTest() {
-			
-		//Agent created	
-		String agent = createAgent();			
+	public void multipleAsyncPositionVectorDecreaseUpdateSouthTest() {			
 		
 		LinkedList<String> listEvents = new LinkedList<String>();
 		
@@ -341,10 +326,7 @@ public class GridMapGeneratorTest extends EventTypeTest {
 	}
 	
 	@Test
-	public void multipleAsyncPositionVectorUpdateSouthNoChangeTest() {
-			
-		//Agent created	
-		String agent = createAgent();			
+	public void multipleAsyncPositionVectorUpdateSouthNoChangeTest() {		
 		
 		LinkedList<String> listEvents = new LinkedList<String>();
 		
@@ -390,14 +372,12 @@ public class GridMapGeneratorTest extends EventTypeTest {
 		multipleAsyncPositionVectorUpdateNorthTest();
 		multipleAsyncPositionVectorUpdateNorthTest();
 		multipleAsyncPositionVectorUpdateNorthTest();
+		
 	}
 	
 	@Test
 	public void singleSouthCollisionSyncEventTest() {
-
-		// Agent created
-		String agent = createAgent();
-
+		
 		String syncEventPosition = api.syncEvent(agent, EventType.COLLISION, new Object[] { SOUTH_COLLISION });
 
 		UnityJson values = (UnityJson) gson.fromJson(syncEventPosition, UnityJson.class);
@@ -417,10 +397,7 @@ public class GridMapGeneratorTest extends EventTypeTest {
 	
 	@Test
 	public void singleNegativeSouthCollisionSyncEventTest() {
-
-		// Agent created
-		String agent = createAgent();
-
+		
 		String syncEventPosition = api.syncEvent(agent, EventType.COLLISION, new Object[] { NEGATIVE_SOUTH_COLLISION });
 
 		UnityJson values = (UnityJson) gson.fromJson(syncEventPosition, UnityJson.class);
@@ -440,9 +417,6 @@ public class GridMapGeneratorTest extends EventTypeTest {
 	
 	@Test
 	public void singleNorthCollisionSyncEventTest() {
-
-		// Agent created
-		String agent = createAgent();
 
 		String syncEventPosition = api.syncEvent(agent, EventType.COLLISION, new Object[] { NORTH_COLLISION });
 
@@ -464,9 +438,6 @@ public class GridMapGeneratorTest extends EventTypeTest {
 	@Test
 	public void singleNegativeNorthCollisionSyncEventTest() {
 
-		// Agent created
-		String agent = createAgent();
-
 		String syncEventPosition = api.syncEvent(agent, EventType.COLLISION, new Object[] { NEGATIVE_NORTH_COLLISION });
 
 		UnityJson values = (UnityJson) gson.fromJson(syncEventPosition, UnityJson.class);
@@ -485,10 +456,7 @@ public class GridMapGeneratorTest extends EventTypeTest {
 	}
 	
 	@Test
-	public void twoSouthCollisionSyncEventTest() {
-		
-		//Agent created
-		String agent = createAgent();			
+	public void twoSouthCollisionSyncEventTest() {			
 		
 		String syncEventPosition = api.syncEvent(agent, EventType.COLLISION, new Object[] {SOUTH_COLLISION});		
 		
@@ -528,10 +496,7 @@ public class GridMapGeneratorTest extends EventTypeTest {
 	}
 	
 	@Test
-	public void twoNorthCollisionSyncEventTest() {
-		
-		//Agent created
-		String agent = createAgent();			
+	public void twoNorthCollisionSyncEventTest() {		
 		
 		String syncEventPosition = api.syncEvent(agent, EventType.COLLISION, new Object[] {NORTH_COLLISION});		
 		
@@ -572,9 +537,7 @@ public class GridMapGeneratorTest extends EventTypeTest {
 	
 	@Test
 	public void multipleSouthSyncCollisionUpdateRepeatTest() {
-		//Agent created
-		String agent = createAgent();
-		
+
 		singleSouthCollisionSyncEventTest(agent);
 		singleSouthCollisionSyncEventTest(agent);
 		singleSouthCollisionSyncEventTest(agent);
@@ -584,8 +547,6 @@ public class GridMapGeneratorTest extends EventTypeTest {
 	
 	@Test
 	public void multipleNegativeSouthSyncCollisionUpdateRepeatTest() {
-		//Agent created
-		String agent = createAgent();
 		
 		singleNegativeSouthCollisionSyncEventTest(agent);
 		singleNegativeSouthCollisionSyncEventTest(agent);
@@ -595,10 +556,7 @@ public class GridMapGeneratorTest extends EventTypeTest {
 	}
 	
 	@Test
-	public void singleCollisionAsyncEventTest() {
-		
-		//Agent created
-		String agent = createAgent();			
+	public void singleCollisionAsyncEventTest() {			
 		
 		api.asyncEvent(agent, EventType.COLLISION, new Object[] {SOUTH_COLLISION});		
 		
@@ -635,10 +593,7 @@ public class GridMapGeneratorTest extends EventTypeTest {
 	
 	@Test
 	public void multipleSouthCollisionAsyncEventTest() {
-		
-		//Agent created
-		String agent = createAgent();			
-		
+
 		LinkedList<String> listEvents = new LinkedList<String>();
 		
 		api.asyncEvent(agent, EventType.COLLISION, new Object[] {SOUTH_COLLISION});	
@@ -669,10 +624,7 @@ public class GridMapGeneratorTest extends EventTypeTest {
 	
 	@Test
 	public void multipleNegativeSouthCollisionAsyncEventTest() {
-		
-		//Agent created
-		String agent = createAgent();			
-		
+
 		LinkedList<String> listEvents = new LinkedList<String>();
 		
 		api.asyncEvent(agent, EventType.COLLISION, new Object[] {NEGATIVE_SOUTH_COLLISION});	
@@ -858,6 +810,11 @@ public class GridMapGeneratorTest extends EventTypeTest {
 
 		assertTrue(assertTest == 1);
 	}	
+	
+	@After
+	public void tearsDown() {
+		api.removeAgent(agent);
+	}
 	
 	public String createAgent() {
 		return api.createAgent(getUniqueString(), "GridMapGenerator");

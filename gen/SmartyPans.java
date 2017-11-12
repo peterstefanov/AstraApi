@@ -166,7 +166,91 @@ public class SmartyPans extends ASTRAClass {
 			)
 		));
 		addRule(new Rule(
-			"SmartyPans", new int[] {35,9,35,58},
+			"SmartyPans", new int[] {35,9,35,64},
+			new GoalEvent('+',
+				new Goal(
+					new Predicate("positionVector", new Term[] {
+						new Variable(Type.STRING, "positionVector",false),
+						new Variable(Type.STRING, "event",false)
+					})
+				)
+			),
+			Predicate.TRUE,
+			new Block(
+				"SmartyPans", new int[] {35,63,42,5},
+				new Statement[] {
+					new Declaration(
+						new Variable(Type.INTEGER, "size"),
+						"SmartyPans", new int[] {37,8,42,5},
+						new ModuleTerm("gridMap", Type.INTEGER,
+							new Predicate("getMapSize", new Term[] {}),
+							new ModuleTermAdaptor() {
+								public Object invoke(Intention intention, Predicate predicate) {
+									return ((api.modules.ai.GridMap) intention.getModule("SmartyPans","gridMap")).getMapSize(
+									);
+								}
+								public Object invoke(BindingsEvaluateVisitor visitor, Predicate predicate) {
+									return ((api.modules.ai.GridMap) visitor.agent().getModule("SmartyPans","gridMap")).getMapSize(
+									);
+								}
+							}
+						)
+					),
+					new ModuleCall("console",
+						"SmartyPans", new int[] {38,8,38,54},
+						new Predicate("println", new Term[] {
+							Operator.newOperator('+',
+								Primitive.newPrimitive("Knowledge map size: "),
+								new Variable(Type.INTEGER, "size")
+							)
+						}),
+						new DefaultModuleCallAdaptor() {
+							public boolean inline() {
+								return false;
+							}
+
+							public boolean invoke(Intention intention, Predicate predicate) {
+								return ((astra.lang.Console) intention.getModule("SmartyPans","console")).println(
+									(java.lang.String) intention.evaluate(predicate.getTerm(0))
+								);
+							}
+						}
+					),
+					new Assignment(
+						new Variable(Type.STRING, "positionVector"),
+						"SmartyPans", new int[] {40,8,42,5},
+						new ModuleTerm("gridMap", Type.STRING,
+							new Predicate("getValidatedDirectionsVector", new Term[] {
+								new Variable(Type.STRING, "event")
+							}),
+							new ModuleTermAdaptor() {
+								public Object invoke(Intention intention, Predicate predicate) {
+									return ((api.modules.ai.GridMap) intention.getModule("SmartyPans","gridMap")).getValidatedDirectionsVector(
+										(java.lang.String) intention.evaluate(predicate.getTerm(0))
+									);
+								}
+								public Object invoke(BindingsEvaluateVisitor visitor, Predicate predicate) {
+									return ((api.modules.ai.GridMap) visitor.agent().getModule("SmartyPans","gridMap")).getValidatedDirectionsVector(
+										(java.lang.String) visitor.evaluate(predicate.getTerm(0))
+									);
+								}
+							}
+						)
+					),
+					new Subgoal(
+						"SmartyPans", new int[] {41,8,42,5},
+						new Goal(
+							new Predicate("sendCommand", new Term[] {
+								Primitive.newPrimitive("position_vector"),
+								new Variable(Type.STRING, "positionVector")
+							})
+						)
+					)
+				}
+			)
+		));
+		addRule(new Rule(
+			"SmartyPans", new int[] {44,9,44,58},
 			new GoalEvent('+',
 				new Goal(
 					new Predicate("sendCommand", new Term[] {
@@ -177,10 +261,10 @@ public class SmartyPans extends ASTRAClass {
 			),
 			Predicate.TRUE,
 			new Block(
-				"SmartyPans", new int[] {35,57,37,5},
+				"SmartyPans", new int[] {44,57,46,5},
 				new Statement[] {
 					new ModuleCall("unityModule",
-						"SmartyPans", new int[] {36,8,36,68},
+						"SmartyPans", new int[] {45,8,45,68},
 						new Predicate("sendCommand", new Term[] {
 							new ModuleTerm("system", Type.STRING,
 								new Predicate("name", new Term[] {}),
@@ -213,90 +297,6 @@ public class SmartyPans extends ASTRAClass {
 								);
 							}
 						}
-					)
-				}
-			)
-		));
-		addRule(new Rule(
-			"SmartyPans", new int[] {39,9,39,64},
-			new GoalEvent('+',
-				new Goal(
-					new Predicate("positionVector", new Term[] {
-						new Variable(Type.STRING, "positionVector",false),
-						new Variable(Type.STRING, "event",false)
-					})
-				)
-			),
-			Predicate.TRUE,
-			new Block(
-				"SmartyPans", new int[] {39,63,46,5},
-				new Statement[] {
-					new Declaration(
-						new Variable(Type.INTEGER, "size"),
-						"SmartyPans", new int[] {41,8,46,5},
-						new ModuleTerm("gridMap", Type.INTEGER,
-							new Predicate("getMapSize", new Term[] {}),
-							new ModuleTermAdaptor() {
-								public Object invoke(Intention intention, Predicate predicate) {
-									return ((api.modules.ai.GridMap) intention.getModule("SmartyPans","gridMap")).getMapSize(
-									);
-								}
-								public Object invoke(BindingsEvaluateVisitor visitor, Predicate predicate) {
-									return ((api.modules.ai.GridMap) visitor.agent().getModule("SmartyPans","gridMap")).getMapSize(
-									);
-								}
-							}
-						)
-					),
-					new ModuleCall("console",
-						"SmartyPans", new int[] {42,8,42,54},
-						new Predicate("println", new Term[] {
-							Operator.newOperator('+',
-								Primitive.newPrimitive("Knowledge map size: "),
-								new Variable(Type.INTEGER, "size")
-							)
-						}),
-						new DefaultModuleCallAdaptor() {
-							public boolean inline() {
-								return false;
-							}
-
-							public boolean invoke(Intention intention, Predicate predicate) {
-								return ((astra.lang.Console) intention.getModule("SmartyPans","console")).println(
-									(java.lang.String) intention.evaluate(predicate.getTerm(0))
-								);
-							}
-						}
-					),
-					new Assignment(
-						new Variable(Type.STRING, "positionVector"),
-						"SmartyPans", new int[] {44,8,46,5},
-						new ModuleTerm("gridMap", Type.STRING,
-							new Predicate("getDirectionsVector", new Term[] {
-								new Variable(Type.STRING, "event")
-							}),
-							new ModuleTermAdaptor() {
-								public Object invoke(Intention intention, Predicate predicate) {
-									return ((api.modules.ai.GridMap) intention.getModule("SmartyPans","gridMap")).getDirectionsVector(
-										(java.lang.String) intention.evaluate(predicate.getTerm(0))
-									);
-								}
-								public Object invoke(BindingsEvaluateVisitor visitor, Predicate predicate) {
-									return ((api.modules.ai.GridMap) visitor.agent().getModule("SmartyPans","gridMap")).getDirectionsVector(
-										(java.lang.String) visitor.evaluate(predicate.getTerm(0))
-									);
-								}
-							}
-						)
-					),
-					new Subgoal(
-						"SmartyPans", new int[] {45,8,46,5},
-						new Goal(
-							new Predicate("sendCommand", new Term[] {
-								Primitive.newPrimitive("position_vector"),
-								new Variable(Type.STRING, "positionVector")
-							})
-						)
 					)
 				}
 			)

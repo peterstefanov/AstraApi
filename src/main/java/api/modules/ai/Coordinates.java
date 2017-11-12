@@ -5,23 +5,29 @@ package api.modules.ai;
  * where this side can be either blocked or unblocked, basically the direction to move.
  */
 public class Coordinates {
-
+	
 	private int x;
 	private int y;
 	private String direction;
 	private boolean blocked;
+	private boolean finish;
 	
-	public Coordinates(int x, int y, String direction) {
+	public Coordinates(int x, int y, String direction, boolean isEnd) {
 		this.x = x;
 		this.y = y;
 		this.direction = direction == null ? "" : direction;
 		this.blocked = direction != null;
+		this.finish = isEnd;
 	}
 
 	public boolean isBlocked () {
 		return this.blocked;
 	}
 	
+	public boolean isFinish() {
+		return finish;
+	}
+
 	public int getX() {
 		return x;
 	}
@@ -40,6 +46,7 @@ public class Coordinates {
 		int result = 1;
 		result = prime * result + (blocked ? 1231 : 1237);
 		result = prime * result + ((direction == null) ? 0 : direction.hashCode());
+		result = prime * result + (finish ? 1231 : 1237);
 		result = prime * result + x;
 		result = prime * result + y;
 		return result;
@@ -61,6 +68,8 @@ public class Coordinates {
 				return false;
 		} else if (!direction.equals(other.direction))
 			return false;
+		if (finish != other.finish)
+			return false;
 		if (x != other.x)
 			return false;
 		if (y != other.y)
@@ -68,7 +77,10 @@ public class Coordinates {
 		return true;
 	}
 
+
+	@Override
 	public String toString() {
-		return '(' + Integer.toString(x) + ',' + Integer.toString(y) + ',' + getDirection() + ',' + isBlocked() + ')';
+		return "Coordinates [x=" + x + ", y=" + y + ", direction=" + direction + ", blocked=" + blocked + ", finish=" + finish
+				+ "]";
 	}
 }

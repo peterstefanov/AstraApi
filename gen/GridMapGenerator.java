@@ -47,17 +47,17 @@ public class GridMapGenerator extends ASTRAClass {
 				"GridMapGenerator", new int[] {20,53,32,5},
 				new Statement[] {
 					new Declaration(
-						new Variable(Type.INTEGER, "size"),
+						new Variable(Type.INTEGER, "count"),
 						"GridMapGenerator", new int[] {22,8,32,5},
 						new ModuleTerm("gridMap", Type.INTEGER,
-							new Predicate("getMapSize", new Term[] {}),
+							new Predicate("getFinishCount", new Term[] {}),
 							new ModuleTermAdaptor() {
 								public Object invoke(Intention intention, Predicate predicate) {
-									return ((api.modules.ai.GridMap) intention.getModule("GridMapGenerator","gridMap")).getMapSize(
+									return ((api.modules.ai.GridMap) intention.getModule("GridMapGenerator","gridMap")).getFinishCount(
 									);
 								}
 								public Object invoke(BindingsEvaluateVisitor visitor, Predicate predicate) {
-									return ((api.modules.ai.GridMap) visitor.agent().getModule("GridMapGenerator","gridMap")).getMapSize(
+									return ((api.modules.ai.GridMap) visitor.agent().getModule("GridMapGenerator","gridMap")).getFinishCount(
 									);
 								}
 							}
@@ -66,18 +66,18 @@ public class GridMapGenerator extends ASTRAClass {
 					new If(
 						"GridMapGenerator", new int[] {24,8,32,5},
 						new Comparison(">",
-							new Variable(Type.INTEGER, "size"),
-							Primitive.newPrimitive(250)
+							new Variable(Type.INTEGER, "count"),
+							Primitive.newPrimitive(1)
 						),
 						new Block(
-							"GridMapGenerator", new int[] {24,23,26,9},
+							"GridMapGenerator", new int[] {24,22,26,9},
 							new Statement[] {
 								new Subgoal(
 									"GridMapGenerator", new int[] {25,11,26,9},
 									new Goal(
 										new Predicate("doNotify", new Term[] {
-											new Funct("mapSize", new Term[] {
-												new Variable(Type.INTEGER, "size")
+											new Funct("finishCount", new Term[] {
+												new Variable(Type.INTEGER, "count")
 											})
 										})
 									)
@@ -137,17 +137,17 @@ public class GridMapGenerator extends ASTRAClass {
 				"GridMapGenerator", new int[] {34,63,46,5},
 				new Statement[] {
 					new Declaration(
-						new Variable(Type.INTEGER, "size"),
+						new Variable(Type.INTEGER, "count"),
 						"GridMapGenerator", new int[] {36,8,46,5},
 						new ModuleTerm("gridMap", Type.INTEGER,
-							new Predicate("getMapSize", new Term[] {}),
+							new Predicate("getFinishCount", new Term[] {}),
 							new ModuleTermAdaptor() {
 								public Object invoke(Intention intention, Predicate predicate) {
-									return ((api.modules.ai.GridMap) intention.getModule("GridMapGenerator","gridMap")).getMapSize(
+									return ((api.modules.ai.GridMap) intention.getModule("GridMapGenerator","gridMap")).getFinishCount(
 									);
 								}
 								public Object invoke(BindingsEvaluateVisitor visitor, Predicate predicate) {
-									return ((api.modules.ai.GridMap) visitor.agent().getModule("GridMapGenerator","gridMap")).getMapSize(
+									return ((api.modules.ai.GridMap) visitor.agent().getModule("GridMapGenerator","gridMap")).getFinishCount(
 									);
 								}
 							}
@@ -156,18 +156,18 @@ public class GridMapGenerator extends ASTRAClass {
 					new If(
 						"GridMapGenerator", new int[] {38,8,46,5},
 						new Comparison(">",
-							new Variable(Type.INTEGER, "size"),
-							Primitive.newPrimitive(250)
+							new Variable(Type.INTEGER, "count"),
+							Primitive.newPrimitive(1)
 						),
 						new Block(
-							"GridMapGenerator", new int[] {38,23,40,9},
+							"GridMapGenerator", new int[] {38,22,40,9},
 							new Statement[] {
 								new Subgoal(
 									"GridMapGenerator", new int[] {39,11,40,9},
 									new Goal(
 										new Predicate("doNotify", new Term[] {
-											new Funct("mapSize", new Term[] {
-												new Variable(Type.INTEGER, "size")
+											new Funct("finishCount", new Term[] {
+												new Variable(Type.INTEGER, "count")
 											})
 										})
 									)
@@ -227,17 +227,17 @@ public class GridMapGenerator extends ASTRAClass {
 				"GridMapGenerator", new int[] {48,51,60,5},
 				new Statement[] {
 					new Declaration(
-						new Variable(Type.INTEGER, "size"),
+						new Variable(Type.INTEGER, "count"),
 						"GridMapGenerator", new int[] {50,8,60,5},
 						new ModuleTerm("gridMap", Type.INTEGER,
-							new Predicate("getMapSize", new Term[] {}),
+							new Predicate("getFinishCount", new Term[] {}),
 							new ModuleTermAdaptor() {
 								public Object invoke(Intention intention, Predicate predicate) {
-									return ((api.modules.ai.GridMap) intention.getModule("GridMapGenerator","gridMap")).getMapSize(
+									return ((api.modules.ai.GridMap) intention.getModule("GridMapGenerator","gridMap")).getFinishCount(
 									);
 								}
 								public Object invoke(BindingsEvaluateVisitor visitor, Predicate predicate) {
-									return ((api.modules.ai.GridMap) visitor.agent().getModule("GridMapGenerator","gridMap")).getMapSize(
+									return ((api.modules.ai.GridMap) visitor.agent().getModule("GridMapGenerator","gridMap")).getFinishCount(
 									);
 								}
 							}
@@ -246,18 +246,18 @@ public class GridMapGenerator extends ASTRAClass {
 					new If(
 						"GridMapGenerator", new int[] {52,8,60,5},
 						new Comparison(">",
-							new Variable(Type.INTEGER, "size"),
-							Primitive.newPrimitive(250)
+							new Variable(Type.INTEGER, "count"),
+							Primitive.newPrimitive(1)
 						),
 						new Block(
-							"GridMapGenerator", new int[] {52,23,54,9},
+							"GridMapGenerator", new int[] {52,22,54,9},
 							new Statement[] {
 								new Subgoal(
 									"GridMapGenerator", new int[] {53,11,54,9},
 									new Goal(
 										new Predicate("doNotify", new Term[] {
-											new Funct("mapSize", new Term[] {
-												new Variable(Type.INTEGER, "size")
+											new Funct("finishCount", new Term[] {
+												new Variable(Type.INTEGER, "count")
 											})
 										})
 									)
@@ -303,11 +303,11 @@ public class GridMapGenerator extends ASTRAClass {
 			)
 		));
 		addRule(new Rule(
-			"GridMapGenerator", new int[] {62,9,62,65},
+			"GridMapGenerator", new int[] {62,9,62,67},
 			new GoalEvent('+',
 				new Goal(
 					new Predicate("doNotify", new Term[] {
-						new Funct("mapSize", new Term[] {
+						new Funct("finishCount", new Term[] {
 							new Variable(Type.INTEGER, "X",false)
 						})
 					})
@@ -316,7 +316,7 @@ public class GridMapGenerator extends ASTRAClass {
 			new AND(
 				new Comparison("==",
 					new Variable(Type.INTEGER, "X"),
-					Primitive.newPrimitive(251)
+					Primitive.newPrimitive(2)
 				),
 				new NOT(
 					new Predicate("state", new Term[] {
@@ -325,7 +325,7 @@ public class GridMapGenerator extends ASTRAClass {
 				)
 			),
 			new Block(
-				"GridMapGenerator", new int[] {62,64,64,5},
+				"GridMapGenerator", new int[] {62,66,64,5},
 				new Statement[] {
 					new Send("GridMapGenerator", new int[] {63,8,63,59},
 						new Performative("request"),
@@ -338,11 +338,11 @@ public class GridMapGenerator extends ASTRAClass {
 			)
 		));
 		addRule(new Rule(
-			"GridMapGenerator", new int[] {66,9,66,37},
+			"GridMapGenerator", new int[] {66,9,66,41},
 			new GoalEvent('+',
 				new Goal(
 					new Predicate("doNotify", new Term[] {
-						new Funct("mapSize", new Term[] {
+						new Funct("finishCount", new Term[] {
 							new Variable(Type.INTEGER, "X",false)
 						})
 					})
@@ -350,7 +350,7 @@ public class GridMapGenerator extends ASTRAClass {
 			),
 			Predicate.TRUE,
 			new Block(
-				"GridMapGenerator", new int[] {66,36,68,5},
+				"GridMapGenerator", new int[] {66,40,68,5},
 				new Statement[] {
 					new ModuleCall("console",
 						"GridMapGenerator", new int[] {67,8,67,43},
