@@ -151,7 +151,7 @@ public class MessageEventTypeTest extends EventTypeTest {
 		}			
 		assertTrue(listEvents.size() == 5);
 		
-		//only one instanceId 7777777
+		//only two instanceId 7777777
 		LinkedList<String> listCollisionsEvents = new LinkedList<String>();
 		api.asyncEvent(agent, EventType.COLLISION, new Object[] {SOUTH_COLLISION});	
 		getEventResponse(agent, listCollisionsEvents, EventType.COLLISION);
