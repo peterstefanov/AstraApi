@@ -177,11 +177,11 @@ public class SmartyPans extends ASTRAClass {
 			),
 			Predicate.TRUE,
 			new Block(
-				"SmartyPans", new int[] {35,63,42,5},
+				"SmartyPans", new int[] {35,63,41,5},
 				new Statement[] {
 					new Declaration(
 						new Variable(Type.INTEGER, "size"),
-						"SmartyPans", new int[] {37,8,42,5},
+						"SmartyPans", new int[] {37,8,41,5},
 						new ModuleTerm("gridMap", Type.INTEGER,
 							new Predicate("getMapSize", new Term[] {}),
 							new ModuleTermAdaptor() {
@@ -196,29 +196,9 @@ public class SmartyPans extends ASTRAClass {
 							}
 						)
 					),
-					new ModuleCall("console",
-						"SmartyPans", new int[] {38,8,38,54},
-						new Predicate("println", new Term[] {
-							Operator.newOperator('+',
-								Primitive.newPrimitive("Knowledge map size: "),
-								new Variable(Type.INTEGER, "size")
-							)
-						}),
-						new DefaultModuleCallAdaptor() {
-							public boolean inline() {
-								return false;
-							}
-
-							public boolean invoke(Intention intention, Predicate predicate) {
-								return ((astra.lang.Console) intention.getModule("SmartyPans","console")).println(
-									(java.lang.String) intention.evaluate(predicate.getTerm(0))
-								);
-							}
-						}
-					),
 					new Assignment(
 						new Variable(Type.STRING, "positionVector"),
-						"SmartyPans", new int[] {40,8,42,5},
+						"SmartyPans", new int[] {39,8,41,5},
 						new ModuleTerm("gridMap", Type.STRING,
 							new Predicate("getNextMove", new Term[] {
 								new Variable(Type.STRING, "event")
@@ -238,7 +218,7 @@ public class SmartyPans extends ASTRAClass {
 						)
 					),
 					new Subgoal(
-						"SmartyPans", new int[] {41,8,42,5},
+						"SmartyPans", new int[] {40,8,41,5},
 						new Goal(
 							new Predicate("sendCommand", new Term[] {
 								Primitive.newPrimitive("position_vector"),
@@ -250,7 +230,7 @@ public class SmartyPans extends ASTRAClass {
 			)
 		));
 		addRule(new Rule(
-			"SmartyPans", new int[] {44,9,44,58},
+			"SmartyPans", new int[] {43,9,43,58},
 			new GoalEvent('+',
 				new Goal(
 					new Predicate("sendCommand", new Term[] {
@@ -261,10 +241,10 @@ public class SmartyPans extends ASTRAClass {
 			),
 			Predicate.TRUE,
 			new Block(
-				"SmartyPans", new int[] {44,57,46,5},
+				"SmartyPans", new int[] {43,57,45,5},
 				new Statement[] {
 					new ModuleCall("unityModule",
-						"SmartyPans", new int[] {45,8,45,68},
+						"SmartyPans", new int[] {44,8,44,68},
 						new Predicate("sendCommand", new Term[] {
 							new ModuleTerm("system", Type.STRING,
 								new Predicate("name", new Term[] {}),

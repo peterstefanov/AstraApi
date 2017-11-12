@@ -3,6 +3,7 @@ package api.modules.ai;
 /**
  * x and y are the coordinates in the grid, they define each cell. Each cell has a side 
  * where this side can be either blocked or unblocked, basically the direction to move.
+ * The cell where is the end of the maze is marked with finish true.
  */
 public class Coordinates {
 	
@@ -11,6 +12,11 @@ public class Coordinates {
 	private String direction;
 	private boolean blocked;
 	private boolean finish;
+	
+	public Coordinates(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
 	
 	public Coordinates(int x, int y, String direction, boolean isEnd) {
 		this.x = x;

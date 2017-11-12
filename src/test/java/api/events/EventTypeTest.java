@@ -3,6 +3,7 @@ package api.events;
 import java.util.LinkedList;
 import java.util.Random;
 
+import org.junit.After;
 import org.junit.Before;
 
 import com.google.gson.Gson;
