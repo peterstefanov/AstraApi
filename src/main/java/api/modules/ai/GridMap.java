@@ -23,7 +23,6 @@ public class GridMap extends Module {
 	private Gson gson = new Gson();
 	//use LinkedHashSet to avoid duplicates and preserve the order
 	private static LinkedHashSet<Coordinates> breadCrumbs = new LinkedHashSet<Coordinates>();
-	private static int finishCount;
 	
 	private LinkedList<UnityJson> directions = new LinkedList<UnityJson>();
 	private String currentCardinalDirection = "";
@@ -51,7 +50,6 @@ public class GridMap extends Module {
         int instanceId = requestFromUnity.getInstanceId();
         boolean isEnd = false;
         if (instanceId == endInstanceId) {
-        	finishCount ++;
         	isEnd = true;
         }
         //which direction is blocked in the cell, only if its a collision event record the data
@@ -61,7 +59,6 @@ public class GridMap extends Module {
         Coordinates coord = new Coordinates((int) Math.round(position.getX()), (int) Math.round(position.getZ()), cardinalDirection, isEnd);
         breadCrumbs.add(coord);
 
-        System.out.println("finishCount: " + getFinishCount());
         return true;
 	}
 	
@@ -75,9 +72,13 @@ public class GridMap extends Module {
 		return breadCrumbs.size();
 	}
 	
+	/**
+	 * Return how many Coordinates instances have finish set to true
+	 * @return
+	 */
 	@TERM
 	public int getFinishCount() {
-		return finishCount;
+		return (int) breadCrumbs.stream().filter(obj -> obj.isFinish()).count();
 	}
 	
 	@TERM
