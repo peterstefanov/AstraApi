@@ -220,17 +220,17 @@ public class SmartyPans extends ASTRAClass {
 						new Variable(Type.STRING, "positionVector"),
 						"SmartyPans", new int[] {40,8,42,5},
 						new ModuleTerm("gridMap", Type.STRING,
-							new Predicate("getValidatedDirectionsVector", new Term[] {
+							new Predicate("getNextMove", new Term[] {
 								new Variable(Type.STRING, "event")
 							}),
 							new ModuleTermAdaptor() {
 								public Object invoke(Intention intention, Predicate predicate) {
-									return ((api.modules.ai.GridMap) intention.getModule("SmartyPans","gridMap")).getValidatedDirectionsVector(
+									return ((api.modules.ai.GridMap) intention.getModule("SmartyPans","gridMap")).getNextMove(
 										(java.lang.String) intention.evaluate(predicate.getTerm(0))
 									);
 								}
 								public Object invoke(BindingsEvaluateVisitor visitor, Predicate predicate) {
-									return ((api.modules.ai.GridMap) visitor.agent().getModule("SmartyPans","gridMap")).getValidatedDirectionsVector(
+									return ((api.modules.ai.GridMap) visitor.agent().getModule("SmartyPans","gridMap")).getNextMove(
 										(java.lang.String) visitor.evaluate(predicate.getTerm(0))
 									);
 								}

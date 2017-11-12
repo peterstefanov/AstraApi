@@ -37,7 +37,7 @@ agent SmartyPans extends Player {
 	    int size = gridMap.getMapSize();  
         console.println("Knowledge map size: " + size);
         
-	    positionVector = gridMap.getValidatedDirectionsVector(event);
+	    positionVector = gridMap.getNextMove(event);
 	    !sendCommand("position_vector", positionVector);
 	}
 		
