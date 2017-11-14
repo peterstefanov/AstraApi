@@ -22,7 +22,7 @@ public class Coordinates {
 		this.x = x;
 		this.y = y;
 		this.direction = direction == null ? "" : direction;
-		this.blocked = direction != null;
+		this.blocked = !this.direction.isEmpty();
 		this.finish = isEnd;
 	}
 
@@ -42,14 +42,11 @@ public class Coordinates {
 		return y;
 	}
 
-	public String getDirection() {
-		return direction;
-	}
-
 	@Override
 	public int hashCode() {
+		
 		final int prime = 31;
-		int result = 1;
+		int result = 17;
 		result = prime * result + (blocked ? 1231 : 1237);
 		result = prime * result + ((direction == null) ? 0 : direction.hashCode());
 		result = prime * result + (finish ? 1231 : 1237);
@@ -83,6 +80,9 @@ public class Coordinates {
 		return true;
 	}
 
+	public String getDirection() {
+		return direction;
+	}
 
 	@Override
 	public String toString() {

@@ -177,28 +177,11 @@ public class SmartyPans extends ASTRAClass {
 			),
 			Predicate.TRUE,
 			new Block(
-				"SmartyPans", new int[] {35,63,41,5},
+				"SmartyPans", new int[] {35,63,38,5},
 				new Statement[] {
-					new Declaration(
-						new Variable(Type.INTEGER, "size"),
-						"SmartyPans", new int[] {37,8,41,5},
-						new ModuleTerm("gridMap", Type.INTEGER,
-							new Predicate("getMapSize", new Term[] {}),
-							new ModuleTermAdaptor() {
-								public Object invoke(Intention intention, Predicate predicate) {
-									return ((api.modules.ai.GridMap) intention.getModule("SmartyPans","gridMap")).getMapSize(
-									);
-								}
-								public Object invoke(BindingsEvaluateVisitor visitor, Predicate predicate) {
-									return ((api.modules.ai.GridMap) visitor.agent().getModule("SmartyPans","gridMap")).getMapSize(
-									);
-								}
-							}
-						)
-					),
 					new Assignment(
 						new Variable(Type.STRING, "positionVector"),
-						"SmartyPans", new int[] {39,8,41,5},
+						"SmartyPans", new int[] {36,8,38,5},
 						new ModuleTerm("gridMap", Type.STRING,
 							new Predicate("getNextMove", new Term[] {
 								new Variable(Type.STRING, "event")
@@ -218,7 +201,7 @@ public class SmartyPans extends ASTRAClass {
 						)
 					),
 					new Subgoal(
-						"SmartyPans", new int[] {40,8,41,5},
+						"SmartyPans", new int[] {37,8,38,5},
 						new Goal(
 							new Predicate("sendCommand", new Term[] {
 								Primitive.newPrimitive("position_vector"),
@@ -230,7 +213,7 @@ public class SmartyPans extends ASTRAClass {
 			)
 		));
 		addRule(new Rule(
-			"SmartyPans", new int[] {43,9,43,58},
+			"SmartyPans", new int[] {40,9,40,58},
 			new GoalEvent('+',
 				new Goal(
 					new Predicate("sendCommand", new Term[] {
@@ -241,10 +224,10 @@ public class SmartyPans extends ASTRAClass {
 			),
 			Predicate.TRUE,
 			new Block(
-				"SmartyPans", new int[] {43,57,45,5},
+				"SmartyPans", new int[] {40,57,42,5},
 				new Statement[] {
 					new ModuleCall("unityModule",
-						"SmartyPans", new int[] {44,8,44,68},
+						"SmartyPans", new int[] {41,8,41,68},
 						new Predicate("sendCommand", new Term[] {
 							new ModuleTerm("system", Type.STRING,
 								new Predicate("name", new Term[] {}),

@@ -16,19 +16,20 @@ import astra.core.Module;
 public class GridMap extends Module {
 
 	private Gson gson = new Gson();
-	//use LinkedHashSet to avoid duplicates and preserve the order
+	//used LinkedHashSet to avoid duplicates and preserve the order
 	private static LinkedHashSet<Coordinates> breadCrumbs = new LinkedHashSet<Coordinates>();
+	/**Used to distinguish when the end is reached. Passed from Unity*/
 	private int endInstanceId = 7777777;
 
 	private PathFinder pathFinder = null;
 
 	/**
-	 * The goal of this is to record each move made by the agent/s, thus
-	 * a knowledge map is build which can be used to navigate smoothly 
-	 * in the maze. Position and collisions are recorded, where when 
-	 * collision occurs the blocked side in the cell is recorded. As
-	 * this module is designed to be used to reach the end of a maze,
-	 * once the maze end is reached its also recorded.
+	 * The goal of this is to record each move made by the Agent/s, thus a knowledge
+	 * map is build which can be used to find the path to the end of the maze.
+	 * Position and collisions are recorded, where when collision occurs the blocked
+	 * side in the cell is recorded. As this module is designed to be used to reach
+	 * the end of a maze, once the maze end is reached its also recorded.
+	 * 
 	 * @param event
 	 * @return the same event
 	 */
@@ -49,7 +50,7 @@ public class GridMap extends Module {
         //which direction is blocked in the cell, only if its a collision event record the data
         String cardinalDirection = eventType.equals(EventType.COLLISION) ? requestFromUnity.getCardinalDirection() : null;
 
-        //round the double we are concerned 
+        //store coordinates as integers 
         Coordinates coord = new Coordinates((int) Math.round(position.getX()), (int) Math.round(position.getZ()), cardinalDirection, isEnd);
         breadCrumbs.add(coord);
 
@@ -85,6 +86,9 @@ public class GridMap extends Module {
 	@TERM
 	public String getNextMove(String event) {
         
+		//get current coordinates 
+		UnityJson coordinates = gson.fromJson(event, UnityJson.class);
+
 		//initialize the response Object 
 		UnityJson responseVector = new UnityJson();	
 		api.modules.utils.Position responsePosition = new Position();
@@ -93,7 +97,8 @@ public class GridMap extends Module {
 		responsePosition.setZ(AstraApi.ZERO);
 		
 		if (pathFinder == null) {
-			pathFinder = new PathFinder(breadCrumbs);
+			//Initialize the path finder
+			pathFinder = new PathFinder(breadCrumbs, coordinates.getCardinalDirection());
 		}
 		
 		Optional<Coordinates> nextMove = pathFinder.getNextMove();
@@ -106,8 +111,6 @@ public class GridMap extends Module {
 		
 		responseVector.setPosition(responsePosition);
 
-		//get current coordinates and add mandatory paramaters to json Object
-		UnityJson coordinates = gson.fromJson(event, UnityJson.class);
 		//add Scale to the response json
 		Scale coordinatesScale = coordinates.getScale();
 		responseVector.setScale(coordinatesScale);

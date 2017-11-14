@@ -32,10 +32,7 @@ agent SmartyPans extends Player {
 	    !sendCommand("messaging", messaging);
 	}	
 	
-	rule +!positionVector(string positionVector, string event) {
- 
-	    int size = gridMap.getMapSize();  
-        
+	rule +!positionVector(string positionVector, string event) {       
 	    positionVector = gridMap.getNextMove(event);
 	    !sendCommand("position_vector", positionVector);
 	}
