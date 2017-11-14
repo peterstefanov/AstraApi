@@ -31,7 +31,10 @@ public class PathFinder {
 
 		// two final destination positions
 		this.goal = setGoal();
-
+		System.out.println("breadSize: " + breadCrumbs.size());
+		for (Coordinates bread : breadCrumbs) {
+        	System.out.println("bread: " + bread.toString());
+        }
 		if (goal.size() > 1) {
 			findPath(initialCoordinates, direction);
 		}
@@ -88,7 +91,7 @@ public class PathFinder {
 		
 		path.add(currentCoordinate);
 
-		/** check the same direction of movement for grid data*/
+		/** check the same direction of movement*/
 		if (directionMovement.equals(AstraApi.SOUTH)) {
 			Iterator<Coordinates> itr = breadCrumbs.iterator();
 	        while(itr.hasNext()){
