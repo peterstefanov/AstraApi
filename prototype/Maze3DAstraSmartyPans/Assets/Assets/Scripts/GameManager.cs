@@ -14,5 +14,7 @@ public class GameManager : MonoBehaviour {
 	public static string CARDINAL_DIRECTION_WEST = "West";	
 	public static string CARDINAL_DIRECTION_EAST = "East";
 
+	public static int MAZE_END_INSTANCE_ID = 7777777;
+
 	public static api.AstraApiImpl api = new api.AstraApiImpl ();
 }

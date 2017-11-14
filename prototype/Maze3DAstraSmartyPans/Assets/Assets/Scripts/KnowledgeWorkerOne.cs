@@ -20,7 +20,7 @@ public class KnowledgeWorkerOne : MonoBehaviour {
 		agentName = GameManager.api.createAgent (agentName, "GridMapGenerator");
         winText.text = "";
 		
-		UpdateAgentInitialVectorDirection ("North");
+		UpdateAgentInitialVectorDirection ("East");
 		if (!isCollided && shouldMove) {
 			InvokeRepeating ("UpdateAgentVectorDirection", 2.0f, 0.1f);
 		}
@@ -32,9 +32,7 @@ public class KnowledgeWorkerOne : MonoBehaviour {
 			string positionVectorFromAstra = GameManager.api.receive(agentName, GameManager.EVENT_POSITION_VECTOR);
 
 			if (positionVectorFromAstra != null && !isCollided) {
-				//Debug.Log ("KnowledgeWorkerOne RECEIVED from Astra: " + positionVectorFromAstra);
 				AstraJson positionVector = JsonUtility.FromJson<AstraJson> (positionVectorFromAstra); 
-				//Debug.Log ("positionVector: " + positionVector);
 				Vector3 movement = new Vector3 (positionVector.position.x, 0.0f, positionVector.position.z);
 				//for direction vector-use transform Translate to apply the direction vector
 				this.transform.Translate (movement * moveSpeed * Time.deltaTime, Space.Self);
@@ -49,7 +47,6 @@ public class KnowledgeWorkerOne : MonoBehaviour {
 			directions.type = GameManager.EVENT_POSITION_VECTOR;
 
 			string json = JsonUtility.ToJson (directions);
-			//Debug.Log ("UpdateAgentVectorDirection: " + json);
 			GameManager.api.asyncEvent (agentName, GameManager.EVENT_POSITION_VECTOR, new object[] { json });
 		}
 	}
@@ -60,10 +57,8 @@ public class KnowledgeWorkerOne : MonoBehaviour {
 		directions.type = GameManager.EVENT_POSITION;
 		directions.cardinalDirection = cardinalDirection;
 	    string initialJson = JsonUtility.ToJson (directions);
-		//Debug.Log ("UpdateAgentInitialVectorDirection: " + initialJson);
 		string response = GameManager.api.syncEvent (agentName, GameManager.EVENT_POSITION_VECTOR, new object[] { initialJson });
 
-		//Debug.Log ("POSITION INITIAL VECTOR RECEIVED from Astra: " + response);
 		AstraJson positionInitialVector = JsonUtility.FromJson<AstraJson> (response); 
 		Vector3 movement = new Vector3 (positionInitialVector.position.x, 0.0f, positionInitialVector.position.z);
 		this.transform.Translate (movement * moveSpeed * Time.deltaTime, Space.Self);

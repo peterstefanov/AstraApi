@@ -24,14 +24,24 @@ public class SupportPlayerLeft : MonoBehaviour {
 			collisionDirection.type = GameManager.EVENT_COLLISION;
 
 			string collisionDirectionJson = JsonUtility.ToJson (collisionDirection);
-			//Debug.Log ("COLLISION DATA SEND TO ASTRA SupportPlayerLeft: " + collisionDirectionJson);
 			string collisionFromAstra = GameManager.api.syncEvent (workerOne.agentName, GameManager.EVENT_COLLISION, new object[] { collisionDirectionJson });
 
-			//Debug.Log ("COLLISION RECEIVED SupportPlayerLeft from Astra: " + collisionFromAstra);
 			AstraJson collisionResponse = JsonUtility.FromJson<AstraJson> (collisionFromAstra); 
 
 			//align with Astra update and change the direction for position_vector
 			workerOne.UpdateAgentInitialVectorDirection (collisionResponse.astraCardinalDirection);	
+		}
+	}
+
+	void OnTriggerEnter(Collider other) {
+		if (other.gameObject.CompareTag("PickUp")) {
+			AstraJson collisionDirection = new AstraJson (this.transform);
+			collisionDirection.instanceId = GameManager.MAZE_END_INSTANCE_ID;
+			collisionDirection.cardinalDirection = GameManager.CARDINAL_DIRECTION_SOUTH;
+			collisionDirection.type = GameManager.EVENT_COLLISION;
+
+			string collisionDirectionJson = JsonUtility.ToJson (collisionDirection);
+			GameManager.api.syncEvent (workerOne.agentName, GameManager.EVENT_COLLISION, new object[] { collisionDirectionJson });
 		}
 	}
 }
