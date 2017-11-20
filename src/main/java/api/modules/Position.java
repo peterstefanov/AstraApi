@@ -6,6 +6,8 @@ import com.google.gson.Gson;
 
 import api.AstraApi;
 import api.modules.utils.FormattingService;
+import api.modules.utils.Rotation;
+import api.modules.utils.Scale;
 import api.modules.utils.UnityJson;
 import astra.core.Module;
 
@@ -91,6 +93,15 @@ public class Position extends Module {
 		// get current coordinates
 		UnityJson coordinates = gson.fromJson(json, UnityJson.class);
 		api.modules.utils.Position currentPositionJson = coordinates.getPosition();
+		
+		//add Scale to the response json
+		Scale coordinatesScale = coordinates.getScale();
+		coordinates.setScale(coordinatesScale);
+		
+		//add Rotation to the response json
+		Rotation coordinatesRotation = coordinates.getRotation();
+		coordinates.setRotation(coordinatesRotation);
+		
 		//get the sign of the coordinates
 		int signX = FormattingService.signBit(currentPositionJson.getX().floatValue());
 		int signY = FormattingService.signBit(currentPositionJson.getY().floatValue());

@@ -16,7 +16,7 @@ public class PathFinder {
 	final private static int TRESHOLD_GRID = 11;
 	final private int initX = -10;
 	/** In Unity Y is equivalent to Z coordinate */
-	final private int initY = 10;
+	final private int initY = 9;
 	final private Coordinates initialCoordinates;
 	final private List<Coordinates> goal;
 	private LinkedHashSet<Coordinates> path = new LinkedHashSet<>();
