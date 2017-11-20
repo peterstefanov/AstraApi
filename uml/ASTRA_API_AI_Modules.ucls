@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class-diagram version="1.2.2" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
-  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+<class-diagram version="1.2.2" icons="true" automaticImage="PNG" always-add-relationships="false" generalizations="true" 
+  realizations="true" associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="api.modules.ai.GridMap" project="AstraApi" 
     file="/AstraApi/src/main/java/api/modules/ai/GridMap.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="576" y="136"/>    
@@ -29,6 +29,35 @@
     </display>  
   </class>  
   <association id="4">    
+    <bendpoint x="1025" y="136"/>    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="5" name="pathFinder">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="6" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="7">    
+    <bendpoint x="1026" y="759"/>    
+    <bendpoint x="206" y="766"/>    
+    <bendpoint x="38" y="765"/>    
+    <bendpoint x="38" y="460"/>    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="8" name="breadCrumbs">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="9" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="10">    
     <bendpoint x="883" y="551"/>    
     <bendpoint x="829" y="550"/>    
     <bendpoint x="651" y="550"/>    
@@ -36,26 +65,12 @@
     <bendpoint x="392" y="591"/>    
     <bendpoint x="320" y="591"/>    
     <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="5" name="goal"/>      
-      <multiplicity id="6" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="7">    
-    <bendpoint x="1025" y="136"/>    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="8" name="pathFinder"/>      
-      <multiplicity id="9" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="10">    
-    <bendpoint x="212" y="137"/>    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="11" name="breadCrumbs"/>      
-      <multiplicity id="12" minimum="0" maximum="2147483647"/>    
+      <attribute id="11" name="goal">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="12" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
@@ -65,20 +80,25 @@
     <bendpoint x="987" y="734"/>    
     <bendpoint x="212" y="736"/>    
     <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="14" name="initialCoordinates"/>      
-      <multiplicity id="15" minimum="0" maximum="1"/>    
+      <attribute id="14" name="initialCoordinates">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="15" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="16">    
-    <bendpoint x="1026" y="759"/>    
-    <bendpoint x="206" y="766"/>    
-    <bendpoint x="38" y="765"/>    
-    <bendpoint x="38" y="460"/>    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="17" name="breadCrumbs"/>      
-      <multiplicity id="18" minimum="0" maximum="2147483647"/>    
+    <bendpoint x="212" y="137"/>    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="17" name="breadCrumbs">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="18" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
@@ -89,8 +109,12 @@
     <bendpoint x="368" y="485"/>    
     <bendpoint x="314" y="485"/>    
     <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="20" name="path"/>      
-      <multiplicity id="21" minimum="0" maximum="2147483647"/>    
+      <attribute id="20" name="path">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="21" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  

@@ -31,10 +31,7 @@ public class PathFinder {
 
 		// two final destination positions
 		this.goal = setGoal();
-		System.out.println("breadSize: " + breadCrumbs.size());
-		for (Coordinates bread : breadCrumbs) {
-        	System.out.println("bread: " + bread.toString());
-        }
+
 		if (goal.size() > 1) {
 			findPath(initialCoordinates, direction);
 		}
@@ -74,7 +71,7 @@ public class PathFinder {
 	 * 
 	 * @param coord
 	 */
-	public void findPath(Coordinates currentCoordinate, String directionMovement) {
+	private void findPath(Coordinates currentCoordinate, String directionMovement) {
 		
 		boolean foundInTheMap = false;
 		if (path.contains(currentCoordinate)) {
@@ -111,8 +108,8 @@ public class PathFinder {
 	        		breadCrumbs.stream()
 	        				.filter(obj -> obj.getX() == currentCoordinate.getX() && obj.getY() == currentCoordinate.getY() - 1 && obj.getDirection().equals(AstraApi.SOUTH))
 	        				.forEach(item -> {
-	        					Coordinates _coord = new Coordinates(item.getX(), item.getY(), item.getDirection(), item.isFinish());
-	        					blockedCoordinates.add(_coord);
+	        					final Coordinates coord_ = new Coordinates(item.getX(), item.getY(), item.getDirection(), item.isFinish());
+	        					blockedCoordinates.add(coord_);
 	        				});
 	        		boolean flag = false;
 	        		if (!blockedCoordinates.isEmpty()) {
@@ -148,8 +145,8 @@ public class PathFinder {
 	        		breadCrumbs.stream()
 	        				.filter(obj -> obj.getY() == currentCoordinate.getY() && obj.getX() == currentCoordinate.getX() - 1 && obj.getDirection().equals(AstraApi.WEST))
 	        				.forEach(item -> {
-	        					Coordinates _coord = new Coordinates(item.getX(), item.getY(), item.getDirection(), item.isFinish());
-	        					blockedCoordinates.add(_coord);
+	        					final Coordinates coord_ = new Coordinates(item.getX(), item.getY(), item.getDirection(), item.isFinish());
+	        					blockedCoordinates.add(coord_);
 	        				});
 	        		boolean flag = false;
 	        		if (!blockedCoordinates.isEmpty()) {
@@ -185,8 +182,8 @@ public class PathFinder {
 	        		breadCrumbs.stream()
 	        				.filter(obj -> obj.getY() == currentCoordinate.getY() && obj.getX() == currentCoordinate.getX() + 1 && obj.getDirection().equals(AstraApi.EAST))
 	        				.forEach(item -> {
-	        					Coordinates _coord = new Coordinates(item.getX(), item.getY(), item.getDirection(), item.isFinish());
-	        					blockedCoordinates.add(_coord);
+	        					final Coordinates coord_ = new Coordinates(item.getX(), item.getY(), item.getDirection(), item.isFinish());
+	        					blockedCoordinates.add(coord_);
 	        				});
 
 	        		boolean flag = false;
@@ -227,8 +224,8 @@ public class PathFinder {
 	        		breadCrumbs.stream()
 	        				.filter(obj -> obj.getX() == currentCoordinate.getX() && obj.getY() == currentCoordinate.getY() + 1 && obj.getDirection().equals(AstraApi.SOUTH))
 	        				.forEach(item -> {
-	        					Coordinates _coord = new Coordinates(item.getX(), item.getY(), item.getDirection(), item.isFinish());
-	        					blockedCoordinates.add(_coord);
+	        					final Coordinates coord_ = new Coordinates(item.getX(), item.getY(), item.getDirection(), item.isFinish());
+	        					blockedCoordinates.add(coord_);
 	        				});
 	        		boolean flag = false;
 	        		if (!blockedCoordinates.isEmpty()) {
