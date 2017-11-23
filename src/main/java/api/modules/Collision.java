@@ -41,15 +41,15 @@ import astra.core.Module;
  * </br>
  * 
  * <b>Expect input as a Json in the format of:</b></br>
- * {"position":{"x":1.649999976158142,"y":1.0,"z":2.700000047683716},"scale":{"x":0.5,"y":1.0,"z":0.5},"rotation":{"x":0.0,"y":0.0,"z":0.0},"instanceId":9670,"cardinalDirection":"South"}</br>
+ * {"type":"collision","position":{"x":1.649999976158142,"y":1.0,"z":2.700000047683716},"scale":{"x":0.5,"y":1.0,"z":0.5},"rotation":{"x":0.0,"y":0.0,"z":0.0},"instanceId":9670,"cardinalDirection":"South"}</br>
  * <b>Returns:</b></br>
  * <ul>
  * <li><b>North</b></li>
- * {"position":{"x":1.649999976158142,"y":1.0,"z":3.200000047683716},"scale":{"x":0.5,"y":1.0,"z":0.5},"rotation":{"x":0.0,"y":0.0,"z":0.0},"cardinalDirection":"South","instanceId":9670,"astraCardinalDirection":"North"}
+ * {"type":"collision","position":{"x":1.649999976158142,"y":1.0,"z":3.200000047683716},"scale":{"x":0.5,"y":1.0,"z":0.5},"rotation":{"x":0.0,"y":0.0,"z":0.0},"cardinalDirection":"South","instanceId":9670,"astraCardinalDirection":"North"}
  * <li><b>or West</b></li>
- * {"position":{"x":1.149999976158142,"y":1.0,"z":2.700000047683716},"scale":{"x":0.5,"y":1.0,"z":0.5},"rotation":{"x":0.0,"y":0.0,"z":0.0},"cardinalDirection":"South","instanceId":9670,"astraCardinalDirection":"West"}
+ * {"type":"collision","position":{"x":1.149999976158142,"y":1.0,"z":2.700000047683716},"scale":{"x":0.5,"y":1.0,"z":0.5},"rotation":{"x":0.0,"y":0.0,"z":0.0},"cardinalDirection":"South","instanceId":9670,"astraCardinalDirection":"West"}
  * <li><b>or East</b></li>
- * {"position":{"x":2.149999976158142,"y":1.0,"z":2.700000047683716},"scale":{"x":0.5,"y":1.0,"z":0.5},"rotation":{"x":0.0,"y":0.0,"z":0.0},"cardinalDirection":"South","instanceId":9670,"astraCardinalDirection":"East"}
+ * {"type":"collision","position":{"x":2.149999976158142,"y":1.0,"z":2.700000047683716},"scale":{"x":0.5,"y":1.0,"z":0.5},"rotation":{"x":0.0,"y":0.0,"z":0.0},"cardinalDirection":"South","instanceId":9670,"astraCardinalDirection":"East"}
  * </ul>
  */
 public class Collision extends Module {
