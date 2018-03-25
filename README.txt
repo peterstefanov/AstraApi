@@ -13,4 +13,4 @@ Drop-in JVM
 Use Java libraries in your .NET applications
 Develop .NET applications in Java
  ## AUTHOR
- * **Petar Stefanov** - *inital work* - [git(peterstefanov)](https://github.com/peterstefanov/paillier)
+ * **Petar Stefanov** - *inital work* - [git(peterstefanov)](https://github.com/peterstefanov/AstraApi)
